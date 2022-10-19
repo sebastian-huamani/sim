@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .nav-lateral{
+        @apply fixed -left-20 md:left-0 md:top-0 flex h-screen w-16 bg-black-nav py-6 justify-center 
+    }
+    .box {
+        @apply w-full min-h-34 max-h-96  bg-white p-3 rounded-md mb-4 shadow-lg shadow-slate-500/20 text-ellipsis overflow-hidden 
+    }
+    .module {
+        @apply grid grid-cols-1 md:grid-cols-3 md:gap-4
+    }
+    .grid-modules-card {
+        @apply grid grid-cols-card gap-5 max-h-full 
+    }
+    .card {
+        @apply bg-card rounded-xl mb-4 p-2 grid grid-rows-3 gap-3 
+    }
+    
+}
