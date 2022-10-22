@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FaHome, FaUser, FaFileContract, FaAddressCard, FaClone } from "react-icons/fa";
-
+import { AiFillSetting } from "react-icons/ai";
+import { HiLogout } from "react-icons/hi";
 
 export default function Navbar() {
     return (
@@ -9,6 +10,7 @@ export default function Navbar() {
                 <li className="mb-6">
                     <FaClone />
                 </li>
+                <hr />
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
@@ -37,6 +39,21 @@ export default function Navbar() {
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
                         to='/tarjetas' >
                         <FaAddressCard />
+                    </NavLink>
+                </li>
+                    <hr />
+                <li>
+                    <NavLink
+                        className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                        to='/settings' >
+                        <AiFillSetting />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                        to='/logout' >
+                        <HiLogout />
                     </NavLink>
                 </li>
             </ul>

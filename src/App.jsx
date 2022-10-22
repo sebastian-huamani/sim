@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Perfil from "./pages/Perfil";
 import Tarjetas from "./pages/Tarjetas";
 import Plantillas from "./pages/Plantillas";
+import Notfound from "./pages/Notfound";
 import Navtop from "./components/NavTop";
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
                 <Route path="/templates" element={<Plantillas />} />
                 <Route path="/tarjetas" element={<Tarjetas />} />
                 <Route path="/logout" element={<div>logout </div>} />
-                <Route path="*" element={<p>Not found</p>} />
+                <Route path="*" element={<Notfound /> } />
               </Routes>
             </div>
           </div>

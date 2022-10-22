@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import Loading from "../components/Loading";
+import ErrorBoundary from "../components/ErrorBoundary";
 import { FiPlusCircle, FiTrash, FiEdit2 } from "react-icons/fi";
 
 
@@ -19,7 +20,7 @@ class Cards extends React.Component {
             'headers': {
                 // 'Content-Type': 'text/plain',
                 // 'Accept': 'application/json',
-                'Authorization': 'Bearer 40|bYhorsBc113LKwyJqnBhUfBV4LNWUnCJ1VCu5zYl',
+                'Authorization': 'Bearer 1|FMmK7E3OPFkri3DfIAJdfocLOcppw0ELPP3F8wfl',
             }
         });
 
@@ -54,9 +55,9 @@ class Cards extends React.Component {
                 </div>
 
                 <div className='overflow-y-auto h-full text-xs'>
-                    <Suspense fallback={<Loading />}>
-                        <LazyComponent data={items} />
-                    </Suspense>
+                        <Suspense fallback={<Loading />}>
+                            <LazyComponent data={items} />
+                        </Suspense>
                 </div>
             </div>
         );
