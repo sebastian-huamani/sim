@@ -1,49 +1,43 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import './App.css';
 import Navbar from "./components/Navbar";
+import Navtop from "./components/NavTop";
+import NavIndex from "./components/NavIndex";
 
 import Home from "./pages/Home";
 import Perfil from "./pages/Perfil";
 import Tarjetas from "./pages/Tarjetas";
 import Plantillas from "./pages/Plantillas";
 import Notfound from "./pages/Notfound";
-import Navtop from "./components/NavTop";
+import ProtectedRoute from "./security/ProtectedRoute";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Logout from "./pages/Logout";
 
+let done = localStorage.getItem('done');
 function App() {
-
-
   return (
     <div className="App">
-
       <div className="bg-black-scene">
-
         <BrowserRouter>
 
-          <div className="nav-lateral">
-            <Navbar />
-          </div>
-
-          <div className="inline-block md:hidden w-full" >
-            <Navtop />
+          <div className="w-full ">
+              <Routes>
+                <Route element={<ProtectedRoute />} >
+                  <Route path="/Dashboard/home" element={<Home />} />
+                  <Route path="/Dashboard/perfil" element={<Perfil />} />
+                  <Route path="/Dashboard/templates" element={<Plantillas />} />
+                  <Route path="/Dashboard/tarjetas" element={<Tarjetas />} />
+                  <Route path="/Dashboard/logout" element={<Logout />} />
+                  <Route path="/Dashboard/*" element={ <p> error</p> } />
+                </Route>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="*" element={<Notfound />} />
+              </Routes>
           </div>
           
-
-          <div className="w-full md:pl-16 pl-0 ">
-            <div className="p-2 h-screen ">
-              <Routes>
-                <Route path="/home" element={<Home />} />
-
-                <Route path="/perfil" element={<Perfil />} />
-                <Route path="/perfil/:id" element={<Perfil />} />
-
-                <Route path="/templates" element={<Plantillas />} />
-                <Route path="/tarjetas" element={<Tarjetas />} />
-                <Route path="/logout" element={<div>logout </div>} />
-                <Route path="*" element={<Notfound /> } />
-              </Routes>
-            </div>
-          </div>
         </BrowserRouter>
       </div>
 
@@ -52,4 +46,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import Loading from "../components/Loading";
-import ErrorBoundary from "../components/ErrorBoundary";
 import { FiPlusCircle, FiTrash, FiEdit2 } from "react-icons/fi";
 
 
@@ -8,19 +7,18 @@ import { FiPlusCircle, FiTrash, FiEdit2 } from "react-icons/fi";
 class Cards extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = ({
             done: true,
             items: [],
-        }
+        });
     }
 
     componentDidMount() {
+        let key = localStorage.getItem('key');
+
         const fetchPromise = fetch("http://127.0.0.1:8000/api/card/showAll", {
-            // 'mode': 'cors',
             'headers': {
-                // 'Content-Type': 'text/plain',
-                // 'Accept': 'application/json',
-                'Authorization': 'Bearer 1|FMmK7E3OPFkri3DfIAJdfocLOcppw0ELPP3F8wfl',
+                'Authorization': 'Bearer ' + key,
             }
         });
 
@@ -31,11 +29,9 @@ class Cards extends React.Component {
                 items: res['msg'],
                 done: res['res']
             });
-
         });
     }
-
-
+    
     render() {
         var { items, done } = this.state;
 
@@ -44,20 +40,18 @@ class Cards extends React.Component {
                 () => import("../components/Card")
             );
         });
-      
+
 
         return (
             <div className='h-90vh'>
                 <div className='my-4 flex justify-end text-center text-lg'>
-                    <FiTrash className='mx-3' />
-                    <FiEdit2 className='mx-3' />
                     <FiPlusCircle className='mx-3' />
                 </div>
 
-                <div className='overflow-y-auto h-full text-xs'>
-                        <Suspense fallback={<Loading />}>
-                            <LazyComponent data={items} />
-                        </Suspense>
+                <div className='overflow-y-auto h-full text-xs pr-1'>
+                    <Suspense fallback={<Loading />} >
+                        <LazyComponent data={items}   />
+                    </Suspense>
                 </div>
             </div>
         );

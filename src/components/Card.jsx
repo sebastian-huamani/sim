@@ -1,28 +1,79 @@
 import React from 'react';
-import { FiChevronRight } from "react-icons/fi";
+import { NavLink } from 'react-router-dom';
+import { IoSettingsSharp } from "react-icons/io5";
+import CardContext from "../context/CardContext";
+
+
 
 class Card extends React.Component {
     constructor(props) {
         super(props);
+        this.state = ({
+            res: false,
+            data: {}
+        });
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        sessionStorage.clear();
+        const idCard = e.target.getAttribute("id");
+        sessionStorage.setItem("card", idCard);
+
+        let key = localStorage.getItem('key');
+
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/showOne/${idCard}`, {
+            method: 'GET',
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            this.setState({
+                res: res['res'],
+                data: res['msg'],
+            });
+            sessionStorage.setItem("dataCard", JSON.stringify( res['msg']));
+            this.context.updateCard();
+        });
     }
 
     render() {
-        const cards = this.props.data.map(item => (
-            <div className='card' key={item.id}>
-                <p className='text-end'> Fc: {item.created_at} </p>
 
-                <div className='flex justify-center items-center relative'>
-                    <p className='text-center text-base'>  {item.name} </p>
-                    <div className='absolute w-full flex flex-row-reverse'>
-                        <FiChevronRight className='' />
+        const cards = this.props.data.map(item => (
+
+            <div className='relative mb-4 w-full cursor-pointer' key={item.id}  >
+
+                <div className='absolute w-full h-24' id={item.id} onClick={this.handleClick}></div>
+
+                <div className='grid grid-rows-4/1 h-32'>
+                    <div className='top-card'>
+
+                        <div className='flex justify-between w-full'>
+                            <p>{item.name_banck}</p>
+                            <p>{item.type_card}</p>
+                        </div>
+                        <p className='text-3xl mt-6 font-medium text-center'> S/. {item.bottom_line}</p>
+
+                    </div>
+
+                    <div className='bottom-card'>
+
+                        <button type="submit">
+                            <NavLink to="/Dashboard/templates" >
+                                <IoSettingsSharp className='' />
+                            </NavLink>
+                        </button>
+
                     </div>
                 </div>
 
-                <p className='text-start' > {item.name_banck} : {item.type_cards_id}  </p>
             </div>
 
         ));
-
 
         return (
             <div>
@@ -31,4 +82,7 @@ class Card extends React.Component {
         );
     }
 }
+
+Card.contextType = CardContext;
+
 export default Card

@@ -9,14 +9,23 @@
     .box {
         @apply w-full min-h-34 max-h-96  bg-white p-3 rounded-md mb-4 shadow-lg shadow-slate-500/20 text-ellipsis overflow-hidden 
     }
+    .box-session {
+        @apply w-full min-h-34 bg-white p-3 rounded-md shadow-lg shadow-slate-500/20 text-ellipsis overflow-hidden
+    }
     .module {
         @apply grid grid-cols-1 md:grid-cols-3 md:gap-4
     }
     .grid-modules-card {
-        @apply grid grid-cols-card gap-5 max-h-full 
+        @apply grid grid-cols-card gap-5
     }
-    .card {
-        @apply bg-card rounded-xl mb-4 p-2 grid grid-rows-3 gap-3 
+    .top-card{
+        @apply rounded-t-lg px-3 py-2 h-24 text-white bg-top-card 
+    }
+    .bottom-card {
+        @apply rounded-b-lg flex items-center px-4 py-1 text-lg bg-bottom-card shadow-lg shadow-slate-500/20
+    }
+    .btn{
+        @apply bg-black rounded-sm px-4 py-1 text-wheat 
     }
     
 }

@@ -9,14 +9,22 @@ module.exports = {
       colors:{
         'black-scene' : '#f4f5fe',
         'black-nav' : '#ecedf6',
-        'card' : '#E1FAD2'
+        'top-card' : '#2F955E',
+        'bottom-card' : '#91D468',
+        'wheat' : '#f5deb3'
       },
       gridTemplateColumns:{
         'home' : '70% 28%',
         'card' : '23% auto 22%',
+        'template' : '45% auto',
+        '1/4' : ' 18% 80%',
+        '2/3' : '38% 60%'
       },
       gridTemplateRows:{
-        '60-40': '60% 38%;',
+        '60-40': '60% 38%',
+        '4/1': '73% 27%',
+        '1/9': '8% 90%',
+
       },
       height:{
         '34': '8.5rem',

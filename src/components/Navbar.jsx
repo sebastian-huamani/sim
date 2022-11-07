@@ -3,10 +3,11 @@ import { FaHome, FaUser, FaFileContract, FaAddressCard, FaClone } from "react-ic
 import { AiFillSetting } from "react-icons/ai";
 import { HiLogout } from "react-icons/hi";
 
-export default function Navbar() {
+export default function Navbar(props) {
+
     return (
-        <div >
-            <ul className="grid grid-flow-row gap-8 text-center text-2xl " >
+        <div className={`nav-lateral show`}>
+            <ul className="grid grid-flow-row gap-8 text-center text-2xl" >
                 <li className="mb-6">
                     <FaClone />
                 </li>
@@ -14,22 +15,22 @@ export default function Navbar() {
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                        to="/home">
+                        to="/Dashboard/home">
                         <FaHome />
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                        to="/perfil">
+                        to="/Dashboard/perfil">
                         <FaUser />
                     </NavLink>
                 </li>
-                <hr className="bg-slate-800 w-full" />
+                <hr className="bg-slate-600 w-full" />
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                        to='/templates' >
+                        to='/Dashboard/templates' >
                         <FaFileContract />
                     </NavLink>
                 </li>
@@ -37,22 +38,22 @@ export default function Navbar() {
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                        to='/tarjetas' >
+                        to='/Dashboard/tarjetas' >
                         <FaAddressCard />
                     </NavLink>
                 </li>
-                    <hr />
+                <hr className="bg-slate-600 w-full" />
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                        to='/settings' >
+                        to='/Dashboard/settings' >
                         <AiFillSetting />
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                        to='/logout' >
+                        to='/Dashboard/logout' >
                         <HiLogout />
                     </NavLink>
                 </li>
