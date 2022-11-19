@@ -11,12 +11,14 @@ module.exports = {
         'black-nav' : '#ecedf6',
         'top-card' : '#2F955E',
         'bottom-card' : '#91D468',
-        'wheat' : '#f5deb3'
+        'wheat' : '#f5deb3',
+        'purple' : '#6B7BFC'
       },
       gridTemplateColumns:{
         'home' : '70% 28%',
         'card' : '23% auto 22%',
         'template' : '45% auto',
+        'settings' : '28% 70%',
         '1/4' : ' 18% 80%',
         '2/3' : '38% 60%'
       },
@@ -24,16 +26,17 @@ module.exports = {
         '60-40': '60% 38%',
         '4/1': '73% 27%',
         '1/9': '8% 90%',
-
       },
       height:{
         '34': '8.5rem',
+        '105': '8.5rem',
         '70vh': '70vh',
         '90vh': '90vh',
         '97vh': '97vh',
       },
       minHeight: {
         '34': '7.5rem',
+        '98': '26rem'
       },
       maxHeight: {
         '97vh' :'97vh'

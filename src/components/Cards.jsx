@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
+import { NavLink } from "react-router-dom";
 import Loading from "../components/Loading";
-import { FiPlusCircle, FiTrash, FiEdit2 } from "react-icons/fi";
+import { FiPlusCircle } from "react-icons/fi";
 
 
 
@@ -45,7 +46,9 @@ class Cards extends React.Component {
         return (
             <div className='h-90vh'>
                 <div className='my-4 flex justify-end text-center text-lg'>
-                    <FiPlusCircle className='mx-3' />
+                    <NavLink to="/Dashboard/CreateCard" >
+                        <FiPlusCircle className='mx-3' />
+                    </NavLink>
                 </div>
 
                 <div className='overflow-y-auto h-full text-xs pr-1'>

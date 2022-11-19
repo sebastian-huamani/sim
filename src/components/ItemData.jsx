@@ -1,39 +1,98 @@
 import React from 'react';
 import CardContext from "../context/CardContext";
+import NotData from "./NotData";
 
 class ItemData extends React.Component {
+    constructor(props) {
+        super(props);
+        this.processJson = this.processJson.bind(this);
+    }
 
-    DataTime(time){
-        dotless = time.split(".");
+    processJson( dataJson ) {
+        var data = JSON.parse(dataJson);
+        console.log(data);
+        var dataBody = null;
+        for ( const [key, value] of Object.entries(data)){
+            dataBody +=  <p> `${key}: ${value}` </p> ;
+            // console.log(`${key}: ${value}`);
+        }
+        console.log(dataBody);
         
     }
 
     render() {
 
-        let dataJson = JSON.parse(this.context.dataItem)
+        let items = JSON.parse(this.context.itemsList);
+        var idItem = this.context.idItemSelected;
+        let itemselected;
 
-        var data = [];
-        for (let clave in dataJson) {
-            if (dataJson[clave] != null) {
-                data.push([clave, dataJson[clave]]);
-            }
+        if (items != null) {
+            items.map((item) => {
+                if (item.id == idItem) {
+                    itemselected = item;
+                }
+            });
+        }
+        // console.log(itemselected);
+
+        if (itemselected != null) {
+            var data = [itemselected].map((item) => (
+                <ul className='text-ellipsis overflow-y-auto h-full' key={item.id}>
+                    <li>
+                        <p>{item.title}</p>
+                    </li>
+                    <li>
+                        <p>{item.amount}</p>
+                    </li>
+                    <li>
+                        {
+                            Object.entries(JSON.parse(item.body)).map(([key, value]) => (
+                                <p> {key} : {value} </p>
+                            ))
+                        }
+                       
+                    </li>
+                    <li>
+                        <p>{item.id}</p>
+                    </li>
+                </ul>
+            ));
         }
 
-        const info = data.map((item) => (
-            <li className='text-xs mb-3' key={item[0]}>
-                <p className='font-bold'> {item[0]} </p>
-                <p> {item[1]} </p>
-            </li>
-        ));
+
+        if (itemselected == null || itemselected == undefined) {
+            return <NotData />
+        }
+
+        // if (items != null) {
+        //     console.log(items);
+        // }
+
+        // const data = [info].map((item) => (
+        //     <ul className='text-ellipsis overflow-y-auto h-full ' key={item.id}>
+        //         <li>
+        //             <p>{item.title}</p>
+        //         </li>
+        //         <li>
+        //             <p>{item.amount}</p>
+        //         </li>
+        //         <li>
+        //             <p>{this.processJson(item.body)}</p>
+        //         </li>
+        //         <li>
+        //             <p>{item.id}</p>
+        //         </li>
+        //     </ul>
+        // ))
+
 
         return (
-            <ul className='text-ellipsis overflow-y-auto h-full '>
-                {info}
-            </ul>
+            <div className='min-h-98'>
+                {data}
+            </div>
         );
     }
 }
 
 ItemData.contextType = CardContext;
-
 export default ItemData;

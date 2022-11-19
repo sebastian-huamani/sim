@@ -32,6 +32,8 @@ class Logout extends React.Component{
             });
             console.log(res);
         });
+        localStorage.clear();
+        sessionStorage.clear();
     }
 
     render(){

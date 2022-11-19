@@ -1,6 +1,8 @@
 import React from 'react';
 import { Navigate, NavLink } from "react-router-dom";
 import NavIndex from "../components/NavIndex";
+import ButtonForm from "../components/buttons/ButtonForm";
+import { InputSimple } from "../components/input/Inputs";
 
 
 class Login extends React.Component {
@@ -34,6 +36,7 @@ class Login extends React.Component {
             localStorage.setItem('done', res['res']);
         });
     }
+
     render() {
 
         let done = localStorage.getItem('done');
@@ -50,17 +53,21 @@ class Login extends React.Component {
                         <p className='text-3xl'>Login </p>
                         <NavLink to="/register" className="text-sm text-gray-600 underline mb-7">or create a count </NavLink>
 
-                        <label htmlFor="email" className='my-2'>
-                            Email: <br />
-                            <input type="email" name="email" id="email" placeholder='name@gmail.com' />
-                        </label>
+                        <InputSimple
+                            type="text"
+                            name="email"
+                            placeholder="example@gmail.com"
+                            label="Email" />
 
-                        <label htmlFor="password" className='my-2'>
-                            Password: <br />
-                            <input type="password" name="password" id="password" placeholder='*******' />
-                        </label>
+                        <InputSimple
+                            type="password"
+                            name="password"
+                            placeholder="***********"
+                            label="Password" />
 
-                        <button type="submit" className='btn w-full mt-2'>Login</button>
+                        <div className='w-full mt-2 text-center'>
+                            <ButtonForm name="Login" />
+                        </div>
                     </form>
                 </div>
             </div>

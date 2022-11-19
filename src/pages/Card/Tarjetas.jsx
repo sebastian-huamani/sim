@@ -1,12 +1,15 @@
-import React, { Suspense } from 'react';
-import Loading from "../components/Loading";
-import Cards from "../components/Cards";
-import Items from "../components/ItemsHistoryCard";
-import Navbar from "../components/Navbar";
-import NavTop from "../components/NavTop";
-import CardData from "../components/CardData";
-import ItemData from "../components/ItemData";
-import CardContext, { CardProvider } from "../context/CardContext";
+import React from 'react';
+import Cards from "../../components/Cards";
+import Items from "../../components/ItemsHistoryCard";
+import Navbar from "../../components/Navbar";
+import NavTop from "../../components/NavTop";
+import CardData from "../../components/CardData";
+import ItemData from "../../components/ItemData";
+import CardContext, { CardProvider } from "../../context/CardContext";
+
+if (window.performance.navigation.type == 1) {
+  sessionStorage.clear()
+}
 
 class Tarjetas extends React.Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class Tarjetas extends React.Component {
 
     return (
       <CardProvider>
-        
+
         <div className='md:pl-20 pl-0'>
           <Navbar />
           <NavTop />
@@ -28,11 +31,11 @@ class Tarjetas extends React.Component {
               <Cards />
             </div>
             <div className='grid grid-rows-60-40 gap-4 text-ellipsis overflow-hidden max-h-97vh'>
-              <div className='grid grid-cols-2/3 content-between  max-h-max gap-4 text-ellipsis overflow-hidden'>
-                <div className='box-session h-screen'>
+              <div className='grid grid-cols-2/3 content-between gap-4 text-ellipsis overflow-hidden'>
+                <div className='box-session'>
                   <CardData />
                 </div>
-                <div className='box-session h-screen'>
+                <div className='box-session h-full'>
                   <ItemData />
                 </div>
               </div>

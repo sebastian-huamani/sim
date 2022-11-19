@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { IoSettingsSharp } from "react-icons/io5";
 import CardContext from "../context/CardContext";
 
-
-
 class Card extends React.Component {
     constructor(props) {
         super(props);
@@ -13,14 +11,17 @@ class Card extends React.Component {
             data: {}
         });
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickSettings = this.handleClickSettings.bind(this);
     }
 
     handleClick(e) {
         sessionStorage.clear();
+        
         const idCard = e.target.getAttribute("id");
+        let key = localStorage.getItem('key');
+
         sessionStorage.setItem("card", idCard);
 
-        let key = localStorage.getItem('key');
 
         const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/showOne/${idCard}`, {
             method: 'GET',
@@ -36,13 +37,17 @@ class Card extends React.Component {
                 res: res['res'],
                 data: res['msg'],
             });
-            sessionStorage.setItem("dataCard", JSON.stringify( res['msg']));
-            this.context.updateCard();
+            this.context.updateCard(JSON.stringify( res['msg']) );
+            this.context.updateStateHistory(false);
         });
     }
 
-    render() {
+    handleClickSettings(e){
+        let idCard = e.target.getAttribute("id");
+        sessionStorage.setItem('card', idCard);
+    }
 
+    render() {
         const cards = this.props.data.map(item => (
 
             <div className='relative mb-4 w-full cursor-pointer' key={item.id}  >
@@ -60,13 +65,11 @@ class Card extends React.Component {
 
                     </div>
 
-                    <div className='bottom-card'>
-
-                        <button type="submit">
-                            <NavLink to="/Dashboard/templates" >
-                                <IoSettingsSharp className='' />
-                            </NavLink>
-                        </button>
+                    <div className='bottom-card relative'>
+                        <NavLink type="submit" to="/Dashboard/settings" className='absolute h-8 w-4'  onClick={this.handleClickSettings} id={item.id}></NavLink>
+                        <div>
+                            <IoSettingsSharp/>
+                        </div>
 
                     </div>
                 </div>

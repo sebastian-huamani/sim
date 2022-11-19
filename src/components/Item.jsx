@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiChevronLeft } from "react-icons/fi";
 import CardContext from "../context/CardContext";
+import NotData from "./NotData";
 
 class Items extends React.Component {
     constructor(props) {
@@ -10,28 +11,7 @@ class Items extends React.Component {
 
     handleClick(e) {
         const idItem = e.target.getAttribute("id");
-
-        sessionStorage.setItem("idItem", idItem);
-        let key = localStorage.getItem('key');
-
-
-        const fetchPromise = fetch(`http://127.0.0.1:8000/api/transaction/count/showOne/${idItem}`, {
-            method: 'GET',
-            'headers': {
-                'Authorization': 'Bearer ' + key,
-            }
-        });
-
-        fetchPromise.then(response => {
-            return response.json();
-        }).then(res => {
-            this.setState({
-                res: res['res'],
-                data: res['msg'],
-            });
-            sessionStorage.setItem("dataItem", JSON.stringify( res['msg']));
-            this.context.updateItem();
-        });
+        this.context.updateItem(idItem);
     }
 
     render() {

@@ -1,30 +1,54 @@
 import React from 'react';
 import CardContext from "../context/CardContext";
+import NotData from "./NotData";
 
 
 class CardData extends React.Component {
 
     render() {
-        
+
         let dataJson = JSON.parse(this.context.dataCard)
-        
-        var data = [];
-        for ( let clave in dataJson ){
-            if (dataJson[clave] != null) {
-                data.push([clave , dataJson[clave] ]);
-            }
+
+        if (dataJson != null) {
+            var data = [dataJson].map((item) => (
+                <ul className='text-ellipsis overflow-y-auto h-full' key={item.id}>
+                    <li className='text-xs mb-5'>
+                        <p className='font-bold'> Nombre:</p>
+                        <p> {item.name} </p>
+                    </li>
+                    <li className='text-xs mb-5'>
+                        <p className='font-bold'> Nombre del Banco:</p>
+                        <p> {item.name_banck} </p>
+                    </li>
+                    <li className='text-xs mb-5'>
+                        <p className='font-bold'> Tipo de Tarjeta:</p>
+                        <p> {item.type_card} </p>
+                    </li>
+                    <li className='text-xs mb-5'>
+                        <p className='font-bold'> Monto:</p>
+                        <p> {item.bottom_line} </p>
+                    </li>
+                    <li className='text-xs mb-5'>
+                        <p className='font-bold'> F.Expiracion:</p>
+                        <p> {item.card_expiration_date} </p>
+                    </li>
+                    <li className='text-xs mb-5'>
+                        <p className='font-bold'> F.Expiracion:</p>
+                        <p> {item.closing_date} </p>
+                    </li>
+                    {/* {console.log(item.closing_date)} */}
+                    
+                </ul>
+            ));
         }
-        
-        const info = data.map((item) => (
-            <li className='text-xs mb-3' key={item[0]}>   
-                <p className='font-bold'> {item[0]} </p>
-                <p> {item[1]} </p>
-            </li>
-        ));
+
+        if (data == null) {
+            return <NotData />
+        }
 
         return (
-            <ul className='text-ellipsis overflow-y-auto h-full '>
-                {info}
+            <ul className='text-ellipsis overflow-y-auto h-full'>
+                {data}
             </ul>
         );
     }
