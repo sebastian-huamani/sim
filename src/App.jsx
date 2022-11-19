@@ -12,7 +12,6 @@ import Notfound from "./pages/Notfound";
 import ProtectedRoute from "./security/ProtectedRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
                   <Route path="/Dashboard/settings" element={<Settings />} />
                   <Route path="/Dashboard/createCard" element={<CreateCard />} />
 
-                  <Route path="/Dashboard/logout" element={<Logout />} />
                   <Route path="/Dashboard/*" element={ <p> error</p> } />
                 </Route>
                 
