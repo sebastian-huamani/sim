@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
+import { FiPlusCircle } from "react-icons/fi";
 import CardContext from "../context/CardContext";
 import NotData from "./NotData";
 
@@ -10,14 +12,10 @@ class ItemData extends React.Component {
 
     processJson( dataJson ) {
         var data = JSON.parse(dataJson);
-        console.log(data);
         var dataBody = null;
         for ( const [key, value] of Object.entries(data)){
             dataBody +=  <p> `${key}: ${value}` </p> ;
-            // console.log(`${key}: ${value}`);
         }
-        console.log(dataBody);
-        
     }
 
     render() {
@@ -33,7 +31,6 @@ class ItemData extends React.Component {
                 }
             });
         }
-        // console.log(itemselected);
 
         if (itemselected != null) {
             var data = [itemselected].map((item) => (
@@ -64,30 +61,11 @@ class ItemData extends React.Component {
             return <NotData />
         }
 
-        // if (items != null) {
-        //     console.log(items);
-        // }
-
-        // const data = [info].map((item) => (
-        //     <ul className='text-ellipsis overflow-y-auto h-full ' key={item.id}>
-        //         <li>
-        //             <p>{item.title}</p>
-        //         </li>
-        //         <li>
-        //             <p>{item.amount}</p>
-        //         </li>
-        //         <li>
-        //             <p>{this.processJson(item.body)}</p>
-        //         </li>
-        //         <li>
-        //             <p>{item.id}</p>
-        //         </li>
-        //     </ul>
-        // ))
-
-
         return (
             <div className='min-h-98'>
+                <NavLink to="/Dashboard/CreateCard" >
+                    <FiPlusCircle className='mx-3' />
+                </NavLink>
                 {data}
             </div>
         );

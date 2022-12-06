@@ -1,7 +1,8 @@
 import React from 'react';
-import NavIndex from "../components/NavIndex";
+import Navbar from "../components/Navbar";
+import NavTop from "../components/NavTop";
 
-class Notfound extends React.Component {
+class NotFoundDashboard extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -15,8 +16,9 @@ class Notfound extends React.Component {
 
     render() {
         return (
-            <div className='h-screen'>
-            <NavIndex />
+            <div className='md:pl-20 pl-0 '>
+            <Navbar />
+            <NavTop />
     
             <div className='grid grid-cols-template gap-4 h-screen p-2 '>
               Not Found
@@ -26,4 +28,4 @@ class Notfound extends React.Component {
         );
     }
 }
-export default Notfound;
+export default NotFoundDashboard;

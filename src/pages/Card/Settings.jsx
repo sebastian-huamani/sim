@@ -2,10 +2,13 @@ import React from 'react';
 import Navbar from "../../components/Navbar";
 import NavTop from "../../components/NavTop";
 import ButtonForm from "../../components/buttons/ButtonForm";
-import ButtonLinkFixed from "../../components/buttons/ButtonLinkFixed";
 import { BsDot } from "react-icons/bs";
 import { InputSpecial, InputSpecialNumber } from "../../components/input/Inputs";
+import { ButtonLinkFixed } from "../../components/buttons/ButtonFixed";
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 class Settings extends React.Component {
     constructor(props) {
@@ -16,7 +19,7 @@ class Settings extends React.Component {
             idCard: sessionStorage.getItem('card')
         });
         this.handleClickDelete = this.handleClickDelete.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitUpdate = this.handleSubmitUpdate.bind(this);
     }
 
     componentDidMount() {
@@ -32,7 +35,6 @@ class Settings extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             this.setState({
                 res: res['res'],
                 data: res['msg'],
@@ -56,10 +58,46 @@ class Settings extends React.Component {
             return response.json();
         }).then(res => {
             console.log(res);
+            const Toast = MySwal.mixin({
+                customClass: 'text-sm bg-none',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 6000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', MySwal.stopTimer)
+                    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+                }
+            });
+    
+            Toast.fire({
+                icon: 'success',
+                title: res['msg']
+            });
+            
+        }).catch( err => {
+            const Toast = MySwal.mixin({
+                customClass: 'text-sm bg-none',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 6000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', MySwal.stopTimer)
+                    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+                }
+            });
+    
+            Toast.fire({
+                icon: 'info',
+                title: 'No se Ha Actualizado La Cuenta'
+            });
         });
     }
 
-    handleSubmit(e){
+    handleSubmitUpdate(e){
         e.preventDefault();
         let key = localStorage.getItem('key');
         let idCard = sessionStorage.getItem('card');
@@ -76,12 +114,47 @@ class Settings extends React.Component {
             return response.json();
         }).then(res => {
             console.log(res);
+            const Toast = MySwal.mixin({
+                customClass: 'text-sm bg-none',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 6000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', MySwal.stopTimer)
+                    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+                }
+            });
+            var iconSwal = res['res'] ? 'success' : 'info'
+            Toast.fire({
+                icon: iconSwal,
+                title: res['msg']
+            });
+        }).catch( err => {
+            const Toast = MySwal.mixin({
+                customClass: 'text-sm bg-none',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 6000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', MySwal.stopTimer)
+                    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+                }
+            });
+    
+            Toast.fire({
+                icon: 'info',
+                title: 'No se Ha Actualizado La Cuenta'
+            });
         });
     }
 
     render() {
         const { idCard, data } = this.state;
-        const { handleClickDelete, handleSubmit } = this;
+        const { handleClickDelete, handleSubmitUpdate } = this;
         var creditCode;
 
 
@@ -142,7 +215,9 @@ class Settings extends React.Component {
                         </div>
 
                         <div >
-                            <form onSubmit={handleSubmit} id="formCardUpdate" className='box-session mb-8 pb-8'>
+                            <form onSubmit={handleSubmitUpdate} id="formCardUpdate" className='box-session mb-8 pb-8'>
+                                <h1 className='text-center font-bold text-2xl'>Actualizar Datos</h1>
+
                                 <InputSpecial
                                     type="text"
                                     name="name"

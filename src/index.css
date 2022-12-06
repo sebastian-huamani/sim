@@ -21,8 +21,11 @@
     .top-card{
         @apply rounded-t-lg px-3 py-2 h-24 text-white bg-top-card
     }
+    .top-card-selected{
+        @apply rounded-t-lg px-3 py-2 h-24 text-white bg-slate-500
+    }
     .bottom-card {
-        @apply rounded-b-lg flex items-center px-4 py-1 text-lg bg-bottom-card shadow-lg shadow-slate-500/20
+        @apply rounded-b-lg flex flex-wrap items-center px-4 py-1 text-lg bg-bottom-card shadow-lg shadow-slate-500/20 cursor-default
     }
     .btn{
         @apply bg-black rounded-sm px-4 py-1 text-wheat 

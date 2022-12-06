@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import Loading from "../components/Loading";
 import NotData from "./NotData";
 import ButtonForm from "./buttons/ButtonForm";
 import Item from "../components/Item";
@@ -98,10 +97,6 @@ class Items extends React.Component {
                 </form>
 
                 <div className='overflow-y-auto h-full p-2 text-sm bg-white rounded-lg shadow-md shadow-slate-500/20 first:bg-red-300'>
-
-                    {/* <Suspense fallback={<Loading />} >
-                        <LazyComponent data={items} />
-                    </Suspense> */}
                     <Item data={items} />
                 </div>
             </div>

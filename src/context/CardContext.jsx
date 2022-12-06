@@ -28,7 +28,7 @@ export class CardProvider extends React.Component {
         });
     }
 
-    updateStateHistory = (value  ) => {
+    updateStateHistory = ( value ) => {
         this.setState({time : value , itemsList: null});
     }
 

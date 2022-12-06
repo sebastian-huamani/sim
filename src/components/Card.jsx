@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoSettingsSharp } from "react-icons/io5";
+import { FaFileImport } from "react-icons/fa";
+import { BiTransfer } from "react-icons/bi";
 import CardContext from "../context/CardContext";
 
 class Card extends React.Component {
@@ -8,7 +10,7 @@ class Card extends React.Component {
         super(props);
         this.state = ({
             res: false,
-            data: {}
+            data: {},
         });
         this.handleClick = this.handleClick.bind(this);
         this.handleClickSettings = this.handleClickSettings.bind(this);
@@ -18,6 +20,8 @@ class Card extends React.Component {
         sessionStorage.clear();
         
         const idCard = e.target.getAttribute("id");
+        idCard.addC
+        console.log(idCard);
         let key = localStorage.getItem('key');
 
         sessionStorage.setItem("card", idCard);
@@ -50,7 +54,7 @@ class Card extends React.Component {
     render() {
         const cards = this.props.data.map(item => (
 
-            <div className='relative mb-4 w-full cursor-pointer' key={item.id}  >
+            <div className='relative mb-4 w-full cursor-pointer' key={item.id} >
 
                 <div className='absolute w-full h-24' id={item.id} onClick={this.handleClick}></div>
 
@@ -66,9 +70,25 @@ class Card extends React.Component {
                     </div>
 
                     <div className='bottom-card relative'>
-                        <NavLink type="submit" to="/Dashboard/settings" className='absolute h-8 w-4'  onClick={this.handleClickSettings} id={item.id}></NavLink>
                         <div>
-                            <IoSettingsSharp/>
+                            <NavLink type="submit" to="/Dashboard/Tarjetas/settings" className='absolute h-8 w-4 mr-4'  onClick={this.handleClickSettings} id={item.id}></NavLink>
+                            <div className='mr-4'>
+                                <IoSettingsSharp/>
+                            </div>
+                        </div>
+
+                        <div>
+                            <NavLink type="submit" to="/Dashboard/Tarjetas/NuevaTransaccion" className='absolute h-8 w-4 mr-4'  onClick={this.handleClickSettings} id={item.id}></NavLink>
+                            <div className='mr-4'>
+                                <FaFileImport/>
+                            </div>
+                        </div>
+
+                        <div>
+                            <NavLink type="submit" to="/Dashboard/Tarjetas/Transferencias" className='absolute h-8 w-4 mr-4'  onClick={this.handleClickSettings} id={item.id}></NavLink>
+                            <div className='mr-4'>
+                                <BiTransfer/>
+                            </div>
                         </div>
 
                     </div>

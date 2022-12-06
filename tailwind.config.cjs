@@ -12,7 +12,9 @@ module.exports = {
         'top-card' : '#2F955E',
         'bottom-card' : '#91D468',
         'wheat' : '#f5deb3',
-        'purple' : '#6B7BFC'
+        'purple' : '#6B7BFC',
+        'state-Activo' : '#8AC3A4',
+        'state-Desactivado' : '#E1495B'
       },
       gridTemplateColumns:{
         'home' : '70% 28%',
@@ -20,7 +22,9 @@ module.exports = {
         'template' : '45% auto',
         'settings' : '28% 70%',
         '1/4' : ' 18% 80%',
-        '2/3' : '38% 60%'
+        '2/3' : '38% 60%',
+        '5/2/2' : '60% 18% 19%',
+        '2/5/2' : '18% 58% 18%',
       },
       gridTemplateRows:{
         '60-40': '60% 38%',

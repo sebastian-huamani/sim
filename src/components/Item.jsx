@@ -15,7 +15,9 @@ class Items extends React.Component {
     }
 
     render() {
-
+        if (this.props.data.length <= 0) {
+            return <NotData />
+        }
         const items = this.props.data.map(item => (
                 <button className='relative w-full grid grid-cols-1/4 border-black border-b py-1.5 text-xs items-center' key={item.id} onClick={this.handleClick}>
 

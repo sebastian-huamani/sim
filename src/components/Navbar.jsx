@@ -31,9 +31,8 @@ class Navbar extends React.Component{
             return response.json();
         }).then(res => {
             this.setState({
-                done: res['res'],
+                done: true,
             });
-            console.log(res);
         });
         localStorage.clear();
         sessionStorage.clear();
@@ -48,7 +47,7 @@ class Navbar extends React.Component{
         }
 
         return (
-            <div className={`nav-lateral show`}>
+            <div className='nav-lateral show'>
                 <ul className="grid grid-flow-row gap-8 text-center text-2xl" >
                     <li className="mb-6">
                         <FaClone />
@@ -56,14 +55,14 @@ class Navbar extends React.Component{
                     <hr />
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to="/Dashboard/home">
                             <FaHome />
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to="/Dashboard/perfil">
                             <FaUser />
                         </NavLink>
@@ -71,7 +70,7 @@ class Navbar extends React.Component{
                     <hr className="bg-slate-600 w-full" />
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to='/Dashboard/templates' >
                             <FaFileContract />
                         </NavLink>
@@ -79,7 +78,7 @@ class Navbar extends React.Component{
     
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to='/Dashboard/tarjetas' >
                             <FaAddressCard />
                         </NavLink>
@@ -87,14 +86,13 @@ class Navbar extends React.Component{
                     <hr className="bg-slate-600 w-full" />
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "text-red-700" : "")}
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to='/Dashboard/settings' >
                             <AiFillSetting />
                         </NavLink>
                     </li>
                     <li>
-                        <button onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                             >
+                        <button onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}>
                             <HiLogout />
                         </button>
                     </li>

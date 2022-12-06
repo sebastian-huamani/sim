@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from "../../components/Navbar";
 import NavTop from "../../components/NavTop";
-
 import ButtonForm from "../../components/buttons/ButtonForm";
-import ButtonLinkFixed from "../../components/buttons/ButtonLinkFixed";
-
+import { ButtonLinkFixed } from "../../components/buttons/ButtonFixed";
 import { InputSpecial, InputSpecialNumber } from "../../components/input/Inputs";
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 
 class CreateCard extends React.Component {
@@ -14,8 +15,7 @@ class CreateCard extends React.Component {
         super(props);
         this.state = ({
             debit: true,
-            name: 'Tarjeta de Debito',
-            data: {}
+            name: 'Tarjeta de Debito'
         });
         this.handleClickCredit = this.handleClickCredit.bind(this);
         this.handleClickDebit = this.handleClickDebit.bind(this);
@@ -57,8 +57,43 @@ class CreateCard extends React.Component {
             return response.json();
         }).then(res => {
             console.log(res);
+            const Toast = MySwal.mixin({
+                customClass: 'text-sm bg-none',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 6000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', MySwal.stopTimer)
+                    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+                }
+            });
+    
+            Toast.fire({
+                icon: 'success',
+                title: res['msg']
+            });
+        }).catch( error => {
+            const Toast = MySwal.mixin({
+                customClass: 'text-sm bg-none',
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 6000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', MySwal.stopTimer)
+                    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+                }
+            });
+    
+            Toast.fire({
+                icon: 'info',
+                title: 'Faltan Ingresar Datos'
+            });
         });
-
+        
         document.getElementById('formCardCreate').reset();
     }
 
@@ -105,7 +140,7 @@ class CreateCard extends React.Component {
                 <div className='h-screen grid grid-cols-settings gap-4 py-8 w-4/5 m-auto'>
                     <div >
                         <div className='box sticky top-7'>
-                        <p className='w-full text-center mb-3 text-xl font-bold'> Opciones </p>
+                            <p className='w-full text-center mb-3 text-xl font-bold'> Opciones </p>
                             <div className='grid gap-1 text-sm'>
                                 <button onClick={handleClickCredit} >Nueva Tarjeta de Credito</button>
                                 <button onClick={handleClickDebit}>Nueva Tarjeta de Debito</button>
