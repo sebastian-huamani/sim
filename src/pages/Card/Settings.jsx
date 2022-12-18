@@ -157,7 +157,6 @@ class Settings extends React.Component {
         const { handleClickDelete, handleSubmitUpdate } = this;
         var creditCode;
 
-
         if (data.type_card == "Credit") {
             creditCode = (
                 <div>

@@ -8,7 +8,6 @@ import Tarjetas from "./pages/Card/Tarjetas";
 import CreateCard from "./pages/Card/CreateCard";
 import Settings from "./pages/Card/Settings";
 import Transferencias from "./pages/Card/Transferencias";
-import Transaccion from "./pages/Card/Transaccion";
 import Plantillas from "./pages/Plantillas";
 import NotFoundDashboard from "./pages/NotFoundDashboard";
 import NotFound from "./pages/NotFound";
@@ -25,15 +24,14 @@ function App() {
           <div className="w-full ">
               <Routes>
                 <Route element={<ProtectedRoute />} >
-                  <Route path="/Dashboard/home" element={<Home />} />
-                  <Route path="/Dashboard/perfil" element={<Perfil />} />
-                  <Route path="/Dashboard/templates" element={<Plantillas />} />
+                  <Route path="/Dashboard/Home" element={<Home />} />
+                  <Route path="/Dashboard/Perfil" element={<Perfil />} />
+                  <Route path="/Dashboard/Templates" element={<Plantillas />} />
 
-                  <Route path="/Dashboard/tarjetas" element={<Tarjetas />} />
+                  <Route path="/Dashboard/Tarjetas" element={<Tarjetas />} />
                   <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
-                  <Route path="/Dashboard/createCard" element={<CreateCard />} />
-                  <Route path="/Dashboard/Tarjetas/Transferencias" element={<Transferencias />} />
-                  <Route path="/Dashboard/Tarjetas/NuevaTransaccion" element={<Transaccion />} />
+                  <Route path="/Dashboard/CreateCard" element={<CreateCard />} />
+                  <Route path="/Dashboard/Historial" element={<Transferencias />} />  
 
                   <Route path="/Dashboard/*" element={ <NotFoundDashboard /> } />
                 </Route>

@@ -63,12 +63,6 @@ class Items extends React.Component {
     render() {
         var { items, done } = this.state;
 
-
-        // const LazyComponent = React.lazy(() => {
-        //     return new Promise(resolve => setTimeout(resolve, 500)).then(
-        //         () => import("../components/Item")
-        //     );
-        // });
         
         if (!this.context.time  || this.context.idCard == 0) {
             return (

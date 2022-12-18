@@ -70,7 +70,7 @@ export class TemplateProvider extends React.Component {
     createTemplate = () => {
         this.setState({
             create : true,
-            edit : false
+            edit : false,
         })
     }
 

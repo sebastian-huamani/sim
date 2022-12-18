@@ -13,8 +13,8 @@ export const ButtonLinkFixed = ({ name, customClass, actionButton, toLink }) => 
 export const ButtonActionAbsolute = ({ name, customClass, actionButton}) => {
     
     return (
-        <button type="submit"  className={`btn absolute flex items-center ${customClass}`} onClick={actionButton}> 
-            <FaArrowLeft className="mr-3"/> {name}
+        <button type="submit"  className={`btn absolute flex items-center ${customClass}`} onClick={actionButton}>
+            <FaArrowLeft className="mr-3"/>{name}
         </button>
     )
 }

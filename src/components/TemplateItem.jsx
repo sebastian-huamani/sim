@@ -53,15 +53,17 @@ class TemplateItem extends React.Component {
         var idTemplate = e.target.id
         var templates = this.context.listTemplates;
         var templateSelected;
-        
+        var boxTemplate = document.getElementById(idTemplate + 'TemplateBox');
+
+        boxTemplate.className = 'bg-green-300'
         templates.map((item) => {
             if (item.id == idTemplate) {
                 templateSelected = item;
             }
         });
         this.context.selectedTemplateEdit([templateSelected], idTemplate);
-    }
 
+    }
 
     handleClickTrash(e) {
         var idTemplate = e.target.id
@@ -99,7 +101,7 @@ class TemplateItem extends React.Component {
         let { handleClickEdit, handleClickTrash } = this;
 
         return (
-            <div className='odd:bg-gray-200 even:bg-none'>
+            <div className='odd:bg-gray-200 even:bg-none ' id={this.props.id + 'TemplateBox'}>
                 <div className='grid grid-cols-5/2/2 gap-2 w-full items-center p-2 my-1' key={this.props.id}>
                 
                 <div className='w-11/12'>

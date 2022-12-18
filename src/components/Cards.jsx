@@ -1,7 +1,8 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
-import Loading from "../components/Loading";
 import { FiPlusCircle } from "react-icons/fi";
+import Card from "../components/Card";
+import CardContext from "../context/CardContext";
 
 
 
@@ -30,11 +31,13 @@ class Cards extends React.Component {
                 items: res['msg'],
                 done: res['res']
             });
+            this.context.updateCardsList(res['msg']);
         });
     }
     
     render() {
         var { items, done } = this.state;
+        var { CardList } = this.context;
 
         const LazyComponent = React.lazy(() => {
             return new Promise(resolve => setTimeout(resolve, 1000)).then(
@@ -52,9 +55,14 @@ class Cards extends React.Component {
                 </div>
 
                 <div className='overflow-y-auto h-full text-xs pr-1'>
-                    <Suspense fallback={<Loading />} >
-                        <LazyComponent data={items}   />
-                    </Suspense>
+                    {
+                        CardList.map(item => (
+                            <Card 
+                                key={item.id}
+                                dataItem={item}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         );
@@ -62,5 +70,6 @@ class Cards extends React.Component {
     }
 }
 
+Cards.contextType = CardContext;
 export default Cards;
 

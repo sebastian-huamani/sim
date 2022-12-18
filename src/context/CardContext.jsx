@@ -8,9 +8,16 @@ export class CardProvider extends React.Component {
         dataCard : null,
         idItemSelected : null,
         itemsList : null,
-        time : false
+        time : false,
+        CardList : []
     }
-   
+
+    updateCardsList = (data) =>{
+        this.setState({
+            CardList : data
+        });
+    }
+
     updateCard = (data) => {
         let card = sessionStorage.getItem('card');
 
@@ -38,10 +45,10 @@ export class CardProvider extends React.Component {
 
     render() {
         
-        const { idCard, dataCard, itemsList,  idItemSelected, time } = this.state;
-        const { updateItemsList, updateCard, updateItem, updateStateHistory } = this;
+        const { idCard, dataCard, itemsList,  idItemSelected, time, CardList } = this.state;
+        const { updateItemsList, updateCard, updateItem, updateStateHistory, updateCardsList } = this;
         return (
-            <CardContext.Provider value={{ idCard, dataCard, itemsList, idItemSelected, updateCard, updateItem, updateItemsList, updateStateHistory, time }}>
+            <CardContext.Provider value={{ idCard, dataCard, itemsList, idItemSelected, updateCard, updateItem, updateItemsList, updateStateHistory, time, updateCardsList, CardList }}>
                 {this.props.children}
             </CardContext.Provider>
         );

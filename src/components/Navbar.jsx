@@ -1,5 +1,5 @@
 import { NavLink, Navigate } from "react-router-dom";
-import { FaHome, FaUser, FaFileContract, FaAddressCard, FaClone } from "react-icons/fa";
+import { FaHome, FaUser, FaFileContract, FaAddressCard, FaClone, FaList } from "react-icons/fa";
 import { AiFillSetting } from "react-icons/ai";
 import { HiLogout } from "react-icons/hi";
 
@@ -56,14 +56,14 @@ class Navbar extends React.Component{
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to="/Dashboard/home">
+                            to="/Dashboard/Home" title="Home">
                             <FaHome />
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to="/Dashboard/perfil">
+                            to="/Dashboard/Perfil" title="Perfil">
                             <FaUser />
                         </NavLink>
                     </li>
@@ -71,7 +71,7 @@ class Navbar extends React.Component{
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/templates' >
+                            to='/Dashboard/Templates' title="Plantillas">
                             <FaFileContract />
                         </NavLink>
                     </li>
@@ -79,20 +79,29 @@ class Navbar extends React.Component{
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/tarjetas' >
+                            to='/Dashboard/Tarjetas' title="Tarjetas">
                             <FaAddressCard />
                         </NavLink>
                     </li>
-                    <hr className="bg-slate-600 w-full" />
+
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/settings' >
+                            to='/Dashboard/Historial' title="Historial">
+                            <FaList />
+                        </NavLink>
+                    </li>
+
+                    <hr className="bg-slate-600 w-full"/>
+                    <li>
+                        <NavLink
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                            to='/Dashboard/Settings' title="Configuracion">
                             <AiFillSetting />
                         </NavLink>
                     </li>
                     <li>
-                        <button onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}>
+                        <button type="submit" title="exit" onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")} aria-label="Close"  aria-details="test">
                             <HiLogout />
                         </button>
                     </li>
