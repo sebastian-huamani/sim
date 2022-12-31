@@ -52,10 +52,9 @@ class TemplateItem extends React.Component {
     handleClickEdit(e) {
         var idTemplate = e.target.id
         var templates = this.context.listTemplates;
-        var templateSelected;
-        var boxTemplate = document.getElementById(idTemplate + 'TemplateBox');
 
-        boxTemplate.className = 'bg-green-300'
+        var templateSelected;
+
         templates.map((item) => {
             if (item.id == idTemplate) {
                 templateSelected = item;
@@ -79,6 +78,7 @@ class TemplateItem extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res);
             if ( res['res'] ) {
                 Toast.fire({
                     icon: 'success',

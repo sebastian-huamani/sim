@@ -1,8 +1,11 @@
 import React from 'react';
 import CardContext from "../context/CardContext";
 import NotData from "./NotData";
-import { ButtonActionAbsolute } from "./buttons/ButtonFixed";
+import { InputLine } from "./input/Inputs";
 import FormCreateItem from "./FormCreateItem";
+import { FaRegEdit, FaPlus } from "react-icons/fa";
+import ButtonForm from "./buttons/ButtonForm";
+
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -26,19 +29,63 @@ class ItemData extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
-            componentVisible: "hidden"
+            componentVisible: "hidden",
+            aviableButon : "hidden"
         });
-        this.processJson = this.processJson.bind(this);
         this.showFormCreateItem = this.showFormCreateItem.bind(this);
         this.hiddenFormCreateItem = this.hiddenFormCreateItem.bind(this);
+        this.handleSubmitForm = this.handleSubmitForm.bind(this);
+        this.updateCards = this.updateCards.bind(this);
+        this.updateHistory = this.updateHistory.bind(this);
+        this.showEdited = this.showEdited.bind(this);
     }
 
-    processJson(dataJson) {
-        var data = JSON.parse(dataJson);
-        var dataBody = null;
-        for (const [key, value] of Object.entries(data)) {
-            dataBody += <p> `${key}: ${value}` </p>;
-        }
+
+    updateCards() {
+        let key = localStorage.getItem('key');
+
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/card/showAll", {
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            
+            this.context.updateCardsList(res['msg']);
+        });
+    }
+
+    updateHistory() {
+
+        const fileField = document.querySelector('input[type="month"]');
+        let data = fileField.value.split("-");
+        let card = sessionStorage.getItem('card');
+        let key = localStorage.getItem('key');
+        const formData = new FormData();
+
+        formData.append('id_card', card);
+        formData.append('year', data[0]);
+        formData.append('month', data[1]);
+
+
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/transaction/count/showAllItemsCount", {
+            method: 'POST',
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            },
+            body: formData,
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            this.context.updateStateHistory(true);
+            this.context.updateItemsList(JSON.stringify(res['msg']));
+        });
+
     }
 
     showFormCreateItem() {
@@ -62,9 +109,48 @@ class ItemData extends React.Component {
         // document.getElementById('formCardCreate').reset();
     }
 
+    validateTypeValue(value) {
+        var newValuer = parseFloat(value);
+
+        if (isNaN(newValuer)) {
+            return "text";
+        }
+
+        return "number";
+    }
+
+    handleSubmitForm(e) {
+        e.preventDefault();
+        let key = localStorage.getItem('key');
+
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/transaction/count/update", {
+            method: 'POST',
+            body: new FormData(e.target),
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            this.updateCards();
+            this.updateHistory();
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
+    showEdited(){
+        this.context.updateChangeState();
+        this.setState({aviableButon : 'block' });
+    }
+
     render() {
-        const { componentVisible } = this.state;
-        const { idCard } = this.context;
+        const { idCard, disableInputItemEdited } = this.context;
+        const { componentVisible, aviableButon } = this.state;
+        const { handleSubmitForm, showEdited } = this;
 
         let items = JSON.parse(this.context.itemsList);
         var idItem = this.context.idItemSelected;
@@ -81,22 +167,48 @@ class ItemData extends React.Component {
         if (itemselected != null) {
             var data = [itemselected].map((item) => (
                 <div className='text-ellipsis overflow-y-auto h-full text-sm' key={item.id}>
-                    <div className='text-center mb-6'>
-                        <p className='font-semibold text-base'>{item.type_title_transaction}</p>
+
+                    <div className='absolute w-full text-end px-8 text-lg'>
+                        <button className='relative top-1.5' onClick={showEdited}>
+                            <FaRegEdit />
+                        </button>
+                    </div>
+
+                    <div className='text-center mb-6 mt-4'>
+                        <p className='font-semibold text-base'>{item.title}</p>
                         <p className='text-xs'>Numero de Operacion: 123.3246.123.12</p>
                     </div>
-                    <div>
-                        <ul>
-                            {item.body.map((item) => (
-                                <li className='my-1.5'> {item[0]} : {item[1]} </li>
-                            ))
-                            }
-                            <li className='my-1.5'>Monto : {item.amount} </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p>{item.id}</p>
-                    </div>
+                    <form id="editItemOfCount" onSubmit={handleSubmitForm} className='w-4/6 mx-auto mt-10'>
+
+                        <input type="hidden" name="idCard" defaultValue={idCard} />
+                        <input type="hidden" name="idItem" defaultValue={item.id} />
+
+                        {item.body.map((item) => (
+
+
+                            <InputLine
+                                key={item[0]}
+                                label={item[0]}
+                                type={this.validateTypeValue(item[1])}
+                                name={item[0]}
+                                placeholder={item[1]}
+                                value={item[1]}
+                                disabled={disableInputItemEdited}
+                            />
+
+                        ))}
+
+                        <div className='my-5 flex justify-between'>
+                            <label className='mr-4' > Monto : </label>
+                            <input type="number" name="amount" placeholder={item.amount} className='text-center font-normal border-b-2' defaultValue={item.amount} step="0.01" autoComplete="off" disabled={disableInputItemEdited} />
+                        </div>
+
+
+                        <div className={`mt-6 text-center ${aviableButon}`}>
+                            <ButtonForm name="Guardar" />
+                        </div>
+
+                    </form>
                 </div>
             ));
         }
@@ -123,19 +235,17 @@ class ItemData extends React.Component {
 
         return (
             <div className='min-h-98 p-2 relative' >
-                <div className='h-4'>
-                    <ButtonActionAbsolute
-                        // name="Crear Item"
-                        customClass="bottom-2 right-2"
-                        actionButton={this.showFormCreateItem}
-                    />
+                <div className='fixed bottom-1 right-1'>
+                    <button type="submit" className="btn absolute text-lg flex items-center bottom-3 right-0 rounded-l-md " onClick={this.showFormCreateItem}>
+                        <FaPlus className="mr-3" />
+                    </button>
                 </div>
 
                 {data}
 
                 <div className={`h-screen fixed w-108 z-10 top-0 right-0 bg-white shadow-lg p-5 ${componentVisible}`}>
 
-                    <FormCreateItem actionButton={this.hiddenFormCreateItem}   idCard={idCard}/>
+                    <FormCreateItem actionButton={this.hiddenFormCreateItem} idCard={idCard} />
                 </div>
 
             </div>

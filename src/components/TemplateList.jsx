@@ -1,6 +1,8 @@
 import React from 'react';
 import TemplateItem from "../components/TemplateItem";
 import TemplateContext from "../context/TemplateContext";
+import Loading from "./Loading";
+
 
 class TemplateList extends React.Component {
     constructor(props) {
@@ -33,6 +35,7 @@ class TemplateList extends React.Component {
 
     render() {
         var { done, items } = this.state;
+        var { listTemplates } = this.context;
 
         return (
             <div className='px-3 h-90vh'>
@@ -47,15 +50,17 @@ class TemplateList extends React.Component {
 
                 <div className='overflow-y-auto h-full text-xs p-1 ' id='idTemplateList'>
 
-                    {this.context.listTemplates.map((item) => (
-                        <TemplateItem 
-                            key={item.id}
-                            title={item.title}
-                            state={item.state}
-                            id={item.id}
-                            created_at={item.created_at}
-                        />
-                    ))}
+                    {
+                        !done ? <Loading /> : listTemplates.map((item) => (
+                            <TemplateItem
+                                key={item.id}
+                                title={item.title}
+                                state={item.state}
+                                id={item.id}
+                                created_at={item.created_at}
+                            />
+                        ))
+                    }
 
                 </div>
 

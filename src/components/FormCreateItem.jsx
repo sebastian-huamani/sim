@@ -28,6 +28,7 @@ class FormCreateItem extends React.Component {
             templates: [],
             templateSelected: [],
             idTemplateSelected: null,
+            titleTemplateSelected: '',
             toggleClassFormItem: 'hidden'
         });
 
@@ -61,11 +62,12 @@ class FormCreateItem extends React.Component {
         var idSelected = templatesId.value;
 
         if (this.state.templates != null) {
-            this.state.templates.map((item) => {
-                if (item.id == idSelected) {
+            this.state.templates.map((template) => {
+                if (template.id == idSelected) {
                     this.setState({
-                        templateSelected: JSON.parse([item.body]),
-                        idTemplateSelected: idSelected,
+                        templateSelected: JSON.parse([template.body]),
+                        idTemplateSelected: template.id,
+                        titleTemplateSelected : template.title,
                         toggleClassFormItem: 'block'
                     });
                 }
@@ -116,6 +118,7 @@ class FormCreateItem extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res);
             Toast.fire({
                 icon: 'success',
                 title: res['msg']
@@ -139,7 +142,7 @@ class FormCreateItem extends React.Component {
 
     render() {
         const { idCard } = this.props;
-        const { templates, templateSelected, toggleClassFormItem, idTemplateSelected } = this.state;
+        const { templates, templateSelected, toggleClassFormItem, idTemplateSelected, titleTemplateSelected } = this.state;
         
         const options = templates.map((item) => (
             <option value={item.id} key={item.id}>{item.title}</option>
@@ -176,7 +179,8 @@ class FormCreateItem extends React.Component {
 
                     <p className='font-semibold text-lg sticky top-0 h-8 bg-white w-full'>Crear Nuevo Item</p>
 
-                    <input type="hidden" name='templates_id' defaultValue={idTemplateSelected} />
+                    <input type="hidden" name='title' defaultValue={titleTemplateSelected} />
+                    <input type="hidden" name='template_id' defaultValue={idTemplateSelected} />
                     <input type="hidden" name='cards_id' defaultValue={idCard} />
 
                     <div className='my-4'>

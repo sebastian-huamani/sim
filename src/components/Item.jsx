@@ -12,42 +12,44 @@ class Items extends React.Component {
     handleClick(e) {
         const idItem = e.target.getAttribute("id");
         this.context.updateItem(idItem);
+        this.context.updateChangeReset();
+    }
+
+    handleSubmitForm(e){
+        e.preventDefault();
+
     }
 
     render() {
         const { itemsList } = this.context;
         const { data } = this.props;
+        const { handleClick } = this;
 
-        if ( JSON.parse(itemsList).length == 0 ) {
-            return <NotData >
-                <div className='mt-2 font-bold text-base'>
-                    Sin Informacion
-                </div>
-            </NotData>
-        }
         
-        if (data.length <= 0) {
-            return <NotData />
-        }
 
-        const items = data.map(item => (
-                <button className='relative w-full grid grid-cols-1/4 border-black border-b py-1.5 text-xs items-center' key={item.id} onClick={this.handleClick}>
+        const items = [data].map(item => (
+                <button className='relative w-full grid grid-cols-1/4 border-black border-b py-1.5 text-xs items-center' key={item.id} onClick={handleClick}>
 
                     <div className='absolute w-full h-14' id={item.id}></div>
 
                     <FiChevronLeft className='text-xl' />
                     <div>
                         <div className='mb-2 text-sm text-start'>
-                            {item.type_title_transaction}
+                            {item.title}
                         </div>
                         <div className='flex justify-between'>
                             {/* <p> 19 ago. 2022, 10:53 pm </p> */}
                             <p> {item.created_at} </p>
-                            <p className='text-green-600 font-medium'> S/ 450.00 </p>
+                            <p className={`${item.amount > 0 ? 'text-green-600' : 'text-red-500'}  font-medium`}> { item.amount } </p>
                         </div>
                     </div>
                 </button>
         ));
+
+        
+        if (data.length == 0) {
+            return <NotData />
+        }
 
         return (
             <div>

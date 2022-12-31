@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
 import Card from "../components/Card";
 import CardContext from "../context/CardContext";
+import Loading from "./Loading";
 
 
 
@@ -10,7 +11,7 @@ class Cards extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
-            done: true,
+            done: false,
             items: [],
         });
     }
@@ -39,12 +40,7 @@ class Cards extends React.Component {
         var { items, done } = this.state;
         var { CardList } = this.context;
 
-        const LazyComponent = React.lazy(() => {
-            return new Promise(resolve => setTimeout(resolve, 1000)).then(
-                () => import("../components/Card")
-            );
-        });
-
+        
 
         return (
             <div className='h-90vh'>
@@ -55,8 +51,9 @@ class Cards extends React.Component {
                 </div>
 
                 <div className='overflow-y-auto h-full text-xs pr-1'>
+
                     {
-                        CardList.map(item => (
+                        !done ? <Loading /> :  CardList.map(item => (
                             <Card 
                                 key={item.id}
                                 dataItem={item}

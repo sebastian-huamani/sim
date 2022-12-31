@@ -108,7 +108,7 @@ class CreateCard extends React.Component {
                     <InputSpecialNumber
                         name="billing_cycle"
                         placeholder="XX"
-                        label="Ciclo de Factracion:"
+                        label="Ciclo de Factracion"
                         min="1"
                         max="31"
                     />
@@ -116,7 +116,7 @@ class CreateCard extends React.Component {
                     <InputSpecialNumber
                         name="closing_date"
                         placeholder="XX"
-                        label="Fecha de Cierre:"
+                        label="Fecha de Cierre"
                         min="1"
                         max="31"
                     />
@@ -124,7 +124,7 @@ class CreateCard extends React.Component {
                     <InputSpecialNumber
                         name="payment_due_date"
                         placeholder="XX"
-                        label="F. Vencimiento de Pago:"
+                        label="F. Vencimiento de Pago"
                         min="1"
                         max="31"
                     />
@@ -157,13 +157,13 @@ class CreateCard extends React.Component {
                                 type="text"
                                 name="name"
                                 placeholder="Home Center"
-                                label="Nombre de tu tarjeta:"
+                                label="Nombre de tu tarjeta"
                             />
 
                             <InputSpecialNumber
                                 name="bottom_line"
                                 placeholder="S/. 0"
-                                label="Cantidad de la Tarjeta:"
+                                label="Cantidad de la Tarjeta"
                                 step={0.01}
                             />
 
@@ -171,13 +171,13 @@ class CreateCard extends React.Component {
                                 type="text"
                                 name="name_banck"
                                 placeholder="Home Scotiabank"
-                                label="Nombre del Banco:"
+                                label="Nombre del Banco"
                             />
 
                             <InputSpecial
                                 type="date"
                                 name="card_expiration_date"
-                                label="Fecha de Expiracion:"
+                                label="Fecha de Expiracion"
                                 placeholder="Home Center"
                             />
 

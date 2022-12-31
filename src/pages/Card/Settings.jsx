@@ -18,7 +18,7 @@ class Settings extends React.Component {
             data: {},
             idCard: sessionStorage.getItem('card')
         });
-        this.handleClickDelete = this.handleClickDelete.bind(this);
+        this.handleClickUpdateState = this.handleClickUpdateState.bind(this);
         this.handleSubmitUpdate = this.handleSubmitUpdate.bind(this);
     }
 
@@ -42,7 +42,7 @@ class Settings extends React.Component {
         });
     }
 
-    handleClickDelete() {
+    handleClickUpdateState() {
         let key = localStorage.getItem('key');
         let idCard = sessionStorage.getItem('card');
 
@@ -57,7 +57,6 @@ class Settings extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             const Toast = MySwal.mixin({
                 customClass: 'text-sm bg-none',
                 toast: true,
@@ -113,7 +112,6 @@ class Settings extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             const Toast = MySwal.mixin({
                 customClass: 'text-sm bg-none',
                 toast: true,
@@ -154,7 +152,7 @@ class Settings extends React.Component {
 
     render() {
         const { idCard, data } = this.state;
-        const { handleClickDelete, handleSubmitUpdate } = this;
+        const { handleClickUpdateState, handleSubmitUpdate } = this;
         var creditCode;
 
         if (data.type_card == "Credit") {
@@ -162,7 +160,7 @@ class Settings extends React.Component {
                 <div>
                     <InputSpecialNumber
                         name="billing_cycle"
-                        label="Ciclo de Factracion:"
+                        label="Ciclo de Factracion"
                         min="1"
                         max="31"
                         value={data.billing_cycle}
@@ -170,7 +168,7 @@ class Settings extends React.Component {
 
                     <InputSpecialNumber
                         name="closing_date"
-                        label="Fecha de Cierre:"
+                        label="Fecha de Cierre"
                         min="1"
                         max="31"
                         value={data.closing_date}
@@ -179,7 +177,7 @@ class Settings extends React.Component {
 
                     <InputSpecialNumber
                         name="payment_due_date"
-                        label="F. Vencimiento de Pago:"
+                        label="F. Vencimiento de Pago"
                         min="1"
                         max="31"
                         value={data.payment_due_date}
@@ -220,13 +218,13 @@ class Settings extends React.Component {
                                 <InputSpecial
                                     type="text"
                                     name="name"
-                                    label="Nombre de tu tarjeta:"
+                                    label="Nombre de tu tarjeta"
                                     value={data.name}
                                 />
 
                                 <InputSpecialNumber
                                     name="bottom_line"
-                                    label="Cantidad de la Tarjeta:"
+                                    label="Cantidad de la Tarjeta"
                                     step={0.01}
                                     value={data.bottom_line}
                                 />
@@ -234,14 +232,14 @@ class Settings extends React.Component {
                                 <InputSpecial
                                     type="text"
                                     name="name_banck"
-                                    label="Nombre del Banco:"
+                                    label="Nombre del Banco"
                                     value={data.name_banck}
                                 />
 
                                 <InputSpecial
                                     type="date"
                                     name="card_expiration_date"
-                                    label="Fecha de Expiracion:"
+                                    label="Fecha de Expiracion"
                                     value={data.card_expiration_date}
                                 />
 
@@ -259,7 +257,7 @@ class Settings extends React.Component {
                                 <p className='mt-4 text-sm text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa quis molestiae fugit deleniti, alias odio voluptatum eveniet a soluta maxime ex atque consequatur, dolorem nostrum nulla eaque maiores non! </p>
 
                                 <div className='w-full text-center mt-8'>
-                                    <ButtonForm name="Eliminar" actionButton={handleClickDelete} />
+                                    <ButtonForm name="Eliminar" actionButton={handleClickUpdateState} />
                                 </div>
 
                             </div>

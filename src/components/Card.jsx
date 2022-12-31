@@ -7,11 +7,7 @@ import CardContext from "../context/CardContext";
 class Card extends React.Component {
     constructor(props) {
         super(props);
-        this.state = ({
-            res: false,
-            data: {},
-            updateinfo : false
-        });
+        
         this.handleClick = this.handleClick.bind(this);
         this.handleClickSettings = this.handleClickSettings.bind(this);
     }
@@ -24,8 +20,6 @@ class Card extends React.Component {
 
         sessionStorage.setItem("card", idCard);
 
-
-
         const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/showOne/${idCard}`, {
             method: 'GET',
             'headers': {
@@ -36,11 +30,6 @@ class Card extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            this.setState({
-                res: res['res'],
-                data: res['msg'],
-                updateinfo: true
-            });
             this.context.updateCard(JSON.stringify(res['msg']));
             this.context.updateStateHistory(false);
         });
@@ -52,7 +41,6 @@ class Card extends React.Component {
     }
 
     render() {
-        const { data, res, updateinfo } = this.state;
         const { dataItem } = this.props;
 
         return (
