@@ -2,6 +2,7 @@ import React from 'react'
 import Box from "../components/Box";
 import Navbar from "../components/Navbar";
 import NavTop from "../components/NavTop";
+import Sparkline from "../components/chart/Sparkline";
 
 
 
@@ -19,10 +20,10 @@ class Home extends React.Component {
         <div className='p-2 h-full md:pl-20 pl-0'>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-black-scene '>
-            <Box />
-            <Box />
-            <Box />
-            <Box />
+          <Sparkline />
+          <Sparkline />
+            <Sparkline />
+            <Sparkline />
           </div>
 
           <div className="module">

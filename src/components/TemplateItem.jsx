@@ -1,6 +1,8 @@
 import React from 'react';
 import { BiTrash, BiEdit } from "react-icons/bi";
 import TemplateContext from "../context/TemplateContext";
+import Moment from 'moment';
+
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -106,7 +108,7 @@ class TemplateItem extends React.Component {
                 
                 <div className='w-11/12'>
                     <p>{this.props.title}</p>
-                    <p className='text-sm'>{this.props.created_at}</p>
+                    <p className='text-sm'>  {Moment(this.props.created_at).format('DD MMM. YYYY, HH:mm a')}</p>
                 </div>
 
                 <div className='flex justify-center'>

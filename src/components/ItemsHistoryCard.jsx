@@ -2,8 +2,9 @@ import React, { Suspense } from 'react';
 import NotData from "./NotData";
 import ButtonForm from "./buttons/ButtonForm";
 import Item from "../components/Item";
-
+import Moment from 'moment';
 import CardContext from "../context/CardContext";
+import Decimal from 'decimal.js-light';
 
 
 const month = new Date().getMonth() + 1;
@@ -18,12 +19,39 @@ class Items extends React.Component {
             items: []
         });
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.data = this.data.bind(this);
     }
 
     dataSplit(year_month) {
         return year_month.split("-");
     }
-    
+
+    data(data) {
+
+        var seriesArr = [];
+        var OptionsArr = [];
+        var lastDay;
+        
+        data.map((item) => {
+
+            lastDay = Moment(item.created_at).format("MM-DD-YYYY");
+            var lastItem = OptionsArr[ OptionsArr.length - 1];
+
+            if (lastItem == lastDay) {
+
+                var sumDays = new Decimal(item.amount).plus(seriesArr[ seriesArr.length - 1]);
+                seriesArr[seriesArr.length -1] = sumDays;
+            } else {
+
+                seriesArr.push(item.amount);
+                OptionsArr.push(Moment(item.created_at).format("MM-DD-YYYY"));
+            }
+        });
+
+        this.context.updateStateHistory(true);
+        this.context.updateItemsList(JSON.stringify(data), seriesArr, OptionsArr );
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();
@@ -54,8 +82,7 @@ class Items extends React.Component {
                 done: res['res'],
                 items: res['msg'],
             });
-            this.context.updateStateHistory(true);
-            this.context.updateItemsList(JSON.stringify(res['msg']));
+            this.data(res['msg']);
         });
 
     }
@@ -64,8 +91,8 @@ class Items extends React.Component {
         var { items, done } = this.state;
         const { itemsList } = this.context;
 
-        
-        if (!this.context.time  || this.context.idCard == 0) {
+
+        if (!this.context.time || this.context.idCard == 0) {
             return (
                 <div className='h-97vh grid grid-rows-1/9 gap-4'>
                     <form onSubmit={this.handleSubmit} id="formData" className='px-4 flex justify-around rounded-lg bg-white shadow-md shadow-slate-500/20 items-center'>
@@ -93,8 +120,8 @@ class Items extends React.Component {
 
                 <div className='overflow-y-auto h-full p-2 text-sm bg-white rounded-lg shadow-md shadow-slate-500/20 first:bg-red-300'>
                     {
-                        !done ? <Loading /> :  JSON.parse(itemsList).map((item) => (
-                            <Item data={item} key={item.id}/>
+                        !done ? <Loading /> : JSON.parse(itemsList).map((item) => (
+                            <Item data={item} key={item.id} />
                         ))
                     }
                 </div>

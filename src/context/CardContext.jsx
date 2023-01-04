@@ -10,7 +10,9 @@ export class CardProvider extends React.Component {
         itemsList : null,
         time : false,
         CardList : [],
-        disableInputItemEdited: true
+        disableInputItemEdited: true,
+        seriesArr : [],
+        OptionsArr: [],
     }
 
     updateCardsList = (data) =>{
@@ -40,8 +42,12 @@ export class CardProvider extends React.Component {
         this.setState({time : value , itemsList: null});
     }
 
-    updateItemsList = (items) => {
-        this.setState({ itemsList : items });
+    updateItemsList = (items, seriesArr, OptionsArr) => {
+        this.setState({ 
+            itemsList : items,
+            seriesArr : seriesArr,
+            OptionsArr : OptionsArr,
+        });
     }
 
     updateChangeState = () => {
@@ -54,10 +60,10 @@ export class CardProvider extends React.Component {
 
     render() {
         
-        const { idCard, dataCard, itemsList,  idItemSelected, time, CardList, disableInputItemEdited } = this.state;
+        const { seriesArr, OptionsArr, idCard, dataCard, itemsList,  idItemSelected, time, CardList, disableInputItemEdited } = this.state;
         const { updateChangeState, updateChangeReset, updateItemsList, updateCard, updateItem, updateStateHistory, updateCardsList } = this;
         return (
-            <CardContext.Provider value={{ disableInputItemEdited, idCard, dataCard, itemsList, idItemSelected, updateCard, updateItem, updateItemsList, updateStateHistory, time, updateCardsList, CardList, updateChangeState, updateChangeReset, }}>
+            <CardContext.Provider value={{ seriesArr, OptionsArr, disableInputItemEdited, idCard, dataCard, itemsList, idItemSelected, updateCard, updateItem, updateItemsList, updateStateHistory, time, updateCardsList, CardList, updateChangeState, updateChangeReset, }}>
                 {this.props.children}
             </CardContext.Provider>
         );

@@ -6,6 +6,7 @@ import NavTop from "../../components/NavTop";
 import CardData from "../../components/CardData";
 import ItemData from "../../components/ItemData";
 import CardContext, { CardProvider } from "../../context/CardContext";
+import CardChart from "../../components/CardChart";
 
 if (window.performance.navigation.type == 1) {
   sessionStorage.clear()
@@ -53,7 +54,7 @@ class Tarjetas extends React.Component {
 
               </div>
               <div className='box-session'>
-                {lorem}
+                <CardChart />
               </div>
             </div>
             <div className='max-h-97vh'>

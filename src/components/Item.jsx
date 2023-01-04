@@ -2,6 +2,7 @@ import React from 'react';
 import { FiChevronLeft } from "react-icons/fi";
 import CardContext from "../context/CardContext";
 import NotData from "./NotData";
+import Moment from 'moment';
 
 class Items extends React.Component {
     constructor(props) {
@@ -38,8 +39,7 @@ class Items extends React.Component {
                             {item.title}
                         </div>
                         <div className='flex justify-between'>
-                            {/* <p> 19 ago. 2022, 10:53 pm </p> */}
-                            <p> {item.created_at} </p>
+                            <p> {Moment(item.created_at).format('DD MMM. YYYY, HH:mm a')} </p>
                             <p className={`${item.amount > 0 ? 'text-green-600' : 'text-red-500'}  font-medium`}> { item.amount } </p>
                         </div>
                     </div>
