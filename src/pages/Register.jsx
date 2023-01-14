@@ -14,11 +14,16 @@ class Register extends React.Component {
                 <div className='h-4/5 flex justify-center items-center'>
                     <form onSubmit={this.handleSubmit} id="formLogin" className='min-w-max w-1/4 bg-white flex flex-col items-center p-4 min-h-max mb-4 box-session'>
                         <p className='text-3xl'>Register </p>
-                        <NavLink to="/login" className="text-sm text-gray-600 underline mb-7">or login to account</NavLink>
+                        <NavLink to="/Login" className="text-sm text-gray-600 underline mb-7">or login to account</NavLink>
 
                         <label htmlFor="email" className='my-2 '>
                             Name: <br />
                             <input type="text" name="name" id="name" placeholder='name' />
+                        </label>
+
+                        <label htmlFor="email" className='my-2 '>
+                            Last Name: <br />
+                            <input type="text" name="lastname" id="lastname" placeholder='lastname' />
                         </label>
 
                         <label htmlFor="email" className='my-2'>

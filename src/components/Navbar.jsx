@@ -84,14 +84,6 @@ class Navbar extends React.Component{
                         </NavLink>
                     </li>
 
-                    <li>
-                        <NavLink
-                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/Historial' title="Historial">
-                            <FaList />
-                        </NavLink>
-                    </li>
-
                     <hr className="bg-slate-600 w-full"/>
                     <li>
                         <NavLink

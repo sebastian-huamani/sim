@@ -119,7 +119,6 @@ class TemplateData extends React.Component {
     fetchPromise.then(response => {
       return response.json();
     }).then(res => {
-      console.log(res);
       if (res['res']) {
         Toast.fire({
           icon: 'success',

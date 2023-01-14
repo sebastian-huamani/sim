@@ -4,6 +4,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import Card from "../components/Card";
 import CardContext from "../context/CardContext";
 import Loading from "./Loading";
+import NotData from "./NotData";
 
 
 
@@ -35,12 +36,10 @@ class Cards extends React.Component {
             this.context.updateCardsList(res['msg']);
         });
     }
-    
+
     render() {
         var { items, done } = this.state;
         var { CardList } = this.context;
-
-        
 
         return (
             <div className='h-90vh'>
@@ -52,12 +51,21 @@ class Cards extends React.Component {
 
                 <div className='overflow-y-auto h-full text-xs pr-1'>
 
-                    {
-                        !done ? <Loading /> :  CardList.map(item => (
-                            <Card 
+                    {!done ? <Loading /> : (items.length == 0 ?
+                        <NotData >
+                            <div className='mt-2' >
+                                <NavLink  className='btn' to="/Dashboard/CreateCard">
+                                    Crear Una Tarjeta 
+                                </NavLink>
+                            </div>
+                        </NotData>
+                        :
+                        CardList.map(item => (
+                            <Card
                                 key={item.id}
                                 dataItem={item}
                             />
+                        )
                         ))
                     }
                 </div>

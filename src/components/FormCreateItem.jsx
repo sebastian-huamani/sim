@@ -153,7 +153,7 @@ class FormCreateItem extends React.Component {
         return (
             <div className='overflow-y-auto h-full '>
 
-                <div className='fixed top-3 z-10'>
+                <div className='fixed top-3 z-20'>
                     <button type="submit" className='absolute h-8 w-4 ' onClick={this.handleCloseForm} ></button>
                     <div >
                         <GrClose />

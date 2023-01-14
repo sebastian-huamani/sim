@@ -34,7 +34,7 @@ export const InputSimple = ({ type, name, placeholder, label, value }) => {
     return (
         <label htmlFor={name} className='my-2'>
             {label}: <br />
-            <input type={type} name={name} id={name} placeholder={placeholder} defaultValue={value} autoComplete="off" />
+            <input type={type} name={name} id={name} placeholder={placeholder} step="0.01" defaultValue={value} autoComplete="off" />
         </label>
     )
 }

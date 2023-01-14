@@ -38,6 +38,7 @@ class Card extends React.Component {
     handleClickSettings(e) {
         let idCard = e.target.getAttribute("id");
         sessionStorage.setItem('card', idCard);
+        sessionStorage.setItem('listCard', JSON.stringify(this.context.CardList))
     }
 
     render() {
@@ -57,7 +58,7 @@ class Card extends React.Component {
                                 <p>{dataItem.type_card}</p>
                             </div>
 
-                            <p className='text-3xl mt-6 font-medium text-center'> S/. {dataItem.bottom_line}</p>
+                            <p className='text-3xl mt-6 font-medium text-center'> S/. {dataItem.amount}</p>
                             
                         </div>
 

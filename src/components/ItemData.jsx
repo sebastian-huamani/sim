@@ -30,14 +30,12 @@ class ItemData extends React.Component {
         super(props);
         this.state = ({
             componentVisible: "hidden",
-            aviableButon : "hidden"
         });
         this.showFormCreateItem = this.showFormCreateItem.bind(this);
         this.hiddenFormCreateItem = this.hiddenFormCreateItem.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
         this.updateCards = this.updateCards.bind(this);
         this.updateHistory = this.updateHistory.bind(this);
-        this.showEdited = this.showEdited.bind(this);
     }
 
 
@@ -83,7 +81,7 @@ class ItemData extends React.Component {
             return response.json();
         }).then(res => {
             this.context.updateStateHistory(true);
-            this.context.updateItemsList(JSON.stringify(res['msg']));
+            this.context.updateItemsList(JSON.stringify(res['msg']), this.context.seriesArr, this.context.OptionsArr );
         });
 
     }
@@ -142,15 +140,11 @@ class ItemData extends React.Component {
         });
     }
 
-    showEdited(){
-        this.context.updateChangeState();
-        this.setState({aviableButon : 'block' });
-    }
 
     render() {
-        const { idCard, disableInputItemEdited } = this.context;
-        const { componentVisible, aviableButon } = this.state;
-        const { handleSubmitForm, showEdited } = this;
+        const { idCard, disableInputItemEdited, updateChangeState } = this.context;
+        const { componentVisible } = this.state;
+        const { handleSubmitForm } = this;
 
         let items = JSON.parse(this.context.itemsList);
         var idItem = this.context.idItemSelected;
@@ -169,7 +163,7 @@ class ItemData extends React.Component {
                 <div className='text-ellipsis overflow-y-auto h-full text-sm' key={item.id}>
 
                     <div className='absolute w-full text-end px-8 text-lg'>
-                        <button className='relative top-1.5' onClick={showEdited}>
+                        <button className='relative top-1.5' onClick={updateChangeState}>
                             <FaRegEdit />
                         </button>
                     </div>
@@ -204,7 +198,7 @@ class ItemData extends React.Component {
                         </div>
 
 
-                        <div className={`mt-6 text-center ${aviableButon}`}>
+                        <div className={`mt-6 text-center ${disableInputItemEdited ? "hidden" : "block"}`}>
                             <ButtonForm name="Guardar" />
                         </div>
 
@@ -235,7 +229,7 @@ class ItemData extends React.Component {
 
         return (
             <div className='min-h-98 p-2 relative' >
-                <div className='fixed bottom-1 right-1'>
+                <div className='fixed bottom-1 right-1 z-10'>
                     <button type="submit" className="btn absolute text-lg flex items-center bottom-3 right-0 rounded-l-md " onClick={this.showFormCreateItem}>
                         <FaPlus className="mr-3" />
                     </button>

@@ -42,7 +42,7 @@ class Login extends React.Component {
         let done = localStorage.getItem('done');
 
         if (done) {
-            return <Navigate to="/Dashboard/home" />
+            return <Navigate to="/Dashboard/Home" />
         }
 
         return (
@@ -51,7 +51,7 @@ class Login extends React.Component {
                 <div className='h-4/5 flex justify-center items-center'>
                     <form onSubmit={this.handleSubmit} id="formLogin" className='min-w-max w-1/4 bg-white flex flex-col items-center p-4 box'>
                         <p className='text-3xl'>Login </p>
-                        <NavLink to="/register" className="text-sm text-gray-600 underline mb-7">or create a count </NavLink>
+                        <NavLink to="/Register" className="text-sm text-gray-600 underline mb-7">or create a count </NavLink>
 
                         <InputSimple
                             type="text"

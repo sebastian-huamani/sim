@@ -69,13 +69,13 @@ class Settings extends React.Component {
                     toast.addEventListener('mouseleave', MySwal.resumeTimer)
                 }
             });
-    
+
             Toast.fire({
                 icon: 'success',
                 title: res['msg']
             });
-            
-        }).catch( err => {
+
+        }).catch(err => {
             const Toast = MySwal.mixin({
                 customClass: 'text-sm bg-none',
                 toast: true,
@@ -88,7 +88,7 @@ class Settings extends React.Component {
                     toast.addEventListener('mouseleave', MySwal.resumeTimer)
                 }
             });
-    
+
             Toast.fire({
                 icon: 'info',
                 title: 'No se Ha Actualizado La Cuenta'
@@ -96,7 +96,7 @@ class Settings extends React.Component {
         });
     }
 
-    handleSubmitUpdate(e){
+    handleSubmitUpdate(e) {
         e.preventDefault();
         let key = localStorage.getItem('key');
         let idCard = sessionStorage.getItem('card');
@@ -129,7 +129,7 @@ class Settings extends React.Component {
                 icon: iconSwal,
                 title: res['msg']
             });
-        }).catch( err => {
+        }).catch(err => {
             const Toast = MySwal.mixin({
                 customClass: 'text-sm bg-none',
                 toast: true,
@@ -142,7 +142,7 @@ class Settings extends React.Component {
                     toast.addEventListener('mouseleave', MySwal.resumeTimer)
                 }
             });
-    
+
             Toast.fire({
                 icon: 'info',
                 title: 'No se Ha Actualizado La Cuenta'
@@ -157,7 +157,15 @@ class Settings extends React.Component {
 
         if (data.type_card == "Credit") {
             creditCode = (
-                <div>
+                <div className='text-center'>
+                    
+                    <InputSpecial
+                        type="number"
+                        name="bottom_line"
+                        label="Linea de Credito"
+                        value={data.bottom_line}
+                    />
+
                     <InputSpecialNumber
                         name="billing_cycle"
                         label="Ciclo de Factracion"
@@ -181,7 +189,6 @@ class Settings extends React.Component {
                         min="1"
                         max="31"
                         value={data.payment_due_date}
-
                     />
                 </div>
             )
@@ -190,7 +197,7 @@ class Settings extends React.Component {
         if (idCard != null) {
             return (
                 <div className='md:pl-20 pl-0'>
-                    <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/tarjetas" />
+                    <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/Tarjetas" />
                     <Navbar />
                     <NavTop />
 
@@ -226,7 +233,7 @@ class Settings extends React.Component {
                                     name="bottom_line"
                                     label="Cantidad de la Tarjeta"
                                     step={0.01}
-                                    value={data.bottom_line}
+                                    value={data.amount}
                                 />
 
                                 <InputSpecial

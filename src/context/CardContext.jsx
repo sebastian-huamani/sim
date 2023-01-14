@@ -27,7 +27,9 @@ export class CardProvider extends React.Component {
         if (card != null) {
             this.setState({ 
                 idCard: sessionStorage.getItem('card'), 
-                dataCard: data
+                dataCard: data,
+                seriesArr : [],
+                OptionsArr : [],
             });
         }
     }

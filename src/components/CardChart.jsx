@@ -12,8 +12,9 @@ class CardChart extends React.Component {
   }
 
   render() {
-    const { seriesArr, OptionsArr } = this.context;
-
+    // const { seriesArr, OptionsArr } = this.context;
+    var seriesArr = this.context.seriesArr;
+    var OptionsArr = this.context.OptionsArr;
     var series = [{
       name: 'Cash Flow',
       data: seriesArr
@@ -50,10 +51,12 @@ class CardChart extends React.Component {
         enabled: false,
       },
       yaxis: {
+        decimalsInFloat: 0,
+        forceNiceScale : true,
         opposite: true,
         labels: {
           formatter: function (y) {
-            return "S/." + y;
+            return "S/. " + y;
           }
         }
       },
@@ -63,6 +66,7 @@ class CardChart extends React.Component {
         labels: {
           rotate: -90
         },
+        tickPlacement: 'between'
       },
       tooltip: {
         followCursor: true,
@@ -78,6 +82,8 @@ class CardChart extends React.Component {
         </div>
       )
     }
+
+    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     return (
       <div id="chart" className='h-full'>
         <Chart

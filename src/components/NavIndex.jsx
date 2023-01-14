@@ -16,16 +16,16 @@ class NavIndex extends React.Component {
 
                 <ul className='flex w-full justify-end'>
                     <li className='mx-8'>
-                        <NavLink> Home </NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? "text-red-700" : "")} to="/Home"> Home </NavLink>
                     </li>
                     <li className='mx-8'>
                         <NavLink> About </NavLink>
                     </li>
                     <li className='mx-8'>
-                        <NavLink> Blogs </NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? "text-red-700" : "")} to="/Blog"> Blogs </NavLink>
                     </li>
                     <li className='mx-8'>
-                        <NavLink> Session </NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? "text-red-700" : "")} to="/Login"> Session </NavLink>
                     </li>
                 </ul>
 

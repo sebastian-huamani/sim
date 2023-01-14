@@ -29,7 +29,7 @@ class CardData extends React.Component {
           </li>
           <li className='text-xs mb-5'>
             <p className='font-bold'> Monto:</p>
-            <p> {item.bottom_line} </p>
+            <p> {item.amount} </p>
           </li>
           <li className='text-xs mb-5'>
             <p className='font-bold'> F.Expiracion:</p>

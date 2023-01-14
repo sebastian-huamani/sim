@@ -14,6 +14,8 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./security/ProtectedRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import HomePage from "./pages/HomePage";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -30,14 +32,16 @@ function App() {
 
                   <Route path="/Dashboard/Tarjetas" element={<Tarjetas />} />
                   <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
+                  <Route path="/Dashboard/Tarjetas/Transferencias" element={<Transferencias />} />
                   <Route path="/Dashboard/CreateCard" element={<CreateCard />} />
-                  <Route path="/Dashboard/Historial" element={<Transferencias />} />  
 
                   <Route path="/Dashboard/*" element={ <NotFoundDashboard /> } />
                 </Route>
                 
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/Register" element={<Register />} />
+                <Route path="/Home" element={<HomePage  />} />
+                <Route path="/Blog" element={<Blog  />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
           </div>

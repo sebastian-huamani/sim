@@ -6,6 +6,23 @@ import Moment from 'moment';
 import CardContext from "../context/CardContext";
 import Decimal from 'decimal.js-light';
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+    customClass: 'text-sm bg-none',
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 6000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', MySwal.stopTimer)
+        toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+});
+
 
 const month = new Date().getMonth() + 1;
 const year = new Date().getFullYear();
@@ -19,14 +36,14 @@ class Items extends React.Component {
             items: []
         });
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.data = this.data.bind(this);
+        this.dataChart = this.dataChart.bind(this);
     }
 
     dataSplit(year_month) {
         return year_month.split("-");
     }
 
-    data(data) {
+    dataChart(data) {
 
         var seriesArr = [];
         var OptionsArr = [];
@@ -78,11 +95,17 @@ class Items extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res['msg']);
             this.setState({
                 done: res['res'],
                 items: res['msg'],
             });
-            this.data(res['msg']);
+            this.dataChart(res['msg']);
+        }).catch(error => {
+            Toast.fire({
+                icon: 'info',
+                title: 'Selecciona una Tarjeta'
+            });
         });
 
     }
