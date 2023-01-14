@@ -4,6 +4,25 @@ import NavTop from "../../components/NavTop";
 import { ButtonLinkFixed } from "../../components/buttons/ButtonFixed";
 import { InputSimple } from '../../components/input/Inputs';
 import { AiOutlineDollarCircle } from "react-icons/ai";
+import ButtonForm from '../../components/buttons/ButtonForm';
+
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+    customClass: 'text-sm bg-none',
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 6000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', MySwal.stopTimer)
+        toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+});
 
 class Transferencias extends React.Component {
     constructor(props) {
@@ -11,9 +30,13 @@ class Transferencias extends React.Component {
         this.state = {
             idCard: sessionStorage.getItem('card'),
             cardList: JSON.parse(sessionStorage.getItem('listCard')),
+            toCardSelectedId : '...',
+            toCardSelectedAmount : 0,
         }
         this.dataSelectedCard = this.dataSelectedCard.bind(this);
         this.dataOptionsCards = this.dataOptionsCards.bind(this);
+        this.changeSelectedOptions = this.changeSelectedOptions.bind(this);
+        this.submitTransaction = this.submitTransaction.bind(this);
     }
 
     dataSelectedCard(cardList, idCard) {
@@ -31,13 +54,64 @@ class Transferencias extends React.Component {
     dataOptionsCards(cardList, idCard) {
         
         var optionsList = cardList.map(item => (
-            item.id != idCard ? <option value={item.id} key={item.id}>{item.name}  - S/. {item.amount} </option> : ''
+            item.id != idCard ? <option value={item.id} key={item.id}>{item.name} </option> : ''
         ));
         return optionsList;
     }
 
+    changeSelectedOptions(e){
+        this.state.cardList.map(item => {
+
+            if( item.id == e.target.value){
+                this.setState({
+                    toCardSelectedId: item.id,
+                    toCardSelectedAmount:  item.amount
+                })
+            }
+
+            if(e.target.value == -1){
+                this.setState({
+                    toCardSelectedId : '...',
+                    toCardSelectedAmount : 0,
+                });
+            }
+        })
+    }
+
+    submitTransaction(e){
+        e.preventDefault();
+        let key = localStorage.getItem('key');
+
+        
+
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/transaction/count/transactionBetweenCards`, {
+            method: 'POST',
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            },
+            body: new FormData(e.target),
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            Toast.fire({
+                icon: 'success',
+                title: res['msg']
+            });
+        }).catch(error => {
+            Toast.fire({
+                icon: 'info',
+                title: "Transferencia no Realizada"
+            });
+        });
+
+
+    }
+
     render() {
-        const { idCard, cardList } = this.state;
+        const { idCard, cardList, toCardSelectedId, toCardSelectedAmount } = this.state;
+        const { changeSelectedOptions, submitTransaction } = this;
         
         if (idCard == null) {
             return (
@@ -63,7 +137,7 @@ class Transferencias extends React.Component {
                 <NavTop />
                 <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/Tarjetas" />
 
-                <div className='grid grid-row-3 gap-4 py-8 w-9/12 sm:w-6/12 md:w-5/12 m-auto h-screen'>
+                <form id='formTransaction' onSubmit={submitTransaction} className='grid grid-row-3 gap-4 py-8 w-9/12 sm:w-6/12 md:w-5/12 m-auto h-screen'>
 
                     <div className='flex items-center'>
                         <div className='box flex items-center'>
@@ -72,6 +146,7 @@ class Transferencias extends React.Component {
                                 <div className='ml-4'>
                                     <p className='text-lg'>{card.name}</p>
                                     <p className='text-sm'>{card.id}</p>
+                                    <input type="hidden" name="fromCard" defaultValue={card.id} />
                                 </div>
                                 <p className='ml-16'>S/. {card.amount}</p>
                             </div>
@@ -79,37 +154,35 @@ class Transferencias extends React.Component {
                     </div>
 
                     <div className='h-full w-full text-xl box flex items-center justify-center'>
-
-                        <form >
-                            <InputSimple
-                                label="Monto"
-                                name="amount"
-                                type="number"
-                                placeholder="0.00"
-                            />
-                        </form>
+                        <InputSimple
+                            label="Monto"
+                            name="amount"
+                            type="number"
+                            placeholder="0.00"
+                        />
                     </div>
-
 
                     <div className='flex items-center'>
                         <div className='box flex items-center'>
                             <div className='ml-16 flex justify-center items-center'>
                                 <AiOutlineDollarCircle className='text-5xl' />
                                 <div className='ml-4'>
-                                    <select name="" id="" className='w-full border-none'>
-                                        <option defaultValue >Elige una cuenta de destino</option>
+                                    <select name='toCard' onChange={changeSelectedOptions} className='w-full border-none'>
+                                        <option value="-1"  defaultValue >Elige una cuenta de destino</option>
                                         {options}
                                     </select>
-                                    <p className='text-sm'>125.153.154.123</p>
+                                    <p className='text-sm'>{toCardSelectedId}</p>
                                 </div>
-                                <p className='ml-16'>135.65</p>
+                                <p className='ml-16'>S/. {toCardSelectedAmount}</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div className='text-center'>
+                        <ButtonForm name={"Enviar Transaccion"}  />
+                    </div>
 
-
-                </div>
-
+                </form>
             </div>
 
         );
