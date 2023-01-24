@@ -24,7 +24,7 @@ const Toast = MySwal.mixin({
 class TemplateItem extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.handleClickEdit = this.handleClickEdit.bind(this);
         this.handleClickTrash = this.handleClickTrash.bind(this);
         this.updateData = this.updateData.bind(this);
@@ -81,13 +81,13 @@ class TemplateItem extends React.Component {
             return response.json();
         }).then(res => {
             console.log(res);
-            if ( res['res'] ) {
+            if (res['res']) {
                 Toast.fire({
                     icon: 'success',
                     title: 'Eliminando la Plantilla de tu Lista'
-                });    
+                });
                 this.context.saveUpdateTemplate();
-                
+
 
             } else {
                 Toast.fire({
@@ -105,33 +105,33 @@ class TemplateItem extends React.Component {
         return (
             <div className='odd:bg-gray-200 even:bg-none ' id={this.props.id + 'TemplateBox'}>
                 <div className='grid grid-cols-5/2/2 gap-2 w-full items-center p-2 my-1' key={this.props.id}>
-                
-                <div className='w-11/12'>
-                    <p>{this.props.title}</p>
-                    <p className='text-sm'>  {Moment(this.props.created_at).format('DD MMM. YYYY, HH:mm a')}</p>
-                </div>
 
-                <div className='flex justify-center'>
-                    <p className='w-min rounded-full px-3 font-semibold'>{this.props.state}</p>
-                </div>
-
-                <div className='flex justify-end text-xl relative'>
-                    <div>
-                        <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickEdit} id={this.props.id}></button>
-                        <div className='mr-4'>
-                            <BiEdit />
-                        </div>
+                    <div className='w-11/12'>
+                        <p>{this.props.title}</p>
+                        <p className='text-sm'>  {Moment(this.props.created_at).format('DD MMM. YYYY, HH:mm a')}</p>
                     </div>
 
-                    <div>
-                        <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickTrash} id={this.props.id}></button>
-                        <div className='mr-2'>
-                            <BiTrash />
-                        </div>
+                    <div className='flex justify-center'>
+                        <p className='w-min rounded-full px-3 font-semibold'>{this.props.state}</p>
                     </div>
 
+                    <div className='flex justify-end text-xl relative'>
+                        <div>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickEdit} id={this.props.id}></button>
+                            <div className='mr-4'>
+                                <BiEdit />
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickTrash} id={this.props.id}></button>
+                            <div className='mr-2'>
+                                <BiTrash />
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
             </div>
         );
     }

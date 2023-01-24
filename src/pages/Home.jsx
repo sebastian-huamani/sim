@@ -1,12 +1,12 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 import Box from "../components/Box";
 import Navbar from "../components/Navbar";
 import NavTop from "../components/NavTop";
-import Sparkline from "../components/chart/Sparkline";
 import IndicatorsChart from "../components/chart/IndicatorsChart";
 import MixedChart from "../components/chart/MixedChart";
 import BarChart from "../components/chart/BarChart";
-
+import { FiPlusCircle } from "react-icons/fi";
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,6 +15,9 @@ class Home extends React.Component {
       full_credit: null,
       aviable_credit: null,
       full_debit: null,
+      aviable_debit: null,
+      full_lending: null,
+      dataLending: null,
       dataxMonth: null,
     }
   }
@@ -31,15 +34,19 @@ class Home extends React.Component {
     fetchPromise.then(response => {
       return response.json();
     }).then(res => {
+      console.log(res);
       var res = res["msg"];
       this.setState({
         full_credit: res['full_credit'],
         aviable_credit: res['aviable_credit'],
         full_debit: res['full_debit'],
+        aviable_debit: res['aviable_debit'],
+        full_lending: res['full_lending'],
+        dataLending: res['dataLending'],
         dataxMonth: res['dataxMonth'],
       });
     });
-    
+
 
     // const fetchPromise2 = fetch("http://127.0.0.1:8000/api/pruebas",{
     //   'method' : 'POST'
@@ -55,7 +62,18 @@ class Home extends React.Component {
   }
 
   render() {
-    const { full_credit, aviable_credit, full_debit, dataxMonth } = this.state;
+    const { full_credit, aviable_credit, full_debit, full_lending, aviable_debit, dataxMonth, dataLending } = this.state;
+
+    var LandingsList = '';
+    if (dataLending != null) {
+      LandingsList = dataLending.map((item) => (
+        <li className='text-xs mt-1 p-1 flex justify-between items-center border-b'>
+          <div className='w-5 text-ellipsis'> {item.debtor} </div>
+          <div> S/. {item.amount} </div>
+          <div> {item.name} </div>
+        </li>
+      ));
+    }
 
     return (
       <div>
@@ -65,31 +83,39 @@ class Home extends React.Component {
         <div className='p-2 h-full md:pl-20 pl-0'>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 bg-black-scene '>
-            <IndicatorsChart data={full_credit} title="Credito Total"/>
-            <IndicatorsChart data={aviable_credit} title="Credito Disponible"/>
-            <IndicatorsChart data={full_debit}  title="Debito Total" />
-            <IndicatorsChart data={aviable_credit} title="Credito Disponible" />
-            <IndicatorsChart data={aviable_credit} title="Credito Disponible" />
+            <IndicatorsChart data={full_credit} name="Credito Total" title="Suma del Credito total" />
+            <IndicatorsChart data={aviable_credit} name="Credito Disponible" title="Credito disponible para uso" />
+            <IndicatorsChart data={full_debit} name="Debito Total" title="Debito total " />
+            <IndicatorsChart data={aviable_debit} name="Debito Disponible" title="Debito disponible" />
+            <IndicatorsChart data={full_lending} name="Prestamos Total" title="Prestamos" />
           </div>
 
           <div className="module">
-            <MixedChart data={dataxMonth} title="Historial"/>
+            <MixedChart data={dataxMonth} title="Historial por Mes" />
+
             <div className='box'>
-              <p>Prestamos</p>
-              <ul>
-                <li>aa</li>
-                <li>aa</li>
-                <li>aa</li>
-                <li>aa</li>
-                <li>aa</li>
-                <li>aa</li>
+              <div className='flex justify-between items-center'>
+                <p className='font-semibold'>Prestamos</p>
+                <NavLink to="/Dashboard/Prestamos" >
+                  <FiPlusCircle className='text-lg mr-1' />
+                </NavLink>
+              </div>
+              <ul className=''>
+                <li className='text-xs mt-1 p-1 flex justify-between items-center border-b'>
+                  <div> User </div>
+                  <div> Monto </div>
+                  <div> Estado </div>
+                </li>
+                <div className='overflow-x-hidden h-52'>
+                  {LandingsList}
+                </div>
               </ul>
             </div>
           </div>
 
           <div className="module">
             <Box />
-            <BarChart value={50} /> 
+            <BarChart value={40} />
           </div>
 
         </div>

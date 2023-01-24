@@ -73,8 +73,8 @@ class Items extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        const fileField = document.querySelector('input[type="month"]');
-        let data = this.dataSplit(fileField.value);
+        const dateText = document.querySelector('input[type="month"]');
+        let data = this.dataSplit(dateText.value);
         let card = sessionStorage.getItem('card');
         let key = localStorage.getItem('key');
         const formData = new FormData();

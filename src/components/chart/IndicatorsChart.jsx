@@ -1,5 +1,7 @@
 import React from 'react';
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
+import { BsInfoCircleFill } from "react-icons/bs";
+
 
 class IndicatorsChart extends React.Component{
     constructor(props){
@@ -7,7 +9,7 @@ class IndicatorsChart extends React.Component{
     }
     
     render(){
-        var { data , title} = this.props;
+        var { data , name, title} = this.props;
 
         if(data == 'undefined' || data == null) {
             data = [0, 0];
@@ -16,8 +18,8 @@ class IndicatorsChart extends React.Component{
 
         return(
  
-            <div className='IndicatorsChart'> 
-                <p className='text-xs font-medium '> {title} </p>
+            <div className='IndicatorsChart relative'> 
+                <p className='text-xs font-medium '> {name} </p>
                 <div className='text-center my-2'>
                     <div>
                         <p className='text-2xl'> {data[0]} </p>
@@ -29,6 +31,9 @@ class IndicatorsChart extends React.Component{
                     </div>
                     
                     <p className='text-xs'>vs last month</p>
+                    <div className='absolute right-1 bottom-1 text-sm'>
+                        <BsInfoCircleFill  title={title}/>
+                    </div>
                 </div>
             </div>
 

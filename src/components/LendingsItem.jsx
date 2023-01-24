@@ -1,0 +1,91 @@
+import React from 'react';
+import LendingsContext from "../context/LendingsContext";
+import Moment from 'moment';
+import { BiTrash, BiEdit } from "react-icons/bi";
+
+class LendingsItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdited = this.handleEdited.bind(this);
+        // this.updateItems = this.updateItems.bond(this);
+    }
+
+
+    handleDelete(e){
+        e.preventDefault();
+        var idItem = e.target.id;
+        let key = localStorage.getItem('key');
+
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/lending/destroy/${idItem}`, {
+            method: 'DELETE',
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            this.context.deleteItemtoList(idItem);
+        })
+    }
+
+    handleEdited(e){
+        var idItem = e.target.id;
+        let key = localStorage.getItem('key');
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/lending/showOne/${idItem}`, {
+            method: 'GET',
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+        
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            this.context.ItemEditedToList(idItem, res['msg']);
+        })
+
+    }
+
+    render() {
+        const { item } = this.props;
+        const { handleDelete, handleEdited } = this;
+
+        return (
+            <div className='odd:bg-gray-200 even:bg-none' id={item.id + 'TemplateBox'} key={item.id}>
+                <div className='grid grid-cols-5/2/2 gap-2 w-full items-center p-2 my-1' >
+
+                    <div className='w-11/12'>
+                        <p>{item.debtor}</p>
+                        <p className='text-sm'> {Moment(item.created_at).format('DD MMM. YYYY, HH:mm a')}</p>
+                    </div>
+
+                    <div className='flex justify-center'>
+                        <p className='w-min rounded-full px-3 font-semibold'>{item.state}</p>
+                    </div>
+
+                    <div className='flex justify-end text-xl relative'>
+                        <div>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' id={item.id} onClick={handleEdited} title="Editar Item"></button>
+                            <div className='mr-4'>
+                                <BiEdit />
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' id={item.id} onClick={handleDelete} title="Borrar Item"></button>
+                            <div className='mr-2'>
+                                <BiTrash />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+LendingsItem.contextType = LendingsContext;
+export default LendingsItem;

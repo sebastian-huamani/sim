@@ -6,7 +6,6 @@ class MixedChart extends React.Component {
         super(props);
     }
 
-
     ProcesingData(data) {
         var fullCredit = [];
         var aviableCredit = [];

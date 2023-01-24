@@ -29,6 +29,7 @@ class Cards extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res);
             this.setState({
                 items: res['msg'],
                 done: res['res']

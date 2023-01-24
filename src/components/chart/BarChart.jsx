@@ -7,8 +7,8 @@ class BarChart extends React.Component {
 
     render() {
         const { value } = this.props;
+        var classVal = `bg-green-500 h-2.5 rounded-full w-[${{value}}%]`;
 
-        var classVal = `w-[${value}%]`;
 
 
         return (
@@ -17,7 +17,7 @@ class BarChart extends React.Component {
                 <div>
                     <p className='text-xs'>Vas por un {value}%</p>
                     <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                        <div className={`bg-green-500 h-2.5 rounded-full ${classVal}`} ></div>
+                        <div className={classVal} ></div>
                     </div>
                 </div>
             </div>

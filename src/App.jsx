@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import HomePage from "./pages/HomePage";
 import Blog from "./pages/Blog";
+import Lendings from "./pages/DashBoard/Lendings";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/Dashboard/Home" element={<Home />} />
                   <Route path="/Dashboard/Perfil" element={<Perfil />} />
                   <Route path="/Dashboard/Templates" element={<Plantillas />} />
+                  <Route path="/Dashboard/Prestamos" element={<Lendings />} />
 
                   <Route path="/Dashboard/Tarjetas" element={<Tarjetas />} />
                   <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
