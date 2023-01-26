@@ -7,18 +7,59 @@ import NotData from "./NotData";
 class LendingsActive extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            done: false
+        }
 
     }
 
+    componentDidMount() {
+        let key = localStorage.getItem('key');
+    
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/lending/showAllActives", {
+          'headers': {
+            'Authorization': 'Bearer ' + key,
+          }
+        });
+    
+        fetchPromise.then(response => {
+          return response.json();
+        }).then(res => {
+          res['res'] ? this.context.updateListActive(res['msg']) : this.context.deleteItemtoList(this.context.idItem);
+          this.setState({
+            done : res['res']
+          });
+           
+        }).catch(err => {
+          console.log(err, "err");
+        })
+      }
+
+
     render() {
+        const { done } = this.state;
         const { listActive } = this.context;
+        console.log(listActive);
+
+        if(listActive == "Se Ha Producido Un Error" ){
+            return (
+                <div className='overflow-y-auto h-full text-xs p-1' >
+                    {<NotData />}
+                </div>
+            )
+        }
 
         return (
             <div className='overflow-y-auto h-full text-xs p-1' >
 
-                { listActive == null ? <NotData /> : listActive.map(item => (
+                {  listActive.length == 0 ? <NotData /> : ( listActive == null ? 
+                    
+                    <NotData />
+                    :
+                    listActive.map(item => (
                         <LendingsItem item={item} key={item.id} />
-                    ))
+                        ))
+                    ) 
                 }
             </div>
         );

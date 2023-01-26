@@ -63,8 +63,8 @@ class LendingsDesactive extends React.Component {
                         <ButtonForm name="Go" />
                     </form>
 
-                    {!done ? <NotData /> : (listDesactive.length == 0 ?
-                        <Loading />
+                    {!done ? <NotData /> : (listDesactive.length < 1 ?
+                        <NotData />
                         :
                         listDesactive.map(item => (
                             <LendingsItem  item={item} key={item.id}/>

@@ -6,8 +6,8 @@ export class LendingsProvider extends React.Component{
         super(props);
         this.state = {
             stateOptions: true,
-            listActive : null,
-            listDesactive : null,
+            listActive : [],
+            listDesactive : [],
             edited: false,
             create :false,
             currentItemEdited : null,
@@ -73,9 +73,9 @@ export class LendingsProvider extends React.Component{
     resetDataPanel = () => {
         this.setState({
             edited: false,
-            create : false,
+            create :false,
             currentItemEdited : null,
-            idItem : null,
+            idItem : null
         })
     }
 

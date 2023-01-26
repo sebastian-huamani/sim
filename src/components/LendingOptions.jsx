@@ -7,27 +7,8 @@ import LendingsContext from "../context/LendingsContext";
 class LendingOptions extends React.Component {
   constructor(props) {
     super(props);
+   
   }
-
-  componentDidMount() {
-    let key = localStorage.getItem('key');
-
-    const fetchPromise = fetch("http://127.0.0.1:8000/api/lending/showAllActives", {
-      'headers': {
-        'Authorization': 'Bearer ' + key,
-      }
-    });
-
-    fetchPromise.then(response => {
-      return response.json();
-    }).then(res => {
-      res['res'] ? this.context.updateListActive(res['msg']) : '';
-       
-    }).catch(err => {
-      console.log(err, "err");
-    })
-  }
-
 
   render() {
     const { stateOptions, changeOption } = this.context;

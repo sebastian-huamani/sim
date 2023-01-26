@@ -21,6 +21,10 @@ class LendingData extends React.Component {
         this.submitFormCreate = this.submitFormCreate.bind(this);
     }
 
+    dataSplit(year_month) {
+        return year_month.split("-");
+    }
+
     updateListDesactive() {
         let key = localStorage.getItem('key');
 
@@ -121,8 +125,9 @@ class LendingData extends React.Component {
         fetchPromise.then(response => {
             return response.json()
         }).then(res => {
-            this.context.updateItemEditing(res['lending']);
+            this.context.resetDataPanel();
             this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
+            // this.context.updateItemEditing(res['lending']);
         });
     }
 
