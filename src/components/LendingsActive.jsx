@@ -2,6 +2,7 @@ import React from 'react';
 import LendingsContext from "../context/LendingsContext";
 import Loading from "./Loading";
 import LendingsItem from "./LendingsItem";
+import NotData from "./NotData";
 
 class LendingsActive extends React.Component {
     constructor(props) {
@@ -15,9 +16,10 @@ class LendingsActive extends React.Component {
         return (
             <div className='overflow-y-auto h-full text-xs p-1' >
 
-                {listActive == null ? <Loading /> : listActive.map(item => (
-                    <LendingsItem  item={item} key={item.id}/>
-                ))}
+                { listActive == null ? <NotData /> : listActive.map(item => (
+                        <LendingsItem item={item} key={item.id} />
+                    ))
+                }
             </div>
         );
     }

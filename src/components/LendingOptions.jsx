@@ -21,7 +21,10 @@ class LendingOptions extends React.Component {
     fetchPromise.then(response => {
       return response.json();
     }).then(res => {
-      this.context.updateListActive(res['msg']);
+      res['res'] ? this.context.updateListActive(res['msg']) : '';
+       
+    }).catch(err => {
+      console.log(err, "err");
     })
   }
 
