@@ -46,19 +46,6 @@ class Home extends React.Component {
         dataxMonth: res['dataxMonth'],
       });
     });
-
-
-    // const fetchPromise2 = fetch("http://127.0.0.1:8000/api/pruebas",{
-    //   'method' : 'POST'
-    // });
-
-    // fetchPromise2.then(response => {
-    //   return response.json();
-    // }).then( res => {
-    //   console.log(res);
-
-    // })
-
   }
 
   render() {
@@ -111,11 +98,6 @@ class Home extends React.Component {
                 </div>
               </ul>
             </div>
-          </div>
-
-          <div className="module">
-            <Box />
-            <BarChart value={40} />
           </div>
 
         </div>
