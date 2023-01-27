@@ -24,30 +24,30 @@ function App() {
       <div className="bg-black-scene">
         <BrowserRouter>
 
-          <div className="w-full ">
-              <Routes>
-                <Route element={<ProtectedRoute />} >
-                  <Route path="/Dashboard/Home" element={<Home />} />
-                  <Route path="/Dashboard/Perfil" element={<Perfil />} />
-                  <Route path="/Dashboard/Templates" element={<Plantillas />} />
-                  <Route path="/Dashboard/Prestamos" element={<Lendings />} />
+          <div className="w-full font-Josefin">
+            <Routes>
+              <Route element={<ProtectedRoute />} >
+                <Route path="/Dashboard/Home" element={<Home />} />
+                <Route path="/Dashboard/Perfil" element={<Perfil />} />
+                <Route path="/Dashboard/Templates" element={<Plantillas />} />
+                <Route path="/Dashboard/Prestamos" element={<Lendings />} />
 
-                  <Route path="/Dashboard/Tarjetas" element={<Tarjetas />} />
-                  <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
-                  <Route path="/Dashboard/Tarjetas/Transferencias" element={<Transferencias />} />
-                  <Route path="/Dashboard/CreateCard" element={<CreateCard />} />
+                <Route path="/Dashboard/Tarjetas" element={<Tarjetas />} />
+                <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
+                <Route path="/Dashboard/Tarjetas/Transferencias" element={<Transferencias />} />
+                <Route path="/Dashboard/CreateCard" element={<CreateCard />} />
 
-                  <Route path="/Dashboard/*" element={ <NotFoundDashboard /> } />
-                </Route>
-                
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Register" element={<Register />} />
-                <Route path="/Home" element={<HomePage  />} />
-                <Route path="/Blog" element={<Blog  />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+                <Route path="/Dashboard/*" element={<NotFoundDashboard />} />
+              </Route>
+
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Register" element={<Register />} />
+              <Route path="/Home" element={<HomePage />} />
+              <Route path="/Blog" element={<Blog />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </div>
-          
+
         </BrowserRouter>
       </div>
 

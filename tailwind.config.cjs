@@ -5,6 +5,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily:{
+      'Josefin': ['"Josefin Sans"', 'sans-serif'],
+    },
     extend: {
       colors:{
         'black-scene' : '#f4f5fe',
