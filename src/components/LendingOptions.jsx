@@ -11,14 +11,14 @@ class LendingOptions extends React.Component {
   }
 
   render() {
-    const { stateOptions, changeOption } = this.context;
+    const { stateOptions, changeOption, } = this.context;
 
     return (
       <div className='h-97vh grid grid-rows-1/9 gap-4 px-3'>
 
         <div className='flex p-4 justify-evenly items-center rounded-lg bg-white shadow-md shadow-slate-500/20'>
-          <button onClick={() => changeOption(true)}> Activos </button>
-          <button onClick={() => changeOption(false)}> Desactivos </button>
+          <button onClick={() => changeOption(true)} className={`border-b-2 ${stateOptions ? 'border-b-neutral-700' : 'border-none'}` } > Activos </button>
+          <button onClick={() => changeOption(false)} className={`border-b-2 ${!stateOptions ? 'border-b-neutral-700 ' : 'border-none'}` }> Desactivos </button>
         </div>
 
         {stateOptions ? <LendingsActive  /> : <LendingsDesactive /> }

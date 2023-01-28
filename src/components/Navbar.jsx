@@ -55,7 +55,7 @@ class Navbar extends React.Component{
                     <hr />
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                            className={({ isActive }) => (isActive ? "border-blue-50 text-slate-600" : "bg-black")}
                             to="/Dashboard/Home" title="Home">
                             <FaHome />
                         </NavLink>
@@ -85,13 +85,13 @@ class Navbar extends React.Component{
                     </li>
 
                     <hr className="bg-slate-600 w-full"/>
-                    <li>
+                    {/* <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to='/Dashboard/Settings' title="Configuracion">
                             <AiFillSetting />
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <button type="submit" title="exit" onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")} aria-label="Close"  aria-details="test">
                             <HiLogout />
