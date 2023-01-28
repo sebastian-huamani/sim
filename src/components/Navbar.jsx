@@ -6,20 +6,20 @@ import { HiLogout } from "react-icons/hi";
 
 import React from 'react';
 
-class Navbar extends React.Component{
-    constructor(props){
+class Navbar extends React.Component {
+    constructor(props) {
         super(props);
         this.state = ({
-            done : false
+            done: false
         })
         this.onClickLogout = this.onClickLogout.bind(this);
     }
 
-    onClickLogout(){
+    onClickLogout() {
         let key = localStorage.getItem('key');
         const fetchPromise = fetch("http://127.0.0.1:8000/api/logout", {
             method: 'POST',
-                // 'mode': 'cors',
+            // 'mode': 'cors',
             'headers': {
                 'Content-Type': 'text/plain',
                 'Accept': 'application/json',
@@ -38,11 +38,11 @@ class Navbar extends React.Component{
         sessionStorage.clear();
     }
 
-    render(){
+    render() {
         const { onClickLogout } = this;
-        var { done }  = this.state
+        var { done } = this.state
 
-        if( done ){
+        if (done) {
             return <Navigate to={"/login"} />
         }
 
@@ -50,12 +50,14 @@ class Navbar extends React.Component{
             <div className='nav-lateral show'>
                 <ul className="grid grid-flow-row gap-8 text-center text-2xl" >
                     <li className="mb-6">
-                        <FaClone />
+                        <NavLink to="/Home" title="Home">
+                            <FaClone />
+                        </NavLink>
                     </li>
                     <hr />
                     <li>
                         <NavLink
-                            className={({ isActive }) => (isActive ? "border-blue-50 text-slate-600" : "bg-black")}
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to="/Dashboard/Home" title="Home">
                             <FaHome />
                         </NavLink>
@@ -75,7 +77,7 @@ class Navbar extends React.Component{
                             <FaFileContract />
                         </NavLink>
                     </li>
-    
+
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
@@ -84,16 +86,16 @@ class Navbar extends React.Component{
                         </NavLink>
                     </li>
 
-                    <hr className="bg-slate-600 w-full"/>
-                    {/* <li>
+                    <hr className="bg-slate-600 w-full" />
+                    <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
                             to='/Dashboard/Settings' title="Configuracion">
                             <AiFillSetting />
                         </NavLink>
-                    </li> */}
+                    </li>
                     <li>
-                        <button type="submit" title="exit" onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")} aria-label="Close"  aria-details="test">
+                        <button type="submit" title="exit" onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")} aria-label="Close" aria-details="test">
                             <HiLogout />
                         </button>
                     </li>

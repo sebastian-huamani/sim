@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import HomePage from "./pages/HomePage";
 import Blog from "./pages/Blog";
+import SettingsDash from "./pages/Settings";
 import Lendings from "./pages/DashBoard/Lendings";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
                 <Route path="/Dashboard/Tarjetas/Transferencias" element={<Transferencias />} />
                 <Route path="/Dashboard/CreateCard" element={<CreateCard />} />
+                <Route path="/Dashboard/Settings" element={<SettingsDash />} />
 
                 <Route path="/Dashboard/*" element={<NotFoundDashboard />} />
               </Route>
