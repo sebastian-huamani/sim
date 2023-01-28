@@ -67,7 +67,7 @@ class Home extends React.Component {
 
         <Navbar />
         <NavTop />
-        <div className='p-2 h-full md:pl-20 pl-0'>
+        <div className='p-2 h-screen md:pl-20 pl-0'>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 bg-black-scene '>
             <IndicatorsChart data={full_credit} name="Credito Total" title="Suma del Credito total" />
