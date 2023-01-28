@@ -29,6 +29,7 @@ class Register extends React.Component {
             password: '',
             repeatPassword: '',
             passwordsMatch: false,
+            createUser: false,
         }
         this.handleName = this.handleName.bind(this);
         this.handleLastName = this.handleLastName.bind(this);
@@ -74,6 +75,7 @@ class Register extends React.Component {
     }
 
     CreateCount(name, lastname, email, password) {
+        var pass = false
         let key = localStorage.getItem('key');
         const formData = new FormData();
 
@@ -93,7 +95,25 @@ class Register extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
+            if (res['res']) {
+                console.log(res['res']);
+                setTimeout("location.href='/Login'",4000)
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Cuenta Creada con Exito, Es hora de iniciar session'
+                });
+            } else {
+                Toast.fire({
+                    icon: 'info',
+                    title: 'El correo ya esta en uso'
+                });
+                console.log(res);
+            }
+        }).catch( err => {
+                Toast.fire({
+                    icon: 'info',
+                    title: 'El correo ya esta en uso'
+                });
         });
     }
 
