@@ -10,7 +10,6 @@ import Settings from "./pages/Card/Settings";
 import Transferencias from "./pages/Card/Transferencias";
 import Plantillas from "./pages/Plantillas";
 import NotFoundDashboard from "./pages/NotFoundDashboard";
-import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./security/ProtectedRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -18,6 +17,7 @@ import HomePage from "./pages/HomePage";
 import Blog from "./pages/Blog";
 import SettingsDash from "./pages/Settings";
 import Lendings from "./pages/DashBoard/Lendings";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
