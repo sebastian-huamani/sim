@@ -1,7 +1,7 @@
 import React from 'react';
 import NavIndex from "../components/NavIndex";
 
-class Notfound extends React.Component {
+class NotfoundPage extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -19,4 +19,4 @@ class Notfound extends React.Component {
         );
     }
 }
-export default Notfound;
+export default NotfoundPage;
