@@ -4,13 +4,6 @@ import NavIndex from "../components/NavIndex";
 class Notfound extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(e){
-        const idCard= e.target.getAttribute("id");
-        console.log(idCard);
-        console.log(e.target);
     }
 
     render() {
