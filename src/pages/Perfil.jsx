@@ -18,7 +18,7 @@ class Perfil extends React.Component {
   componentDidMount() {
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch('http://127.0.0.1:8000/api/user/infoUser', {
+    const fetchPromise = fetch('https://financemeapi.com/api/user/infoUser', {
       method: 'GET',
       'headers': {
         'Authorization': 'Bearer ' + key,
@@ -38,7 +38,7 @@ class Perfil extends React.Component {
     e.preventDefault();
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch(`http://127.0.0.1:8000/api/user/updateInfoUser`, {
+    const fetchPromise = fetch(`https://financemeapi.com/api/user/updateInfoUser`, {
       method: 'POST',
       body: new FormData(e.target),
       'headers': {

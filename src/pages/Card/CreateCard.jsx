@@ -40,9 +40,9 @@ class CreateCard extends React.Component {
         e.preventDefault();
         let key = localStorage.getItem('key');
 
-        var route = "http://127.0.0.1:8000/api/card/create/DebitCard";
+        var route = "https://financemeapi.com/api/card/create/DebitCard";
         if (!this.state.debit) {
-            route = "http://127.0.0.1:8000/api/card/create/CreditCard";
+            route = "https://financemeapi.com/api/card/create/CreditCard";
         }
 
         const fetchPromise = fetch(route, {
