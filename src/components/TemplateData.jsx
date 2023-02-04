@@ -45,7 +45,7 @@ class TemplateData extends React.Component {
   updateData() {
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch("https://financemeapi.com/api/template/showAll", {
+    const fetchPromise = fetch("http://127.0.0.1:8000/api/template/showAll", {
       'headers': {
         'Authorization': 'Bearer ' + key,
       }
@@ -76,7 +76,7 @@ class TemplateData extends React.Component {
     let key = localStorage.getItem('key');
     var idTemplate = this.context.idTemplate;
 
-    const fetchPromise = fetch(`https://financemeapi.com/api/template/update/${idTemplate}`, {
+    const fetchPromise = fetch(`http://127.0.0.1:8000/api/template/update/${idTemplate}`, {
       method: 'POST',
       body: new FormData(e.target),
       'headers': {
@@ -108,7 +108,7 @@ class TemplateData extends React.Component {
     this.context.edit = false;
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch(`https://financemeapi.com/api/template/create`, {
+    const fetchPromise = fetch(`http://127.0.0.1:8000/api/template/create`, {
       method: 'POST',
       body: new FormData(e.target),
       'headers': {

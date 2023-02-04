@@ -23,7 +23,7 @@ class FormCreateLending extends React.Component {
     formData.append('year', data[0]);
     formData.append('month', data[1]);
 
-    const fetchPromise = fetch("https://financemeapi.com/api/lending/showAllDesactives", {
+    const fetchPromise = fetch("http://127.0.0.1:8000/api/lending/showAllDesactives", {
       method: 'POST',
       'headers': {
         'Authorization': 'Bearer ' + key,
@@ -43,7 +43,7 @@ class FormCreateLending extends React.Component {
   updateListActive() {
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch("https://financemeapi.com/api/lending/showAllActives", {
+    const fetchPromise = fetch("http://127.0.0.1:8000/api/lending/showAllActives", {
       'headers': {
         'Authorization': 'Bearer ' + key,
       }
@@ -62,7 +62,7 @@ class FormCreateLending extends React.Component {
     e.preventDefault();
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch(`https://financemeapi.com/api/lending/edit`, {
+    const fetchPromise = fetch(`http://127.0.0.1:8000/api/lending/edit`, {
       method: 'POST',
       body: new FormData(e.target),
       'headers': {

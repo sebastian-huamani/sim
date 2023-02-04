@@ -16,7 +16,7 @@ class TemplateList extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("https://financemeapi.com/api/template/showAll", {
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/template/showAll", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }

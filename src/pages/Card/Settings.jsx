@@ -25,7 +25,7 @@ class Settings extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch(`https://financemeapi.com/api/card/showOne/${this.state.idCard}`, {
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/showOne/${this.state.idCard}`, {
             method: 'GET',
             'headers': {
                 'Authorization': 'Bearer ' + key,
@@ -47,7 +47,7 @@ class Settings extends React.Component {
         let idCard = sessionStorage.getItem('card');
 
 
-        const fetchPromise = fetch(`https://financemeapi.com/api/card/UpdateState/${idCard}`, {
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/UpdateState/${idCard}`, {
             method: 'POST',
             'headers': {
                 'Authorization': 'Bearer ' + key,
@@ -101,7 +101,7 @@ class Settings extends React.Component {
         let key = localStorage.getItem('key');
         let idCard = sessionStorage.getItem('card');
 
-        const fetchPromise = fetch(`https://financemeapi.com/api/card/update/${idCard}`, {
+        const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/update/${idCard}`, {
             method: 'POST',
             body: new FormData(e.target),
             'headers': {
