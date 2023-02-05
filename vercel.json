@@ -1,5 +1,3 @@
 {
-    "rewrites": [
-        { "source": "/Login", "destination": "/Login.jsx" } 
-    ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/404.html" }]
 }
