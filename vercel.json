@@ -1,5 +1,6 @@
 {
-    "rewrites": [
-        { "source": "/Login", "destination": "/Login.jsx" } 
+    "routes": [
+        { "source": "/Login", "destination": "/Login.jsx" }
+
     ]
 }
