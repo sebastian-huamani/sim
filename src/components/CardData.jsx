@@ -11,48 +11,45 @@ class CardData extends React.Component {
 
   render() {
     let dataJson = JSON.parse(this.context.dataCard)
-
     if (dataJson != null) {
-      var data = [dataJson].map((item) => (
-        <ul className='text-ellipsis overflow-y-auto h-full' key={item.id}>
-          <li className='text-xs mb-5'>
+      var data =  (
+        <div className='text-ellipsis overflow-y-auto h-full' key={dataJson.id}>
+          <div className='text-xs mb-5'>
             <p className='font-bold'> Nombre:</p>
-            <p> {item.name} </p>
-          </li>
-          <li className='text-xs mb-5'>
+            <p> {dataJson.name} </p>
+          </div>
+          <div className='text-xs mb-5'>
             <p className='font-bold'> Nombre del Banco:</p>
-            <p> {item.name_banck} </p>
-          </li>
-          <li className='text-xs mb-5'>
+            <p> {dataJson.name_banck} </p>
+          </div>
+          <div className='text-xs mb-5'>
             <p className='font-bold'> Tipo de Tarjeta:</p>
-            <p> {item.type_card} </p>
-          </li>
-          <li className='text-xs mb-5'>
+            <p> {dataJson.type_card} </p>
+          </div>
+          <div className='text-xs mb-5'>
             <p className='font-bold'> Monto:</p>
-            <p> {item.amount} </p>
-          </li>
-          <li className='text-xs mb-5'>
+            <p> {dataJson.amount} </p>
+          </div>
+          <div className='text-xs mb-5'>
             <p className='font-bold'> F.Expiracion:</p>
-            <p> {item.card_expiration_date} </p>
-          </li>
-          <li className='text-xs mb-5'>
+            <p> {dataJson.card_expiration_date} </p>
+          </div>
+          <div className='text-xs mb-5'>
             <p className='font-bold'> F.Expiracion:</p>
-            <p> {item.closing_date} </p>
-          </li>
-          {/* {console.log(item.closing_date)} */}
-
-        </ul>
-      ));
+            <p> {dataJson.closing_date} </p>
+          </div>
+        </div>
+      );
     }
 
-    if (data == null) {
+    if (data == null || data == 'undefined') {
       return <NotData />
     }
 
     return (
-      <ul className='text-ellipsis overflow-y-auto h-full p-2'>
+      <div className='text-ellipsis overflow-y-auto h-full p-2'>
         {data}
-      </ul>
+      </div>
     );
   }
 }
