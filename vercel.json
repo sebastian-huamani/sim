@@ -1,6 +1,5 @@
 {
-    "routes": [
-        { "source": "/Login", "destination": "/Login.jsx" }
-        
+    "redirects": [
+        { "source": "/login", "destination": "/login", "permanent": false }
     ]
 }
