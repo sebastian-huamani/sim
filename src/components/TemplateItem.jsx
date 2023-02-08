@@ -34,7 +34,7 @@ class TemplateItem extends React.Component {
     updateData() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("http://127.0.0.1:8000/api/template/showAll", {
+        const fetchPromise = fetch("https://financemeapi.com/api/template/showAll", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }
@@ -70,7 +70,7 @@ class TemplateItem extends React.Component {
         var idTemplate = e.target.id
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch(`http://127.0.0.1:8000/api/template/delete/${idTemplate}`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/template/delete/${idTemplate}`, {
             method: 'DELETE',
             'headers': {
                 'Authorization': 'Bearer ' + key,

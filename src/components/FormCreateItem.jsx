@@ -42,7 +42,7 @@ class FormCreateItem extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("http://127.0.0.1:8000/api/template/showAll", {
+        const fetchPromise = fetch("https://financemeapi.com/api/template/showAll", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }
@@ -89,7 +89,7 @@ class FormCreateItem extends React.Component {
     updateCardsList(){
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("http://127.0.0.1:8000/api/card/showAll", {
+        const fetchPromise = fetch("https://financemeapi.com/api/card/showAll", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }
@@ -107,7 +107,7 @@ class FormCreateItem extends React.Component {
 
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch(`http://127.0.0.1:8000/api/transaction/count/createItem`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/transaction/count/createItem`, {
             method: 'POST',
             body: new FormData(e.target),
             'headers': {

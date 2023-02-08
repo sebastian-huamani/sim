@@ -17,7 +17,7 @@ class LendingsItem extends React.Component {
         var idItem = e.target.id;
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch(`http://127.0.0.1:8000/api/lending/destroy/${idItem}`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/lending/destroy/${idItem}`, {
             method: 'DELETE',
             'headers': {
                 'Authorization': 'Bearer ' + key,
@@ -34,7 +34,7 @@ class LendingsItem extends React.Component {
     handleEdited(e){
         var idItem = e.target.id;
         let key = localStorage.getItem('key');
-        const fetchPromise = fetch(`http://127.0.0.1:8000/api/lending/showOne/${idItem}`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/lending/showOne/${idItem}`, {
             method: 'GET',
             'headers': {
                 'Authorization': 'Bearer ' + key,

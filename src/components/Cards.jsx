@@ -20,7 +20,7 @@ class Cards extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("http://127.0.0.1:8000/api/card/showAll", {
+        const fetchPromise = fetch("https://financemeapi.com/api/card/showAll", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }

@@ -19,7 +19,7 @@ class Login extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const fetchPromise = fetch("http://127.0.0.1:8000/api/login", {
+        const fetchPromise = fetch("https://financemeapi.com/api/login", {
             method: 'POST',
             body: new FormData(e.target)
         });

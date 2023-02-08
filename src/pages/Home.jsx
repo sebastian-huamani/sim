@@ -25,7 +25,7 @@ class Home extends React.Component {
   componentDidMount() {
     let key = localStorage.getItem('key');
 
-    const fetchPromise = fetch("http://127.0.0.1:8000/api/transaction/count/DataDashboard", {
+    const fetchPromise = fetch("https://financemeapi.com/api/transaction/count/DataDashboard", {
       'headers': {
         'Authorization': 'Bearer ' + key,
       }

@@ -20,7 +20,7 @@ class Card extends React.Component {
 
         sessionStorage.setItem("card", idCard);
 
-        const fetchPromise = fetch(`http://127.0.0.1:8000/api/card/showOne/${idCard}`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/card/showOne/${idCard}`, {
             method: 'GET',
             'headers': {
                 'Authorization': 'Bearer ' + key,
