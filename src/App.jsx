@@ -18,6 +18,7 @@ import Blog from "./pages/Blog";
 import SettingsDash from "./pages/Settings";
 import Lendings from "./pages/DashBoard/Lendings";
 import NotfoundPage from "./pages/NotfoundPage";
+import BlogA from "./pages/Blogs/BlogA";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route path="/Register" element={<Register />} />
               <Route path="/Home" element={<HomePage />} />
               <Route path="/Blog" element={<Blog />} />
+              <Route path="/Blog/BlogA" element={<BlogA />} />
               <Route path="*" element={<NotfoundPage />} />
             </Routes>
           </div>
