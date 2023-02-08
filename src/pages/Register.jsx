@@ -84,7 +84,7 @@ class Register extends React.Component {
         formData.append('email', email);
         formData.append('password', password);
 
-        const fetchPromise = fetch('https://financemeapi.com/api/register', {
+        const fetchPromise = fetch('http://127.0.0.1:8000/api/register', {
             method: 'POST',
             body: formData,
             'headers': {

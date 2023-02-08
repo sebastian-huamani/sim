@@ -20,7 +20,7 @@ class Cards extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("https://financemeapi.com/api/card/showAll", {
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/card/showAll", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }
@@ -29,7 +29,6 @@ class Cards extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             this.setState({
                 items: res['msg'],
                 done: res['res']

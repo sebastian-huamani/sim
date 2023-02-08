@@ -17,7 +17,7 @@ class Navbar extends React.Component {
 
     onClickLogout() {
         let key = localStorage.getItem('key');
-        const fetchPromise = fetch("https://financemeapi.com/api/logout", {
+        const fetchPromise = fetch("http://127.0.0.1:8000/api/logout", {
             method: 'POST',
             // 'mode': 'cors',
             'headers': {
