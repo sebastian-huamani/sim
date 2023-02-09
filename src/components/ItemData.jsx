@@ -218,7 +218,7 @@ class ItemData extends React.Component {
                         </div>
                     </NotData>
 
-                    <div className={`h-screen fixed w-108 z-10 top-0 right-0 bg-white shadow-lg p-5 ${componentVisible}`}>
+                    <div className={`h-screen fixed w-screen sm:w-108 z-10 top-0 right-0 bg-white shadow-lg p-5 ${componentVisible}`}>
 
                         <FormCreateItem actionButton={this.hiddenFormCreateItem} idCard={idCard} />
 
@@ -237,7 +237,7 @@ class ItemData extends React.Component {
 
                 {data}
 
-                <div className={`h-screen fixed w-108 z-10 top-0 right-0 bg-white shadow-lg p-5 ${componentVisible}`}>
+                <div className={`h-screen fixed w-screen sm:w-108 z-10 top-0 right-0 bg-white shadow-lg p-5 ${componentVisible}`}>
 
                     <FormCreateItem actionButton={this.hiddenFormCreateItem} idCard={idCard} />
                 </div>

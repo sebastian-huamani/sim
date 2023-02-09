@@ -34,7 +34,6 @@ class Home extends React.Component {
     fetchPromise.then(response => {
       return response.json();
     }).then(res => {
-      console.log(res);
       var res = res["msg"];
       this.setState({
         full_credit: res['full_credit'],
@@ -69,7 +68,7 @@ class Home extends React.Component {
         <NavTop />
         <div className='p-2 h-screen md:pl-20 pl-0'>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-0 :mx-10 bg-black-scene '>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-5 md:mx-0 bg-black-scene '>
             <IndicatorsChart data={full_credit} name="Credito Total" title="Suma del Credito total" />
             <IndicatorsChart data={aviable_credit} name="Credito Disponible" title="Credito disponible para uso" />
             <IndicatorsChart data={full_debit} name="Debito Total" title="Debito total " />

@@ -116,7 +116,7 @@ class Transferencias extends React.Component {
         if (idCard == null) {
             return (
                 <div className='md:pl-20 pl-0'>
-                    <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/Tarjetas" />
+                    <ButtonLinkFixed name="Volver" customClass='top-3 right-5 right-5' toLink="/Dashboard/Tarjetas" />
                     <Navbar />
                     <NavTop />
 
@@ -135,13 +135,13 @@ class Transferencias extends React.Component {
             <div className='md:pl-20 pl-0'>
                 <Navbar />
                 <NavTop />
-                <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/Tarjetas" />
+                <ButtonLinkFixed name="Volver" customClass='top-3 right-5 right-5' toLink="/Dashboard/Tarjetas" />
 
                 <form id='formTransaction' onSubmit={submitTransaction} className='grid grid-row-3 gap-4 py-8 w-9/12 sm:w-6/12 md:w-5/12 m-auto h-screen'>
 
                     <div className='flex items-center'>
                         <div className='box flex items-center'>
-                            <div className='ml-16 flex justify-center items-center'>
+                            <div className='ml-4 sm:ml-16 flex justify-center items-center'>
                                 <AiOutlineDollarCircle className='text-5xl' />
                                 <div className='ml-4'>
                                     <p className='text-lg'>{card.name}</p>
@@ -164,7 +164,7 @@ class Transferencias extends React.Component {
 
                     <div className='flex items-center'>
                         <div className='box flex items-center'>
-                            <div className='ml-16 flex justify-center items-center'>
+                            <div className='ml-4 sm:ml-16 flex justify-center items-center'>
                                 <AiOutlineDollarCircle className='text-5xl' />
                                 <div className='ml-4'>
                                     <select name='toCard' onChange={changeSelectedOptions} className='w-full border-none'>
@@ -179,7 +179,7 @@ class Transferencias extends React.Component {
                     </div>
                     
                     <div className='text-center'>
-                        <ButtonForm name={"Enviar Transaccion"}  />
+                        <ButtonForm name="Enviar Transaccion"  />
                     </div>
 
                 </form>

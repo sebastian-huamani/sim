@@ -17,11 +17,11 @@ class Lendings extends React.Component {
           <Navbar />
           <NavTop />
 
-          <div className='grid grid-cols-template gap-4 h-screen p-2 '>
+          <div className='sm:mt-0 mt-2 sm:grid block grid-cols-template gap-4 h-screen p-2 '>
             <div className='bg-white box-session'>
               <LendingData />
             </div>
-            <div className='max-h-97vh'>
+            <div className='max-h-97vh sm:mt-0 mt-4'>
               <LendingOptions />
             </div>
           </div>

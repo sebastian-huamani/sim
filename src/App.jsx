@@ -2,11 +2,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import './App.css';
 
-import Plantillas   from "./pages/DashBoard/Plantillas";
+import Plantillas from "./pages/DashBoard/Plantillas";
 import SettingsDash from "./pages/DashBoard/Settings";
-import Lendings     from "./pages/DashBoard/Lendings";
-import Perfil       from "./pages/DashBoard/Perfil";
-import Home         from "./pages/DashBoard/Home";
+import Lendings from "./pages/DashBoard/Lendings";
+import Perfil from "./pages/DashBoard/Perfil";
+import Home from "./pages/DashBoard/Home";
 
 import Tarjetas from "./pages/DashBoard/Card/Tarjetas";
 import CreateCard from "./pages/DashBoard/Card/CreateCard";
@@ -49,7 +49,7 @@ function App() {
               <Route path="/Home" element={<HomePage />} />
               <Route path="/Blog" element={<Blog />} />
               <Route path="/Blog/BlogA" element={<BlogA />} />
-              <Route path="*" element={<NotfoundPage />} />
+              <Route path="*" element={<HomePage />} />
             </Routes>
           </div>
 
