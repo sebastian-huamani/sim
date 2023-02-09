@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from "../../components/Navbar";
-import NavTop from "../../components/NavTop";
+import LendingsContext, { LendingsProvider } from "../../context/LendingsContext";
 import LendingOptions from "../../components/LendingOptions";
 import LendingData from "../../components/LendingData";
-import LendingsContext, { LendingsProvider } from "../../context/LendingsContext";
+import Navbar from "../../components/Navbar";
+import NavTop from "../../components/NavTop";
 
 class Lendings extends React.Component {
   constructor(props) {

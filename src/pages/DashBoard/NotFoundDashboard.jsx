@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from "../components/Navbar";
-import NavTop from "../components/NavTop";
+import Navbar from "../../components/Navbar";
+import NavTop from "../../components/NavTop";
 
 class NotFoundDashboard extends React.Component {
     constructor(props) {
@@ -28,4 +28,5 @@ class NotFoundDashboard extends React.Component {
         );
     }
 }
+
 export default NotFoundDashboard;

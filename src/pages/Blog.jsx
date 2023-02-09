@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavIndex from "../components/NavIndex";
+import Footer from '../components/LandingPage/Footer';
 
 class Blog extends React.Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class Blog extends React.Component {
               <p>y Organizado</p>
             </div>
           </div>
-
         </div>
 
 
@@ -31,10 +31,10 @@ class Blog extends React.Component {
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-x-2 border-gray-300 px-6 sm:px-16 '>
 
             <div className='text-justify  sm:text-left flex items-center '>
-              <p>
+              <div>
                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <p className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></p>
-              </p>
+               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+              </div>
             </div>
 
             <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
@@ -44,10 +44,10 @@ class Blog extends React.Component {
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-x-2 border-gray-300 px-6 sm:px-16 '>
 
             <div className='text-justify  sm:text-left flex items-center '>
-              <p>
+              <div>
                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <p className='w-full text-end mt-6'><NavLink to="/Blog/a">Leer</NavLink></p>
-              </p>
+               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+              </div>
             </div>
 
             <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
@@ -57,10 +57,10 @@ class Blog extends React.Component {
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-x-2 border-gray-300 px-6 sm:px-16 '>
 
             <div className='text-justify  sm:text-left flex items-center '>
-              <p>
+              <div>
                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <p className='w-full text-end mt-6'><NavLink to="/Blog/a">Leer</NavLink></p>
-              </p>
+               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+              </div>
             </div>
 
             <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
@@ -70,10 +70,10 @@ class Blog extends React.Component {
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-x-2 border-gray-300 px-6 sm:px-16 '>
 
             <div className='text-justify  sm:text-left flex items-center '>
-              <p>
+              <div>
                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <p className='w-full text-end mt-6'><NavLink to="/Blog/a">Leer</NavLink></p>
-              </p>
+               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+              </div>
             </div>
 
             <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
@@ -81,15 +81,7 @@ class Blog extends React.Component {
           </div>
         </div>
 
-        <footer className='mt-10 bg-black text-wheat h-18 p-3 w-full '>
-          <div className=' sm:w-3/5 md:w-4/5 h-full mx-auto grid grid-cols-5 justify-around items-center text-center'>
-            <NavLink to="/Home" className="hover:">Home</NavLink>
-            <NavLink to="/Blog">Blog</NavLink>
-            <NavLink to="/Login">Login</NavLink>
-            <NavLink to="/Register">Register</NavLink>
-            <NavLink to="/Contact">Contacto</NavLink>
-          </div>
-        </footer>
+       <Footer />
 
       </div>
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import Cards from "../../components/Cards";
-import Items from "../../components/ItemsHistoryCard";
-import Navbar from "../../components/Navbar";
-import NavTop from "../../components/NavTop";
-import CardData from "../../components/CardData";
-import ItemData from "../../components/ItemData";
-import CardContext, { CardProvider } from "../../context/CardContext";
-import CardChart from "../../components/CardChart";
+import CardContext, { CardProvider } from "../../../context/CardContext";
+import Items from "../../../components/ItemsHistoryCard";
+import CardChart from "../../../components/CardChart";
+import CardData from "../../../components/CardData";
+import ItemData from "../../../components/ItemData";
+import NavTop from "../../../components/NavTop";
+import Navbar from "../../../components/Navbar";
+import Cards from "../../../components/Cards";
 
 if (window.performance.navigation.type == 1) {
   sessionStorage.clear()

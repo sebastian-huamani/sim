@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from "../components/Navbar";
-import NavTop from "../components/NavTop";
-import { InputSpecial } from "../components/input/Inputs";
-import ButtonForm from '../components/buttons/ButtonForm';
+import Navbar from "../../components/Navbar";
+import NavTop from "../../components/NavTop";
+import { InputSpecial } from "../../components/input/Inputs";
+import ButtonForm from '../../components/buttons/ButtonForm';
 
 
 class Perfil extends React.Component {

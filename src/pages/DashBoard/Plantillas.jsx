@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from "../components/Navbar";
-import NavTop from "../components/NavTop";
-import TemplateList from "../components/TemplateList";
-import TemplateData from "../components/TemplateData";
-import TemplateContext, { TemplateProvider } from "../context/TemplateContext";
+import Navbar from "../../components/Navbar";
+import NavTop from "../../components/NavTop";
+import TemplateList from "../../components/TemplateList";
+import TemplateData from "../../components/TemplateData";
+import TemplateContext, { TemplateProvider } from "../../context/TemplateContext";
 
 class Plantillas extends React.Component{
     constructor(props){

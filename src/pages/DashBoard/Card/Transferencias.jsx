@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from "../../components/Navbar";
-import NavTop from "../../components/NavTop";
-import { ButtonLinkFixed } from "../../components/buttons/ButtonFixed";
-import { InputSimple } from '../../components/input/Inputs';
+import { ButtonLinkFixed } from "../../../components/buttons/ButtonFixed";
+import ButtonForm from '../../../components/buttons/ButtonForm';
+import { InputSimple } from '../../../components/input/Inputs';
 import { AiOutlineDollarCircle } from "react-icons/ai";
-import ButtonForm from '../../components/buttons/ButtonForm';
+import Navbar from "../../../components/Navbar";
+import NavTop from "../../../components/NavTop";
 
 
 import Swal from 'sweetalert2'

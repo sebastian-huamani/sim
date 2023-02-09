@@ -1,9 +1,9 @@
 import React from 'react';
-import Navbar from "../../components/Navbar";
-import NavTop from "../../components/NavTop";
-import ButtonForm from "../../components/buttons/ButtonForm";
-import { ButtonLinkFixed } from "../../components/buttons/ButtonFixed";
-import { InputSpecial, InputSpecialNumber } from "../../components/input/Inputs";
+import { InputSpecial, InputSpecialNumber } from "../../../components/input/Inputs";
+import { ButtonLinkFixed } from "../../../components/buttons/ButtonFixed";
+import ButtonForm from "../../../components/buttons/ButtonForm";
+import Navbar from "../../../components/Navbar";
+import NavTop from "../../../components/NavTop";
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'

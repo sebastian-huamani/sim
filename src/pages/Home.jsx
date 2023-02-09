@@ -1,110 +1,78 @@
-import React from 'react'
-import { NavLink } from "react-router-dom";
-import Box from "../components/Box";
-import Navbar from "../components/Navbar";
-import NavTop from "../components/NavTop";
-import IndicatorsChart from "../components/chart/IndicatorsChart";
-import MixedChart from "../components/chart/MixedChart";
-import BarChart from "../components/chart/BarChart";
-import { FiPlusCircle } from "react-icons/fi";
+import React from 'react';
+import Footer from '../components/LandingPage/Footer';
+import NavIndex from "../components/NavIndex";
 
-class Home extends React.Component {
+
+class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      full_credit: null,
-      aviable_credit: null,
-      full_debit: null,
-      aviable_debit: null,
-      full_lending: null,
-      dataLending: null,
-      dataxMonth: null,
-    }
-  }
-
-  componentDidMount() {
-    let key = localStorage.getItem('key');
-
-    const fetchPromise = fetch("https://financemeapi.com/api/transaction/count/DataDashboard", {
-      'headers': {
-        'Authorization': 'Bearer ' + key,
-      }
-    });
-
-    fetchPromise.then(response => {
-      return response.json();
-    }).then(res => {
-      console.log(res);
-      var res = res["msg"];
-      this.setState({
-        full_credit: res['full_credit'],
-        aviable_credit: res['aviable_credit'],
-        full_debit: res['full_debit'],
-        aviable_debit: res['aviable_debit'],
-        full_lending: res['full_lending'],
-        dataLending: res['dataLending'],
-        dataxMonth: res['dataxMonth'],
-      });
-    });
   }
 
   render() {
-    const { full_credit, aviable_credit, full_debit, full_lending, aviable_debit, dataxMonth, dataLending } = this.state;
-
-    var LandingsList = '';
-    if (dataLending != null) {
-      LandingsList = dataLending.map((item) => (
-        <li className='text-xs mt-1 p-1 flex justify-between items-center border-b'>
-          <div className='w-5 text-ellipsis'> {item.debtor} </div>
-          <div> S/. {item.amount} </div>
-          <div> {item.name} </div>
-        </li>
-      ));
-    }
-
     return (
-      <div>
 
-        <Navbar />
-        <NavTop />
-        <div className='p-2 h-screen md:pl-20 pl-0'>
+      <div className='bg-gradient-to-r from-black-scene to-white'>
+        <NavIndex />
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 bg-black-scene '>
-            <IndicatorsChart data={full_credit} name="Credito Total" title="Suma del Credito total" />
-            <IndicatorsChart data={aviable_credit} name="Credito Disponible" title="Credito disponible para uso" />
-            <IndicatorsChart data={full_debit} name="Debito Total" title="Debito total " />
-            <IndicatorsChart data={aviable_debit} name="Debito Disponible" title="Debito disponible" />
-            <IndicatorsChart data={full_lending} name="Prestamos Total" title="Prestamos" />
+        <div className='h-64 w-full relative'>
+
+          <img src="https://images.pexels.com/photos/3975590/pexels-photo-3975590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1260&dpr=1" alt="a" className='w-full relative h-full object-cover object-center pt-2 sm:px-12 px-6' />
+
+          <div className='absolute top-0 w-full h-full flex items-center justify-center text-white text-6xl'>
+            <div>
+              <p>Facil, Practico </p>
+              <p>y Organizado</p>
+            </div>
+          </div>
+        </div>
+
+        <div className='sm:mx-12 mx-6 mt-7 border-l-2 border-gray-300'>
+          <p className='text-center text-2xl'>¿Que Somos?</p>
+
+          <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between px-6 sm:px-16 '>
+
+            <p className='text-justify sm:text-left flex items-center order-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, consectetur at, fugiat nulla odit ea accusamus reiciendis, beatae aliquam sint cumque quis voluptatibus quisquam minima quam.</p>
+
+            <div className='order-1 bg-gray-800 h-64 mt-4 md:mt-0'>
+            </div>
+          </div>
+        </div>
+
+        <div className='sm:mx-12 mx-6 mt-10 '>
+          <p className='text-center text-2xl'>¿Que Podras Hacer?</p>
+
+          <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-r-2 border-gray-300 px-6 sm:px-16 '>
+
+            <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?</p>
+
+            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
+            </div>
           </div>
 
-          <div className="module">
-            <MixedChart data={dataxMonth} title="Historial por Mes" />
+          <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-r-2 border-gray-300 px-6 sm:px-16 '>
 
-            <div className='box'>
-              <div className='flex justify-between items-center'>
-                <p className='font-semibold'>Prestamos</p>
-                <NavLink to="/Dashboard/Prestamos" >
-                  <FiPlusCircle className='text-lg mr-1' />
-                </NavLink>
-              </div>
-              <ul className=''>
-                <li className='text-xs mt-1 p-1 flex justify-between items-center border-b'>
-                  <div> User </div>
-                  <div> Monto </div>
-                  <div> Estado </div>
-                </li>
-                <div className='overflow-x-hidden h-52'>
-                  {LandingsList}
-                </div>
-              </ul>
+            <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?</p>
+
+            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
+            </div>
+
+          </div>
+
+          <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-r-2 border-gray-300 px-6 sm:px-16 '>
+
+            <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?</p>
+
+            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
             </div>
           </div>
 
         </div>
-      </div>
 
+        <Footer />
+
+      </div>
 
     );
   }
 }
-export default Home;
+export default HomePage;

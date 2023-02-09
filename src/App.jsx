@@ -2,21 +2,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import './App.css';
 
-import Home from "./pages/Home";
-import Perfil from "./pages/Perfil";
-import Tarjetas from "./pages/Card/Tarjetas";
-import CreateCard from "./pages/Card/CreateCard";
-import Settings from "./pages/Card/Settings";
-import Transferencias from "./pages/Card/Transferencias";
-import Plantillas from "./pages/Plantillas";
-import NotFoundDashboard from "./pages/NotFoundDashboard";
+import Plantillas   from "./pages/DashBoard/Plantillas";
+import SettingsDash from "./pages/DashBoard/Settings";
+import Lendings     from "./pages/DashBoard/Lendings";
+import Perfil       from "./pages/DashBoard/Perfil";
+import Home         from "./pages/DashBoard/Home";
+
+import Tarjetas from "./pages/DashBoard/Card/Tarjetas";
+import CreateCard from "./pages/DashBoard/Card/CreateCard";
+import Settings from "./pages/DashBoard/Card/Settings";
+import Transferencias from "./pages/DashBoard/Card/Transferencias";
+import NotFoundDashboard from "./pages/DashBoard/NotFoundDashboard";
 import ProtectedRoute from "./security/ProtectedRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home";
 import Blog from "./pages/Blog";
-import SettingsDash from "./pages/Settings";
-import Lendings from "./pages/DashBoard/Lendings";
 import NotfoundPage from "./pages/NotfoundPage";
 import BlogA from "./pages/Blogs/BlogA";
 
