@@ -95,7 +95,6 @@ class Items extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res['msg']);
             this.setState({
                 done: res['res'],
                 items: res['msg'],
@@ -133,7 +132,7 @@ class Items extends React.Component {
         }
 
         return (
-            <div className='h-97vh grid grid-rows-1/9 gap-4'>
+            <div className='h-108 sm:h-97vh grid grid-rows-1/9 gap-4'>
                 <form onSubmit={this.handleSubmit} id="formData" className='px-4 flex justify-around rounded-lg bg-white shadow-md shadow-slate-500/20 items-center'>
 
                     <input type="month" name="month-year" id="month-year" min="2022-01" max={yearMonth} />
@@ -141,7 +140,7 @@ class Items extends React.Component {
                     <ButtonForm name="Go" />
                 </form>
 
-                <div className='overflow-y-auto h-full p-2 text-sm bg-white rounded-lg shadow-md shadow-slate-500/20 first:bg-red-300'>
+                <div className='overflow-y-auto h-full p-2 text-sm bg-white rounded-lg shadow-md shadow-slate-500/20 first:bg-red-300 '>
                     {
                         !done ? <Loading /> : JSON.parse(itemsList).map((item) => (
                             <Item data={item} key={item.id} />

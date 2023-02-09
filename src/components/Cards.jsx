@@ -42,7 +42,7 @@ class Cards extends React.Component {
         var { CardList } = this.context;
 
         return (
-            <div className='h-90vh'>
+            <div className='h-80 sm:h-90vh'>
                 <div className='my-4 flex justify-end text-center text-lg'>
                     <NavLink to="/Dashboard/CreateCard" >
                         <FiPlusCircle className='mx-3' />

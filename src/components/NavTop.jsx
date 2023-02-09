@@ -6,12 +6,12 @@ export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
 
     return (
-        <nav className="inline-block md:hidden w-full  bg-white shadow rounded-b-xl ">
+        <nav className="inline-block md:hidden w-full  bg-white shadow  ">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <a href="javascript:void(0)">
-                            <h2 className="text-2xl font-bold">LOGO</h2>
+                            <h2 className="text-2xl font-bold">Finance<span className='text-lime-600 font-bold'>Me</span> </h2>
                         </a>
                         <div className="md:hidden">
                             <button
@@ -28,30 +28,37 @@ export default function NavBar() {
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                                    to="/home">
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    to="/Dashboard/Home" title="Home">
                                     Home
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                                    to="/perfil">
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    to="/Dashboard/Perfil" title="Perfil">
                                     Perfil
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                                    to='/templates' >
-                                    Templates
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    to='/Dashboard/Templates' title="Plantillas">
+                                    Plantillas
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                                    to='/tarjetas' >
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    to='/Dashboard/Tarjetas' title="Tarjetas">
                                     Tarjetas    
+                                </NavLink>
+                            </li>
+                            <li className="text-gray-600 hover:text-blue-600">
+                                <NavLink
+                                     className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                     to='/Dashboard/Settings' title="Configuracion">
+                                    Configuracion    
                                 </NavLink>
                             </li>
                         </ul>

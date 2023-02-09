@@ -197,13 +197,13 @@ class Settings extends React.Component {
         if (idCard != null) {
             return (
                 <div className='md:pl-20 pl-0'>
-                    <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/Tarjetas" />
+                    <ButtonLinkFixed name="Volver" customClass='top-3 right-5 ' toLink="/Dashboard/Tarjetas" />
                     <Navbar />
                     <NavTop />
 
-                    <div className='grid grid-cols-settings gap-4 py-8 w-4/5 m-auto'>
+                    <div className=' sm:grid block grid-cols-settings gap-4 py-8 w-4/5 m-auto'>
                         <div>
-                            <div className='box sticky top-7'>
+                            <div className='box block sm:sticky top-7'>
                                 <p className='w-full text-center mb-3 text-xl font-bold'> Configuracion </p>
                                 <div className='grid gap-3 text-sm'>
                                     <div className='flex items-center'>
@@ -278,7 +278,7 @@ class Settings extends React.Component {
 
         return (
             <div className='md:pl-20 pl-0'>
-                <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/tarjetas" />
+                <ButtonLinkFixed name="Volver" customClass='top-3 right-5' toLink="/Dashboard/tarjetas" />
                 <Navbar />
                 <NavTop />
 

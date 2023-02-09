@@ -56,7 +56,6 @@ class CreateCard extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             const Toast = MySwal.mixin({
                 customClass: 'text-sm bg-none',
                 toast: true,
@@ -137,9 +136,9 @@ class CreateCard extends React.Component {
                 <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/tarjetas" />
                 <Navbar />
                 <NavTop />
-                <div className='h-screen grid grid-cols-settings gap-4 py-8 w-4/5 m-auto'>
+                <div className='sm:h-screen sm:grid block grid-cols-settings gap-4 py-8 w-4/5 m-auto'>
                     <div >
-                        <div className='box sticky top-7'>
+                        <div className='box block sm:sticky top-7'>
                             <p className='w-full text-center mb-3 text-xl font-bold'> Opciones </p>
                             <div className='grid gap-1 text-sm'>
                                 <button onClick={handleClickCredit} >Nueva Tarjeta de Credito</button>
@@ -183,7 +182,7 @@ class CreateCard extends React.Component {
 
                             {creditCode}
 
-                            <div className='w-full text-center mt-10 text-lg'>
+                            <div className='w-full text-center mt-10 mb-4 text-lg'>
                                 <ButtonForm name="Crear" />
                             </div>
                         </form>

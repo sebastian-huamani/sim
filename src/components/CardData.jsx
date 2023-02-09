@@ -13,7 +13,7 @@ class CardData extends React.Component {
     let dataJson = JSON.parse(this.context.dataCard)
     if (dataJson != null) {
       var data =  (
-        <div className='text-ellipsis overflow-y-auto h-full' key={dataJson.id}>
+        <div className=' h-full' key={dataJson.id}>
           <div className='text-xs mb-5'>
             <p className='font-bold'> Nombre:</p>
             <p> {dataJson.name} </p>

@@ -137,7 +137,7 @@ class LendingData extends React.Component {
 
         if (!edited && !create) {
             return (
-                <div className='h-screen'>
+                <div className='h-70vh sm:h-screen '>
                     {/* <FormCreateLending vision={showFormPanel} closePanel={hiddenPanel} /> */}
                     <NotData>
                         <button type='submit' className='btn mt-2' onClick={showCreateLending}>
@@ -161,7 +161,7 @@ class LendingData extends React.Component {
                         <InputSpecial type="text" name="amount" label="Monto" placeholder="S/ 0.00" />
                         <InputSpecial type="date" name="payment_date" label="Fecha de Pago"  />
 
-                        <div className='text-center mt-20'>
+                        <div className='text-center mt-20 mb-4'>
                             <ButtonForm name="Crear" />
                         </div>
                     </form>

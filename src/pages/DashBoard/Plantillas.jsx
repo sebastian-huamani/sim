@@ -18,12 +18,12 @@ class Plantillas extends React.Component{
             <Navbar />
             <NavTop />
     
-            <div className='grid grid-cols-template gap-4 h-screen p-2 '>
+            <div className='sm:grid block grid-cols-template gap-4 h-screen p-2 '>
               <div className='bg-white box-session'>
                 <TemplateData />
     
               </div>
-              <div className='max-h-97vh'>
+              <div className='max-h-97vh mt-4 sm:mt-0'>
                 <TemplateList />
               </div>
             </div>

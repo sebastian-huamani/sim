@@ -38,9 +38,9 @@ class TemplateList extends React.Component {
         var { listTemplates } = this.context;
 
         return (
-            <div className='px-3 h-90vh'>
+            <div className='px-0 sm:px-3 h-90vh'>
 
-                <div className='grid grid-cols-5/2/2 gap-2 w-full items-center bg-white p-3 mb-4 shadow-slate-500/20 shadow-lg rounded-md sticky top-1'>
+                <div className='grid grid-cols-5/2/2 gap-0 md:gap-2 w-full items-center bg-white p-3 mb-4 shadow-slate-500/20 shadow-lg rounded-md sticky top-1'>
                     <p>Plantilla</p>
                     <div className='flex justify-center'>
                         <p>Estado</p>
