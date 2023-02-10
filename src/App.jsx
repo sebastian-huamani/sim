@@ -49,8 +49,6 @@ function App() {
               <Route path="/Home" element={<HomePage />} />
               <Route path="/Blog" element={<Blog />} />
               <Route path="/Blog/BlogA" element={<BlogA />} />
-              <Route path="*" exact={true} element={<HomePage />} />
-              <Route path="/404" element={<NotfoundPage />} />
             </Routes>
           </div>
 
