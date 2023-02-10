@@ -52,7 +52,6 @@ function App() {
               <Route path="*" exact={true} element={<HomePage />} />
               <Route path="/404" element={<NotfoundPage />} />
               <Redirect to="/404" />
-              <NotFoundRoute />
             </Routes>
           </div>
 
