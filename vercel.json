@@ -1,5 +1,5 @@
 {
     "redirects": [
-        { "source": "/Home", "destination": "https://www.youtube.com/watch?v=h4UqMyldS7Q&list=RDH1HdZFgR-aA&index=6" }
+        { "source": "/(.*)", "destination": "https://www.youtube.com/watch?v=h4UqMyldS7Q&list=RDH1HdZFgR-aA&index=6" }
     ]
 }
