@@ -13,6 +13,6 @@
         { "source": "/Dashboard/Tarjetas/Settings", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Tarjetas/Transferencias", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/CreateCard", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Dashboard/Settings", "destination": "https://finance-me.vercel.app" },
+        { "source": "/Dashboard/Settings", "destination": "https://finance-me.vercel.app" }
     ]
 }
