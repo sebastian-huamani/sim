@@ -1,6 +1,6 @@
 {
     "redirects": [
         { "source": "/Home", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Blog", "destination": "https://finance-me.vercel.app/Blog" }
+        { "source": "/Blog", "destination": "https://finance-me.vercel.app" }
     ]
 }
