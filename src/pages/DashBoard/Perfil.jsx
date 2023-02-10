@@ -65,7 +65,7 @@ class Perfil extends React.Component {
         <Navbar />
         <NavTop />
 
-        <div className='sm:h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
+        <div className=' h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
 
           <div >
             <div className='box sticky top-7'>

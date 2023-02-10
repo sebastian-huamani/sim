@@ -28,35 +28,35 @@ export default function NavBar() {
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                     to="/Dashboard/Home" title="Home">
                                     Home
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                     to="/Dashboard/Perfil" title="Perfil">
                                     Perfil
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                     to='/Dashboard/Templates' title="Plantillas">
                                     Plantillas
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                    className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                     to='/Dashboard/Tarjetas' title="Tarjetas">
                                     Tarjetas    
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                     className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                                     className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                      to='/Dashboard/Settings' title="Configuracion">
                                     Configuracion    
                                 </NavLink>
