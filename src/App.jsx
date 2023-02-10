@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import './App.css';
 
@@ -51,7 +51,6 @@ function App() {
               <Route path="/Blog/BlogA" element={<BlogA />} />
               <Route path="*" exact={true} element={<HomePage />} />
               <Route path="/404" element={<NotfoundPage />} />
-              <Redirect to="/404" />
             </Routes>
           </div>
 
