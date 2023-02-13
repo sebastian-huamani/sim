@@ -95,8 +95,8 @@ class Register extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res);
             if (res['res']) {
-                console.log(res);
                 setTimeout("location.href='/Login'",4000)
                 Toast.fire({
                     icon: 'success',
