@@ -96,7 +96,7 @@ class Register extends React.Component {
             return response.json();
         }).then(res => {
             if (res['res']) {
-                console.log(res['res']);
+                console.log(res);
                 setTimeout("location.href='/Login'",4000)
                 Toast.fire({
                     icon: 'success',
@@ -185,7 +185,7 @@ class Register extends React.Component {
                             <input type="password" name="repassword" id="repassword" placeholder='*******' minLength="8" onChange={handleRePassword} defaultValue={repeatPassword} className={`outline-0 border-b-2 ${passwordsMatch ? 'border-b-green-500' : 'border-b-red-500'} `} required />
                         </label>
 
-                        <button type="submit" className='btn w-full mt-5'>Login</button>
+                        <button type="submit" className='btn w-full mt-5'>Register</button>
                     </form>
                 </div>
             </div>
