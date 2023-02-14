@@ -75,7 +75,6 @@ class Register extends React.Component {
     }
 
     CreateCount(name, lastname, email, password) {
-        var pass = false
         let key = localStorage.getItem('key');
         const formData = new FormData();
 
@@ -99,7 +98,7 @@ class Register extends React.Component {
             if (res['res']) {
                 Toast.fire({
                     icon: 'success',
-                    title: 'Cuenta Creada con Exito, Es hora de iniciar session'
+                    title: 'Cuenta Creada con Exito, Dirigete a Login e inicial session'
                 });
             } else {
                 Toast.fire({
