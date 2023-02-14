@@ -97,7 +97,6 @@ class Register extends React.Component {
         }).then(res => {
             console.log(res);
             if (res['res']) {
-                setTimeout("location.href='/Login'",4000)
                 Toast.fire({
                     icon: 'success',
                     title: 'Cuenta Creada con Exito, Es hora de iniciar session'
