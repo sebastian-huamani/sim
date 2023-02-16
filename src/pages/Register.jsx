@@ -30,7 +30,7 @@ class Register extends React.Component {
             password: '',
             repeatPassword: '',
             passwordsMatch: false,
-            createUser: true,
+            createUser: false,
         }
         this.handleName = this.handleName.bind(this);
         this.handleLastName = this.handleLastName.bind(this);
