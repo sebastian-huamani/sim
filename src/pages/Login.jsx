@@ -4,6 +4,22 @@ import NavIndex from "../components/NavIndex";
 import ButtonForm from "../components/buttons/ButtonForm";
 import { InputSimple } from "../components/input/Inputs";
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+    customClass: 'text-sm bg-none',
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 7000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', MySwal.stopTimer)
+        toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+});
 
 class Login extends React.Component {
     constructor(props) {
@@ -19,22 +35,33 @@ class Login extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
         const fetchPromise = fetch("https://financemeapi.com/api/login", {
             method: 'POST',
             body: new FormData(e.target)
         });
-
+        // Canela18*
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            this.setState({
-                done: res['res'],
-                msg: res['msg'],
-                token: res['access_token']
-            });
-            localStorage.setItem('key', res['access_token']);
-            localStorage.setItem('done', res['res']);
-        });
+            console.log(res);
+            if( res['res']){
+                this.setState({
+                    done: res['res'],
+                    msg: res['msg'],
+                    token: res['access_token']
+                });
+                localStorage.setItem('key', res['access_token']);
+                localStorage.setItem('done', res['res']);
+            } else{
+                console.log(res);
+                Toast.fire({
+                    icon: 'info',
+                    title: res['msg']
+                });
+            }
+
+        })
     }
 
     render() {
