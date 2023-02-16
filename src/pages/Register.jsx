@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import NavIndex from "../components/NavIndex";
+import { BiChevronDown } from "react-icons/bi";
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -98,7 +99,10 @@ class Register extends React.Component {
             if (res['res']) {
                 Toast.fire({
                     icon: 'success',
-                    title: 'Cuenta Creada con Exito, Dirigete a Login e inicial session'
+                    title: 'Cuenta Creada. Recuerda estar atento a tu correo electronico '
+                });
+                this.setState({
+                    createUser: true
                 });
             } else {
                 Toast.fire({
@@ -107,11 +111,11 @@ class Register extends React.Component {
                 });
                 console.log(res);
             }
-        }).catch( err => {
-                Toast.fire({
-                    icon: 'info',
-                    title: 'El correo ya esta en uso'
-                });
+        }).catch(err => {
+            Toast.fire({
+                icon: 'info',
+                title: 'El correo ya esta en uso'
+            });
         });
     }
 
@@ -147,45 +151,75 @@ class Register extends React.Component {
     }
 
     render() {
-        const { passwordsMatch, name, lastname, email, password, repeatPassword } = this.state;
+        const { passwordsMatch, name, lastname, email, password, repeatPassword, createUser } = this.state;
         const { handleName, handleLastName, handleEmail, handlePassword, handleRePassword, handleSubmit } = this;
 
         return (
             <div className='h-screen'>
                 <NavIndex />
-                <div className='h-4/5 flex justify-center items-center'>
-                    <form onSubmit={handleSubmit} id="formLogin" className='min-w-max w-1/4 bg-white flex flex-col items-center p-4 min-h-max mb-4 box-session'>
-                        <p className='text-3xl'>Register </p>
-                        <NavLink to="/Login" className="text-sm text-gray-600 underline mb-7">or login to account</NavLink>
+                <div className={` relative  ${createUser ? 'hidden' : 'block'}`}>
+                    <div className='static h-full sm:h-5/6 flex justify-evenly items-center pt-20'>
+                        <form onSubmit={handleSubmit} id="formLogin" className='min-w-max sm:w-1/4 w-3/4 flex flex-col items-center p-4 min-h-max mb-4 box-session'>
+                            <p className='text-3xl'>Register </p>
+                            <NavLink to="/Login" className="text-sm text-gray-600 underline mb-7">or login to account</NavLink>
 
-                        <label htmlFor="email" className='my-2 '>
-                            Name: <br />
-                            <input type="text" name="name" id="name" placeholder='name' autoComplete="off" onChange={handleName} defaultValue={name} className={`outline-0 border-b-2 ${name.length > 1 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
-                        </label>
+                            <label htmlFor="email" className='my-2 '>
+                                Name: <br />
+                                <input type="text" name="name" id="name" placeholder='name' autoComplete="off" onChange={handleName} defaultValue={name} className={`outline-0 border-b-2 ${name.length > 1 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
+                            </label>
 
-                        <label htmlFor="lastname" className='my-2 '>
-                            Last Name: <br />
-                            <input type="text" name="lastname" id="lastname" placeholder='lastname' autoComplete="off" onChange={handleLastName} defaultValue={lastname} className={`outline-0 border-b-2 ${lastname.length > 1 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
-                        </label>
+                            <label htmlFor="lastname" className='my-2 '>
+                                Last Name: <br />
+                                <input type="text" name="lastname" id="lastname" placeholder='lastname' autoComplete="off" onChange={handleLastName} defaultValue={lastname} className={`outline-0 border-b-2 ${lastname.length > 1 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
+                            </label>
 
-                        <label htmlFor="email" className='my-2'>
-                            Email: <br />
-                            <input type="email" name="email" id="email" placeholder='name@gmail.com' onChange={handleEmail} defaultValue={email} className={`outline-0 border-b-2 ${email.length > 5 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
-                        </label>
+                            <label htmlFor="email" className='my-2'>
+                                Email: <br />
+                                <input type="email" name="email" id="email" placeholder='name@gmail.com' onChange={handleEmail} defaultValue={email} className={`outline-0 border-b-2 ${email.length > 5 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
+                            </label>
 
-                        <label htmlFor="password" className='my-2'>
-                            Password: <br />
-                            <input type="password" name="password" id="password" placeholder='*******' minLength="8" onChange={handlePassword} defaultValue={password} className={`outline-0 border-b-2 ${password.length >= 8 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
-                        </label>
+                            <label htmlFor="password" className='my-2'>
+                                Password: <br />
+                                <input type="password" name="password" id="password" placeholder='*******' minLength="8" onChange={handlePassword} defaultValue={password} className={`outline-0 border-b-2 ${password.length >= 8 ? 'border-b-green-500' : 'border-b-red-500'} `} required />
+                            </label>
 
-                        <label htmlFor="repassword" className='my-2'>
-                            Repeat Password: <br />
-                            <input type="password" name="repassword" id="repassword" placeholder='*******' minLength="8" onChange={handleRePassword} defaultValue={repeatPassword} className={`outline-0 border-b-2 ${passwordsMatch ? 'border-b-green-500' : 'border-b-red-500'} `} required />
-                        </label>
+                            <label htmlFor="repassword" className='my-2'>
+                                Repeat Password: <br />
+                                <input type="password" name="repassword" id="repassword" placeholder='*******' minLength="8" onChange={handleRePassword} defaultValue={repeatPassword} className={`outline-0 border-b-2 ${passwordsMatch ? 'border-b-green-500' : 'border-b-red-500'} `} required />
+                            </label>
 
-                        <button type="submit" className='btn w-full mt-5'>Register</button>
-                    </form>
+                            <button type="submit" className='btn w-full mt-5'>Register</button>
+
+                        </form>
+
+                    </div>
+
+                    <div className='absolute h-4/5 w-full sm:w-108  flex justify-center items-start sm:items-center top-1 sm:top-20 '>
+                        <p className='bg-white px-3 py-5 rounded-full shadow-xl ' >Paso 1</p>
+                    </div>
                 </div>
+
+                <div className={`relative ${createUser ? 'block' : 'hidden'}`}>
+                    <div className='static h-full sm:h-5/6 flex flex-col justify-evenly items-center pt-20 sm:pt-8'>
+                        <div className='sm:w-1/4 w-3/4 bg-white p-4 min-h-max mb-4 box-session text-center'>
+                            Cuenta Creada!
+                            <p> Nos contactaremos contigo en menos de 24 horas a travez de tu correo registrado para confirmar tus datos. </p>
+                        </div>
+                        <BiChevronDown className='my-1 sm:my-4'/>
+                        <div className='sm:w-1/4 w-3/4 bg-white p-4 min-h-max mb-4 box-session'>
+                            <img src="https://i.pinimg.com/originals/97/56/c2/9756c2a05e2dd85309fe4b3bc5d62357.gif" alt="" />
+                        </div>
+                        <BiChevronDown className='my-1 sm:my-4'/>
+                        <div className='sm:w-1/4 w-3/4 bg-white p-4 min-h-max mb-4 box-session text-center'>
+                            Cuando se confirme tu cuenta podras ingresar a tu panel principal y usar todas nuestras funciones
+                        </div>
+                    </div>
+                    <div className='absolute h-4/5 w-full sm:w-108  flex justify-center items-start sm:items-center top-1 sm:top-20 '>
+                        <p className='bg-white px-3 py-5 rounded-full shadow-xl'>Paso 2</p>
+                    </div>
+                </div>
+
+
             </div>
 
         );

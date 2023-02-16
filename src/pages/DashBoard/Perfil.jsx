@@ -1,9 +1,26 @@
 import React from 'react';
+import { BiUserX, BiUserCheck } from "react-icons/bi";
+import ButtonForm from '../../components/buttons/ButtonForm';
+import { InputSpecial } from "../../components/input/Inputs";
 import Navbar from "../../components/Navbar";
 import NavTop from "../../components/NavTop";
-import { InputSpecial } from "../../components/input/Inputs";
-import ButtonForm from '../../components/buttons/ButtonForm';
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+  customClass: 'text-sm bg-none',
+  toast: true,
+  position: 'bottom-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', MySwal.stopTimer)
+    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+  }
+});
 
 class Perfil extends React.Component {
   constructor(props) {
@@ -13,6 +30,7 @@ class Perfil extends React.Component {
     });
 
     this.submitUpdateUser = this.submitUpdateUser.bind(this);
+    this.testsub = this.testsub.bind(this);
   }
 
   componentDidMount() {
@@ -55,17 +73,24 @@ class Perfil extends React.Component {
     });
   }
 
+  testsub() {
+    Toast.fire({
+      icon: 'info',
+      title: 'Plantilla no Encontrada'
+    });
+  }
+
   render() {
 
     const { data } = this.state;
-    const { submitUpdateUser } = this;
+    const { submitUpdateUser, testsub } = this;
 
     return (
       <div className='md:pl-20 pl-0'>
         <Navbar />
         <NavTop />
 
-        <div className=' h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
+        <div className=' sm:h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
 
           <div >
             <div className='box sticky top-7'>
@@ -114,6 +139,27 @@ class Perfil extends React.Component {
                 ))}
 
               </form>
+
+            </div>
+
+            <div className='box-session my-5 p-5'>
+
+              <p className='text-ellipsis text-center'>Si tu cuenta no esta verificada, se  te eviara un email a tu cuenta "{data.email}" en el cual se notificara si tu cuenta esta verificada. </p>
+              <div className='mt-4 text-center w-full mx-auto'>
+                {data.email_verified_at == null
+                  ?
+                  <div className='text-center'>
+                    <BiUserX className='text-8xl flex justify-center w-full' />
+                    <button type='submit' className='btn' disabled={false} onClick={testsub}>Cuenta Sin Verificar</button>
+                  </div>
+                  :
+                  <div className='text-center'>
+                    <BiUserCheck className='text-8xl flex justify-center w-full' />
+                    <button type='submit' className='btn' disabled={true}>Cuenta Verificada</button>
+                  </div>
+
+                }
+              </div>
 
             </div>
 
