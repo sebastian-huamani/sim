@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ redirectTo="/login"}) => {
+const ProtectedRoute = ({ redirectTo="/Login"}) => {
 
     let key = localStorage.getItem('key');
     if ( key == null || key === 'undefined'  ) {
