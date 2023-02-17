@@ -1,10 +1,11 @@
 import React from 'react';
-import { BiUserX, BiUserCheck } from "react-icons/bi";
+import { Navigate } from "react-router-dom";
 import ButtonForm from '../../components/buttons/ButtonForm';
 import { InputSpecial } from "../../components/input/Inputs";
-import Navbar from "../../components/Navbar";
-import NavTop from "../../components/NavTop";
+import { BiUserX, BiUserCheck } from "react-icons/bi";
 import { BsDot } from "react-icons/bs";
+import NavTop from "../../components/NavTop";
+import Navbar from "../../components/Navbar";
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -27,11 +28,13 @@ class Perfil extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      data: []
+      data: [],
+      done : false
     });
 
     this.submitUpdateUser = this.submitUpdateUser.bind(this);
     this.testsub = this.testsub.bind(this);
+    this.onClickLogout = this.onClickLogout.bind(this);
   }
 
   componentDidMount() {
@@ -81,17 +84,43 @@ class Perfil extends React.Component {
     });
   }
 
+  onClickLogout() {
+    let key = localStorage.getItem('key');
+    const fetchPromise = fetch("https://financemeapi.com/api/logout", {
+        method: 'POST',
+        'headers': {
+            'Content-Type': 'text/plain',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + key,
+        }
+    });
+
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(res => {
+        this.setState({
+            done: true,
+        });
+    });
+    localStorage.clear();
+    sessionStorage.clear();
+}
+
   render() {
 
-    const { data } = this.state;
-    const { submitUpdateUser, testsub } = this;
+    const { data, done } = this.state;
+    const { submitUpdateUser, testsub, onClickLogout } = this;
+
+    if (done) {
+        return <Navigate to={"/Login"} />
+    }
 
     return (
-      <div className='md:pl-20 pl-0'>
+      <div className='md:pl-20 pl-0 '>
         <Navbar />
         <NavTop />
 
-        <div className=' sm:h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
+        <div className=' md:h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
 
           <div >
             <div className='box sticky top-7'>
@@ -104,6 +133,10 @@ class Perfil extends React.Component {
                 <div className='flex items-center'>
                   <BsDot />
                   <a href="#Estado-De-Cuenta">Estado De Cuenta</a>
+                </div>
+                <div className='flex items-center md:hidden'>
+                  <BsDot />
+                  <a href="#Cerrar-Session">Cerrar Session</a>
                 </div>
               </div>
             </div>
@@ -169,6 +202,13 @@ class Perfil extends React.Component {
                 }
               </div>
 
+            </div>
+
+            <div className='block md:hidden box-session my-5 p-5' id='Cerrar-Session'>
+              <p className='text-ellipsis text-center'>Cerrar Session En Este Dispositivo</p>
+              <div className='mt-4 text-center w-full mx-auto'>
+                <button type='submit' className='btn' onClick={onClickLogout}>Cerrar Session</button>
+              </div>
             </div>
 
           </div>

@@ -43,7 +43,7 @@ class Navbar extends React.Component {
         var { done } = this.state
 
         if (done) {
-            return <Navigate to={"/login"} />
+            return <Navigate to={"/Login"} />
         }
 
         return (
