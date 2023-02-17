@@ -13,7 +13,7 @@ const Toast = MySwal.mixin({
     toast: true,
     position: 'bottom-end',
     showConfirmButton: false,
-    timer: 3000,
+    timer: 4000,
     timerProgressBar: true,
     didOpen: (toast) => {
         toast.addEventListener('mouseenter', MySwal.stopTimer)
@@ -92,7 +92,7 @@ class TemplateItem extends React.Component {
             } else {
                 Toast.fire({
                     icon: 'info',
-                    title: 'Plantilla no Encontrada'
+                    title: 'Plantilla en Uso'
                 });
             }
         })
