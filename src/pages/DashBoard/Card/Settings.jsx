@@ -208,18 +208,18 @@ class Settings extends React.Component {
                                 <div className='grid gap-3 text-sm'>
                                     <div className='flex items-center'>
                                         <BsDot />
-                                        <a href="#formCardUpdate">Cambiar Datos</a>
+                                        <a href="#Actualizar-Tarjeta">Actualizar Datos</a>
                                     </div>
                                     <div className='flex items-center'>
                                         <BsDot />
-                                        <a href="#delete">Eliminar Tarjeta</a>
+                                        <a href="#Suspender-Tarjeta">Suspender Tarjeta</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div >
-                            <form onSubmit={handleSubmitUpdate} id="formCardUpdate" className='box-session mb-8 pb-8'>
+                            <form onSubmit={handleSubmitUpdate} id="Actualizar-Tarjeta" className='box-session mb-8 pb-8'>
                                 <h1 className='text-center font-bold text-2xl'>Actualizar Datos</h1>
 
                                 <InputSpecial
@@ -259,7 +259,7 @@ class Settings extends React.Component {
 
                             </form>
 
-                            <div className='box-session mb-5 p-6' id='delete'>
+                            <div className='box-session mb-5 p-6' id='Suspender-Tarjeta'>
                                 <h1 className='text-center font-bold text-2xl'>Eliminar Tarjeta</h1>
                                 <p className='mt-4 text-sm text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ipsa quis molestiae fugit deleniti, alias odio voluptatum eveniet a soluta maxime ex atque consequatur, dolorem nostrum nulla eaque maiores non! </p>
 
