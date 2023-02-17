@@ -4,6 +4,7 @@ import ButtonForm from '../../components/buttons/ButtonForm';
 import { InputSpecial } from "../../components/input/Inputs";
 import Navbar from "../../components/Navbar";
 import NavTop from "../../components/NavTop";
+import { BsDot } from "react-icons/bs";
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -95,16 +96,22 @@ class Perfil extends React.Component {
           <div >
             <div className='box sticky top-7'>
               <p className='w-full text-center mb-5 text-xl font-bold'> Opciones</p>
-              <div className='grid gap-1 text-sm text-center'>
-                <a href="#my-data">Mis Datos</a>
-                <a href="#verify-account">Estado De Cuenta</a>
+              <div className='grid gap-3 text-sm'>
+                <div className='flex items-center'>
+                  <BsDot />
+                  <a href="#Mis-Datos">Mis Datos</a>
+                </div>
+                <div className='flex items-center'>
+                  <BsDot />
+                  <a href="#Estado-De-Cuenta">Estado De Cuenta</a>
+                </div>
               </div>
             </div>
           </div>
 
           <div>
 
-            <div className='box-session py-5' id='my-data'>
+            <div className='box-session py-5' id='Mis-Datos'>
               <h1 className='text-center mb-7 text-2xl font-bold'>Mis Datos</h1>
 
               <form id="dataUserForm" onSubmit={submitUpdateUser}>
@@ -143,7 +150,7 @@ class Perfil extends React.Component {
 
             </div>
 
-            <div className='box-session my-5 p-5' id='verify-account'>
+            <div className='box-session my-5 p-5' id='Estado-De-Cuenta'>
 
               <p className='text-ellipsis text-center'>Estado de tu cuenta</p>
               <div className='mt-4 text-center w-full mx-auto'>
