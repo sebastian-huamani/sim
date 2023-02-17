@@ -95,15 +95,16 @@ class Perfil extends React.Component {
           <div >
             <div className='box sticky top-7'>
               <p className='w-full text-center mb-5 text-xl font-bold'> Opciones</p>
-              <div className='grid gap-1 text-sm'>
-                <button>Mis Datos</button>
+              <div className='grid gap-1 text-sm text-center'>
+                <a href="#my-data">Mis Datos</a>
+                <a href="#verify-account">Estado De Cuenta</a>
               </div>
             </div>
           </div>
 
           <div>
 
-            <div className='box-session py-5'>
+            <div className='box-session py-5' id='my-data'>
               <h1 className='text-center mb-7 text-2xl font-bold'>Mis Datos</h1>
 
               <form id="dataUserForm" onSubmit={submitUpdateUser}>
@@ -142,9 +143,9 @@ class Perfil extends React.Component {
 
             </div>
 
-            <div className='box-session my-5 p-5'>
+            <div className='box-session my-5 p-5' id='verify-account'>
 
-              <p className='text-ellipsis text-center'>Si tu cuenta no esta verificada, se  te eviara un email a tu cuenta "{data.email}" en el cual se notificara si tu cuenta esta verificada. </p>
+              <p className='text-ellipsis text-center'>Estado de tu cuenta</p>
               <div className='mt-4 text-center w-full mx-auto'>
                 {data.email_verified_at == null
                   ?
