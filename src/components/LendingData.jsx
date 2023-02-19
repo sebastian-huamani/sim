@@ -8,7 +8,6 @@ import FormCreateLending from "./FormCreateLending";
 import ButtonForm from './buttons/ButtonForm';
 import Loading from "./Loading";
 import { ButtonActionAbsolute } from './buttons/ButtonFixed';
-import moment from 'moment';
 
 class LendingData extends React.Component {
     constructor(props) {
@@ -46,8 +45,6 @@ class LendingData extends React.Component {
             return response.json();
         }).then(res => {
             this.context.updateListDesactive(res['msg']);
-        }).catch(error => {
-            console.log('error');
         });
     }
 
@@ -64,8 +61,6 @@ class LendingData extends React.Component {
             return response.json();
         }).then(res => {
             this.context.updateListActive(res['msg']);
-        }).catch(error => {
-            console.log('error');
         });
     }
 
@@ -158,8 +153,10 @@ class LendingData extends React.Component {
                         <p className='text-center text-2xl font-semibold mb-20'>Nuevo Prestamo</p>
                         
                         <InputSpecial type="text" name="debtor" label="Deudor" placeholder="deudor" />
-                        <InputSpecial type="text" name="amount" label="Monto" placeholder="S/ 0.00" />
-                        <InputSpecial type="date" name="payment_date" label="Fecha de Pago"  />
+                        <InputSpecial type="number" name="amount" label="Monto" placeholder="S/ 0.00" />
+                        <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio"  />
+
+                        <InputSpecial type="date" name="payment_date_lending" label="Fecha de Pago"  />
 
                         <div className='text-center mt-20 mb-4'>
                             <ButtonForm name="Crear" />
@@ -182,11 +179,12 @@ class LendingData extends React.Component {
                                 <input type="hidden" name="id" defaultValue={item.id} />
                                 <InputSpecial type="text" name="debtor" label="Deudor" value={item.debtor} />
                                 <InputSpecial type="text" name="amount" label="Monto" value={item.amount} />
-                                <InputSpecial type="date" name="payment_date" label="Fecha de Pago" value={Moment(item.payment_date).format('YYYY-MM-DD')} />
+                                <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio" value={Moment(item.created_date_lending).format('YYYY-MM-DD')} />
+                                <InputSpecial type="date" name="payment_date_lending" label="Fecha de Pago" value={Moment(item.payment_date_lending).format('YYYY-MM-DD')} />
                             </div>
 
                             <div className=''>
-                                <TimeLineChart inicio={item.created_at} fin={item.payment_date} />
+                                <TimeLineChart inicio={item.created_date_lending} fin={item.payment_date_lending}/>
                             </div>
 
                             {/* <div className='pl-3 mt-2'>
@@ -209,11 +207,11 @@ class LendingData extends React.Component {
                                         }
                                     </div>
                                 </ul>
-                            </div> */}
+                            </div> */}  
 
                             {
                                 currentItemEdited.state_id == 1 ?
-                                    <div className='flex justify-evenly items-center mt-10'>
+                                    <div className='flex justify-evenly items-center my-2'>
                                         <ButtonForm name="Guardar" />
                                         <ButtonForm name="Finalizar" actionButton={closeLending} />
                                     </div> : ""
