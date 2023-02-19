@@ -30,16 +30,13 @@ class LendingsActive extends React.Component {
             done : res['res']
           });
            
-        }).catch(err => {
-          console.log(err, "err");
-        })
+        });
       }
 
 
     render() {
         const { done } = this.state;
         const { listActive } = this.context;
-        console.log(listActive);
 
         if(listActive == "Se Ha Producido Un Error" ){
             return (

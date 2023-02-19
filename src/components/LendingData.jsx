@@ -78,7 +78,6 @@ class LendingData extends React.Component {
         fetchPromise.then(response => {
             return response.json()
         }).then(res => {
-            console.log(res);
             this.context.updateItemEditing(res['lending']);
             this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
         });
