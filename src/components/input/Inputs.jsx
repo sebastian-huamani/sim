@@ -15,7 +15,7 @@ export const InputSpecial = ({ type, name, placeholder, label, value, disabled =
     return (
         <label htmlFor={name} className='grid my-6 w-full justify-center' >
             {label} :<br />
-            <input type={type} name={name} id={name} placeholder={placeholder} className='text-center font-normal border-b-2' defaultValue={value} autoComplete="off" disabled={disabled} />
+            <input type={type} name={name} step='0.01' id={name} placeholder={placeholder} className='text-center font-normal border-b-2' defaultValue={value} autoComplete="off" disabled={disabled} />
         </label>
     )
 }
