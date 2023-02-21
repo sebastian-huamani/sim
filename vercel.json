@@ -7,7 +7,7 @@
         { "source": "/Blog/Categorias", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Home", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Perfil", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Dashboard/Plantillas", "destination": "https://finance-me.vercel.app" },
+        { "source": "/Dashboard/Plantilla", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Prestamos", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Tarjetas", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Tarjetas/Configuracion", "destination": "https://finance-me.vercel.app" },
