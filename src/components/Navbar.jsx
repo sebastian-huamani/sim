@@ -73,7 +73,7 @@ class Navbar extends React.Component {
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/Templates' title="Plantillas">
+                            to='/Dashboard/Plantilla' title="Plantillas">
                             <FaFileContract />
                         </NavLink>
                     </li>
@@ -90,12 +90,12 @@ class Navbar extends React.Component {
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/Settings' title="Configuracion">
+                            to='/Dashboard/Configuracion' title="Configuracion">
                             <AiFillSetting />
                         </NavLink>
                     </li>
                     <li>
-                        <button type="submit" title="exit" onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")} aria-label="Close" aria-details="test">
+                        <button type="submit" title="salir" onClick={onClickLogout} className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")} aria-label="Close" aria-details="test">
                             <HiLogout />
                         </button>
                     </li>
