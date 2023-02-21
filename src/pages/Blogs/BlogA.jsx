@@ -19,15 +19,19 @@ class BlogA extends React.Component {
                 </div>
 
                 <div className='sm:mx-12 mx-6 mt-10 '>
-                    <p className='text-center text-2xl'>¿Que Podras Hacer?</p>
+                    <p className='text-center text-2xl'>¿Para que sirve?</p>
 
                     <div className='mt-6 border-l-2 border-gray-300 px-6 sm:px-16 '>
                         <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat accusamus asperiores, perspiciatis expedita ipsum provident consectetur minima, quo reiciendis quia rem perferendis? Id explicabo qui autem minima distinctio ab, repellat eius laborum totam quaerat amet, hic officiis consequuntur odio dolores quae nemo molestiae deleniti illo non sed velit unde. Expedita quas magni dolorum, aliquam minus consequatur obcaecati mollitia quibusdam consectetur.</p>
                     </div>
 
+                    <p className='text-center text-2xl'>¿Como crear una?</p>
+
                     <div className='mt-6 border-l-2 border-gray-300 px-6 sm:px-16 '>
                         <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam fuga molestiae nihil exercitationem, omnis nulla animi tenetur eius id dicta ratione est ducimus, obcaecati unde aliquid quod aliquam, magni odio eveniet quasi nam minima possimus repellendus sed? Temporibus recusandae ullam maxime quidem suscipit aut accusantium voluptatem, minima asperiores. Quam vel, nesciunt odit alias nemo consequatur deserunt beatae atque dolor! Error sunt quos pariatur tempore, laudantium vitae, esse ut id, at dolorum quidem! Voluptatibus eum, praesentium dolorum quo nobis vitae quam sint aut numquam assumenda ipsa quia delectus. Beatae, facilis. Autem, illo sapiente voluptate velit quas magni perspiciatis ut tempore blanditiis.</p>
                     </div>
+
+                    <p className='text-center text-2xl'>¿Como mantener la organizacion?</p>
 
                     <div className='mt-6 border-l-2 border-gray-300 px-6 sm:px-16 '>
                         <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat accusamus asperiores, perspiciatis expedita ipsum provident consectetur minima, quo reiciendis quia rem perferendis? Id explicabo qui autem minima distinctio ab, repellat eius laborum totam quaerat amet, hic officiis consequuntur odio dolores quae nemo molestiae deleniti illo non sed velit unde. Expedita quas magni dolorum, aliquam minus consequatur obcaecati mollitia quibusdam consectetur.</p>

@@ -31,10 +31,9 @@ class HomePage extends React.Component {
 
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between px-6 sm:px-16 '>
 
-            <p className='text-justify sm:text-left flex items-center order-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, consectetur at, fugiat nulla odit ea accusamus reiciendis, beatae aliquam sint cumque quis voluptatibus quisquam minima quam.</p>
+            <p className='text-justify sm:text-left flex items-center order-2'>Una solucion a los problemas de organizacion monetaria. Aqui podras tener un registro de cualquier transaccion, categorizar y mejorar tus finanzas mes a me.</p>
 
-            <div className='order-1 bg-gray-800 h-64 mt-4 md:mt-0'>
-            </div>
+            <img src="https://i.pinimg.com/originals/8b/38/1e/8b381ed9c51d957f8bfeb898497a45aa.gif" alt="" className='order-1 h-64 mt-4 md:mt-0'/>
           </div>
         </div>
 
@@ -43,27 +42,25 @@ class HomePage extends React.Component {
 
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-r-2 border-gray-300 px-6 sm:px-16 '>
 
-            <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?</p>
+            <p className='text-justify  sm:text-left flex items-center '>Podras crear plantillas personalizadas para separar y organizar cualquier transaccion.</p>
 
-            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
-            </div>
+            <img src="https://images.pexels.com/photos/6441572/pexels-photo-6441572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className='h-48 mt-4 md:mt-0 w-full object-cover object-top' />
           </div>
 
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-r-2 border-gray-300 px-6 sm:px-16 '>
 
-            <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?</p>
+            <p className='text-justify  sm:text-left flex items-center '>Tendras informacion interactiva gracias a los graficos y reportes que podras generar.</p>
 
-            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
-            </div>
+            <img src="https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className='h-48 mt-4 md:mt-0 w-full object-cover object-top' />
 
           </div>
 
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-r-2 border-gray-300 px-6 sm:px-16 '>
 
-            <p className='text-justify  sm:text-left flex items-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?</p>
+            <p className='text-justify  sm:text-left flex items-center '>Lograras facilmente darle seguimiento a tus ingresos y egresos todo el tiempo.</p>
 
-            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
-            </div>
+            <img src='https://images.pexels.com/photos/6079199/pexels-photo-6079199.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='' className=' object-cover w-full bg-gray-800 h-48 mt-4 md:mt-0'>
+            </img>
           </div>
 
         </div>

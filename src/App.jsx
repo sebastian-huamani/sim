@@ -48,7 +48,7 @@ function App() {
               <Route path="/Register" element={<Register />} />
               <Route path="/Home" element={<HomePage />} />
               <Route path="/Blog" element={<Blog />} />
-              <Route path="/Blog/BlogA" element={<BlogA />} />
+              <Route path="/Blog/Categorias" element={<BlogA />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
           </div>
