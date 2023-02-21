@@ -4,15 +4,15 @@
         { "source": "/Register", "destination": "https://finance-me.vercel.app" },
         { "source": "/Home", "destination": "https://finance-me.vercel.app" },
         { "source": "/Blog", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Blog/BlogA", "destination": "https://finance-me.vercel.app" },
+        { "source": "/Blog/Categorias", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Home", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Perfil", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Dashboard/Templates", "destination": "https://finance-me.vercel.app" },
+        { "source": "/Dashboard/Plantillas", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Prestamos", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Tarjetas", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Dashboard/Tarjetas/Settings", "destination": "https://finance-me.vercel.app" },
+        { "source": "/Dashboard/Tarjetas/Configuracion", "destination": "https://finance-me.vercel.app" },
         { "source": "/Dashboard/Tarjetas/Transferencias", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Dashboard/CreateCard", "destination": "https://finance-me.vercel.app" },
-        { "source": "/Dashboard/Settings", "destination": "https://finance-me.vercel.app" }
+        { "source": "/Dashboard/Crear-Nueva-Tarjeta", "destination": "https://finance-me.vercel.app" },
+        { "source": "/Dashboard/Configuracion", "destination": "https://finance-me.vercel.app" }
     ]
 }

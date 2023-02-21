@@ -117,14 +117,14 @@ class TemplateItem extends React.Component {
 
                     <div className='flex justify-end text-xl relative'>
                         <div>
-                            <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickEdit} id={this.props.id}></button>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickEdit} id={this.props.id} title="Editar Item"></button>
                             <div className='mr-4'>
                                 <BiEdit />
                             </div>
                         </div>
 
                         <div>
-                            <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickTrash} id={this.props.id}></button>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' onClick={handleClickTrash} id={this.props.id} title='Eliminar Item'></button>
                             <div className='mr-2'>
                                 <BiTrash />
                             </div>
