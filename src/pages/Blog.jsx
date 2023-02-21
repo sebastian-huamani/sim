@@ -32,8 +32,21 @@ class Blog extends React.Component {
 
             <div className='text-justify  sm:text-left flex items-center '>
               <div>
-               Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+                <h1 className='font-semibold text-lg'>Plantillas</h1>
+                Como crear una? Para que sirve? Como mantener la organizacion? y mas respuestas sobre las plantillas
+                <div className='w-full text-end mt-6'><NavLink to="/Blog/Categorias" className=' border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
+              </div>
+            </div>
+
+            <img src="https://i.pinimg.com/564x/9e/6d/88/9e6d88f51393c2bfa67447454fa01641.jpg" alt="" className='w-full object-cover object-center h-48 mt-4 md:mt-0' />
+          </div>
+
+          <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-x-2 border-gray-300 px-6 sm:px-16 '>
+
+            <div className='text-justify  sm:text-left flex items-center '>
+              <div>
+                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?
+                <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA" className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
               </div>
             </div>
 
@@ -45,8 +58,8 @@ class Blog extends React.Component {
 
             <div className='text-justify  sm:text-left flex items-center '>
               <div>
-               Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?
+                <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA" className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
               </div>
             </div>
 
@@ -58,21 +71,8 @@ class Blog extends React.Component {
 
             <div className='text-justify  sm:text-left flex items-center '>
               <div>
-               Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
-              </div>
-            </div>
-
-            <div className=' bg-gray-800 h-48 mt-4 md:mt-0'>
-            </div>
-          </div>
-
-          <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between border-x-2 border-gray-300 px-6 sm:px-16 '>
-
-            <div className='text-justify  sm:text-left flex items-center '>
-              <div>
-               Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam? 
-               <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA">Leer</NavLink></div>
+                Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?
+                <div className='w-full text-end mt-6'><NavLink to="/Blog/BlogA" className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
               </div>
             </div>
 
@@ -81,7 +81,7 @@ class Blog extends React.Component {
           </div>
         </div>
 
-       <Footer />
+        <Footer />
 
       </div>
 
