@@ -32,14 +32,14 @@ function App() {
               <Route element={<ProtectedRoute />} >
                 <Route path="/Dashboard/Home" element={<Home />} />
                 <Route path="/Dashboard/Perfil" element={<Perfil />} />
-                <Route path="/Dashboard/Templates" element={<Plantillas />} />
+                <Route path="/Dashboard/Plantilla" element={<Plantillas />} />
                 <Route path="/Dashboard/Prestamos" element={<Lendings />} />
 
                 <Route path="/Dashboard/Tarjetas" element={<Tarjetas />} />
-                <Route path="/Dashboard/Tarjetas/Settings" element={<Settings />} />
+                <Route path="/Dashboard/Tarjetas/Configuracion" element={<Settings />} />
                 <Route path="/Dashboard/Tarjetas/Transferencias" element={<Transferencias />} />
-                <Route path="/Dashboard/CreateCard" element={<CreateCard />} />
-                <Route path="/Dashboard/Settings" element={<SettingsDash />} />
+                <Route path="/Dashboard/Crear-Nueva-Tarjeta" element={<CreateCard />} />
+                <Route path="/Dashboard/Configuracion" element={<SettingsDash />} />
 
                 <Route path="/Dashboard/*" element={<NotFoundDashboard />} />
               </Route>

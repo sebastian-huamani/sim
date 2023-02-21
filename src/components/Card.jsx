@@ -64,7 +64,7 @@ class Card extends React.Component {
 
                         <div className='bottom-card relative'>
                             <div>
-                                <NavLink type="submit" to="/Dashboard/Tarjetas/Settings" className='absolute h-8 w-4 mr-4' onClick={this.handleClickSettings} id={dataItem.id} title="Settings Card"></NavLink>
+                                <NavLink type="submit" to="/Dashboard/Tarjetas/Configuracion" className='absolute h-8 w-4 mr-4' onClick={this.handleClickSettings} id={dataItem.id} title="Settings Card"></NavLink>
                                 <div className='mr-4'>
                                     <IoSettingsSharp />
                                 </div>

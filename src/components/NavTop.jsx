@@ -43,7 +43,7 @@ export default function NavBar() {
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
                                     className={({ isActive }) => (isActive ? "text-slate-600" : "")}
-                                    to='/Dashboard/Templates' title="Plantillas">
+                                    to='/Dashboard/Plantilla' title="Plantillas">
                                     Plantillas
                                 </NavLink>
                             </li>
@@ -57,7 +57,7 @@ export default function NavBar() {
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
                                      className={({ isActive }) => (isActive ? "text-slate-600" : "")}
-                                     to='/Dashboard/Settings' title="Configuracion">
+                                     to='/Dashboard/Configuracion' title="Configuracion">
                                     Configuracion    
                                 </NavLink>
                             </li>

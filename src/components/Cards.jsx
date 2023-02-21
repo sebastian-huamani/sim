@@ -44,7 +44,7 @@ class Cards extends React.Component {
         return (
             <div className='h-80 sm:h-90vh'>
                 <div className='my-4 flex justify-end text-center text-lg'>
-                    <NavLink to="/Dashboard/CreateCard" >
+                    <NavLink to="/Dashboard/Crear-Nueva-Tarjeta" >
                         <FiPlusCircle className='mx-3' />
                     </NavLink>
                 </div>
