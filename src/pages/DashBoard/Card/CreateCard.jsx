@@ -162,7 +162,7 @@ class CreateCard extends React.Component {
                             <InputSpecialNumber
                                 name="bottom_line"
                                 placeholder="S/. 0"
-                                label="Cantidad de la Tarjeta"
+                                label="Linea de la Tarjeta"
                                 step={0.01}
                             />
 
