@@ -54,7 +54,7 @@ class Card extends React.Component {
                         <div className='top-card'>
 
                             <div className='flex justify-between w-full'>
-                                <p>{dataItem.name_banck}</p>
+                                <p>{dataItem.name}</p>
                                 <p>{dataItem.type_card}</p>
                             </div>
 
