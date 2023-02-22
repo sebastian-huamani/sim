@@ -54,7 +54,7 @@ class Cards extends React.Component {
                     {!done ? <Loading /> : (items.length == 0 ?
                         <NotData >
                             <div className='mt-2' >
-                                <NavLink  className='btn' to="/Dashboard/CreateCard">
+                                <NavLink  className='btn' to="/Dashboard/Crear-Nueva-Tarjeta">
                                     Crear Una Tarjeta 
                                 </NavLink>
                             </div>
