@@ -9,6 +9,7 @@ class TimeLineChart extends React.Component {
 
   render() {
     const { inicio ,fin } = this.props;
+    console.log(new Date());
 
     // console.log("inicio" ,Moment(inicio).format('YYYY-MM-DD'));
     // console.log("fin" ,Moment(fin).format('YYYY-MM-DD'));
@@ -35,7 +36,7 @@ class TimeLineChart extends React.Component {
             x: 'Prestamo',
             y: [
               new Date(Moment(inicio).format('YYYY-MM-DD')).getTime(),
-              new Date('2023-04-12').getTime()
+              new Date().getTime()
             ]
           },
           {
