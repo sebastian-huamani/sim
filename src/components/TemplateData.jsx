@@ -54,6 +54,7 @@ class TemplateData extends React.Component {
     fetchPromise.then(response => {
       return response.json();
     }).then(res => {
+      console.log(res);
       this.setState({
         done: res['res'],
         items: res['msg']
@@ -125,6 +126,7 @@ class TemplateData extends React.Component {
           title: 'Plantilla Agregada a tu Lista'
         });
         this.context.saveUpdateTemplate();
+        this.updateData();
       } else {
         Toast.fire({
           icon: 'info',
@@ -133,8 +135,7 @@ class TemplateData extends React.Component {
       }
 
     });
-
-    this.updateData();
+    
 
 
   }
