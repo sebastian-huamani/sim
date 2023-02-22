@@ -230,7 +230,7 @@ class Settings extends React.Component {
                                 />
 
                                 <InputSpecialNumber
-                                    name="bottom_line"
+                                    name="amount"
                                     label="Cantidad de la Tarjeta"
                                     step={0.01}
                                     value={data.amount}
