@@ -133,7 +133,7 @@ class CreateCard extends React.Component {
 
         return (
             <div className='md:pl-20 pl-0'>
-                <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/tarjetas" />
+                <ButtonLinkFixed name="Volver" customClass='top-5 right-5' toLink="/Dashboard/Tarjetas" />
                 <Navbar />
                 <NavTop />
                 <div className='sm:h-screen sm:grid block grid-cols-settings gap-4 py-8 w-4/5 m-auto'>
