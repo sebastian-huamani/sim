@@ -27,11 +27,14 @@ class HomePage extends React.Component {
         </div>
 
         <div className='sm:mx-12 mx-6 mt-7 border-l-2 border-gray-300'>
-          <p className='text-center text-2xl'>¿Que Somos?</p>
+          <p className='text-center text-2xl'>El Problema</p>
 
           <div className='mt-6 sm:block  md:grid grid-cols-2 gap-32 justify-between px-6 sm:px-16 '>
 
-            <p className='text-justify sm:text-left flex items-center order-2'>Una solucion a los problemas de organizacion monetaria. Aqui podras tener un registro de cualquier transaccion, categorizar y mejorar tus finanzas mes a me.</p>
+            <p className='text-justify sm:text-left flex items-center order-2'>Cansado de que no te cuadre las cuentas?, de que al revisar esas transacciones halla algo que no recuerdes? o aun que aun peor que desaparesca el papel deonde anotaste esas cuentas y todo de cero nuevamente.
+            <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, ut.
+             </p>
 
             <img src="https://i.pinimg.com/originals/8b/38/1e/8b381ed9c51d957f8bfeb898497a45aa.gif" alt="" className='order-1 h-64 mt-4 md:mt-0'/>
           </div>
