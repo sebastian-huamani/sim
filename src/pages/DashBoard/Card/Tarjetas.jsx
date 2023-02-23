@@ -29,8 +29,8 @@ class Tarjetas extends React.Component {
             <div className='max-h-97vh'>
               <Cards />
             </div>
-            <div className=' mt-14 sm:mt-0 grid grid-rows-60-40 gap-4  '>
-              <div className='block sm:grid grid-cols-2/3  gap-4 '>
+            <div className=' mt-14 sm:mt-0 grid grid-rows-60-40 gap-2'>
+              <div className='block sm:grid grid-cols-2/3 gap-4 '>
                 
                 <div className='box-session mt-5 sm:mt-0  '>
                   <div className='w-full bg-gray-400 text-center text-sm '>
