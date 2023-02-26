@@ -36,7 +36,6 @@ class FormCreateItem extends React.Component {
         this.handleCloseForm = this.handleCloseForm.bind(this);
         this.SendingFormCreate = this.SendingFormCreate.bind(this);
         this.updateCardsList = this.updateCardsList.bind(this);
-        this.handleTest = this.handleTest.bind(this);
     }
 
     componentDidMount() {
@@ -118,7 +117,6 @@ class FormCreateItem extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             Toast.fire({
                 icon: 'success',
                 title: res['msg']
@@ -134,10 +132,6 @@ class FormCreateItem extends React.Component {
         });
         
         
-    }
-
-    handleTest() {
-        console.log('test');
     }
 
     render() {
