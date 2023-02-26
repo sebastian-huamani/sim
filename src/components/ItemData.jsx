@@ -150,6 +150,7 @@ class ItemData extends React.Component {
         var idItem = this.context.idItemSelected;
         let itemselected;
 
+        
         if (items != null) {
             items.map((item) => {
                 if (item.id == idItem) {
@@ -157,7 +158,8 @@ class ItemData extends React.Component {
                 }
             });
         }
-
+        
+        console.log([itemselected]);
         if (itemselected != null) {
             var data = [itemselected].map((item) => (
                 <div className='text-ellipsis overflow-y-auto h-full text-sm' key={item.id}>
@@ -170,7 +172,7 @@ class ItemData extends React.Component {
 
                     <div className='text-center mb-6 mt-4'>
                         <p className='font-semibold text-base'>{item.title}</p>
-                        <p className='text-xs'>Numero de Operacion: 123.3246.123.12</p>
+                        <p className='text-xs'>Numero de Operacion: 123.3246.123.{item.id}</p>
                     </div>
                     <form id="editItemOfCount" onSubmit={handleSubmitForm} className='w-4/6 mx-auto mt-10'>
 
@@ -183,7 +185,7 @@ class ItemData extends React.Component {
                             <InputLine
                                 key={item[0]}
                                 label={item[0]}
-                                type={this.validateTypeValue(item[1])}
+                                type={item[2]}
                                 name={item[0]}
                                 placeholder={item[1]}
                                 value={item[1]}
