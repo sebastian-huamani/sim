@@ -134,7 +134,6 @@ class ItemData extends React.Component {
         }).then(res => {
             this.updateCards();
             this.updateHistory();
-            console.log(res);
         }).catch(error => {
             console.log(error);
         });
@@ -159,7 +158,6 @@ class ItemData extends React.Component {
             });
         }
         
-        console.log([itemselected]);
         if (itemselected != null) {
             var data = [itemselected].map((item) => (
                 <div className='text-ellipsis overflow-y-auto h-full text-sm' key={item.id}>
