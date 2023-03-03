@@ -41,15 +41,18 @@ function App() {
                 <Route path="/Dashboard/Crear-Nueva-Tarjeta" element={<CreateCard />} />
                 <Route path="/Dashboard/Configuracion" element={<SettingsDash />} />
 
-                <Route path="/Dashboard/*" element={<NotFoundDashboard />} />
+                <Route path="/Dashboard/Blogs" element={<Blog />} />
+
+                <Route path="/Dashboard/*" element={<Home />} />
               </Route>
 
               <Route path="/Login" element={<Login />} />
-              <Route path="/Register" element={<Register />} />
-              <Route path="/Home" element={<HomePage />} />
+              <Route path="*" element={<Home />} />
+              {/* <Route path="/Register" element={<Register />} /> */}
+              {/* <Route path="/Home" element={<HomePage />} />
               <Route path="/Blog" element={<Blog />} />
               <Route path="/Blog/Categorias" element={<BlogA />} />
-              <Route path="*" element={<HomePage />} />
+              <Route path="*" element={<Home />} /> */}
             </Routes>
           </div>
 

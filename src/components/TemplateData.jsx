@@ -212,6 +212,26 @@ class TemplateData extends React.Component {
                 </div>
 
                 <div className='overflow-y-auto h-72' id='asdasd'>
+
+                  <div className='grid grid-cols-2/5/2 gap-4 w-9/12 mx-auto mb-4 text-gray-500'>
+                    <label htmlFor="title">Col. :</label>
+
+                    <div className="flex">
+                      <input type="text" className='bg-gray-200 p-1 text-center' defaultValue="Monto" autoComplete="off" disabled={true} />
+                      <select className=" border-none bg-none text-sm text-center" disabled={true}>
+                        <option value="number" defaultChecked>Numero</option>
+                      </select>
+                    </div>
+
+                    <div className='flex justify-center items-center text-xl relative'>
+                      <div>
+                        <p type="submit" className='absolute h-8 w-4 mr-4 cursor-pointer'></p>
+                        <div className='mr-2'>
+                          <BiTrash />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   {
                     this.context.bodyTemplates.map((item, i) => (
                       <InputRowTemplate

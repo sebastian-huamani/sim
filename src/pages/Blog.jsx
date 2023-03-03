@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavIndex from "../components/NavIndex";
+import NavTop from "../components/NavTop";
 import Footer from '../components/LandingPage/Footer';
+import Navbar from '../components/Navbar';
 
 class Blog extends React.Component {
   constructor(props) {
@@ -12,17 +14,20 @@ class Blog extends React.Component {
     return (
 
       <div className='bg-gradient-to-r from-black-scene to-white'>
-        <NavIndex />
+        <Navbar />
+        <NavTop />
 
-        <div className='h-64 w-full relative'>
+        <div className='h-64 sm:mx-6 sm:ml-20 ml-0 mx-2' >
 
-          <img src="https://images.pexels.com/photos/7583935/pexels-photo-7583935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1260&dpr=1" alt="a" className='w-full relative h-full object-cover object-center pt-2 sm:px-12 px-6' />
+          <div className='w-full h-64 mx-auto flex items-center justify-center text-white text-6xl'>
 
-          <div className='absolute top-0 w-full h-full flex items-center justify-center text-white text-6xl'>
-            <div>
+            <img src="https://images.pexels.com/photos/7583935/pexels-photo-7583935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1260&dpr=1" alt="a" className=' w-full h-64 object-cover object-center pt-2 px-6 relative' />
+          
+            <div className='absolute'>
               <p>Facil, Practico </p>
               <p>y Organizado</p>
             </div>
+
           </div>
         </div>
 
@@ -34,7 +39,7 @@ class Blog extends React.Component {
               <div>
                 <h1 className='font-semibold text-lg'>Plantillas <sup>(proximamente)</sup></h1>
                 Como crear una? Para que sirve? Como mantener la organizacion? y mas respuestas sobre las plantillas
-                <div className='w-full text-end mt-6'><NavLink  className=' border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
+                <div className='w-full text-end mt-6'><NavLink className=' border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
               </div>
             </div>
 
@@ -47,7 +52,7 @@ class Blog extends React.Component {
               <div>
                 <h1 className='font-semibold text-lg'>Transacciones <sup>(proximamente)</sup></h1>
                 Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?
-                <div className='w-full text-end mt-6'><NavLink  className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
+                <div className='w-full text-end mt-6'><NavLink className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
               </div>
             </div>
 
@@ -61,7 +66,7 @@ class Blog extends React.Component {
               <div>
                 <h1 className='font-semibold text-lg'>Prestamos <sup>(proximamente)</sup></h1>
                 Lorem  ipsum dolor sit amet consectetur adipisicing elit. Saepe modi maiores aut molestiae dolore ullam?
-                <div className='w-full text-end mt-6'><NavLink  className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
+                <div className='w-full text-end mt-6'><NavLink className='border-b border-gray-600 hover:pb-1 ease-in-out duration-200'>Leer</NavLink></div>
               </div>
             </div>
 
@@ -70,8 +75,6 @@ class Blog extends React.Component {
           </div>
 
         </div>
-
-        <Footer />
 
       </div>
 
