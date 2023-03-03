@@ -56,6 +56,13 @@ export default function NavBar() {
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "")}
+                                    to='/Dashboard/Blogs' title="Blogs">
+                                    Blogs    
+                                </NavLink>
+                            </li>
+                            <li className="text-gray-600 hover:text-blue-600">
+                                <NavLink
                                      className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                      to='/Dashboard/Configuracion' title="Configuracion">
                                     Configuracion    

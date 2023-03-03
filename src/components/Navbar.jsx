@@ -1,5 +1,6 @@
 import { NavLink, Navigate } from "react-router-dom";
-import { FaHome, FaUser, FaFileContract, FaAddressCard, FaClone, FaList } from "react-icons/fa";
+import { FaHome, FaUser, FaFileContract, FaAddressCard, FaClone } from "react-icons/fa";
+import { BsNewspaper} from "react-icons/bs";
 import { AiFillSetting } from "react-icons/ai";
 import { HiLogout } from "react-icons/hi";
 
@@ -85,6 +86,15 @@ class Navbar extends React.Component {
                             <FaAddressCard />
                         </NavLink>
                     </li>
+
+                    <li>
+                        <NavLink
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
+                            to='/Dashboard/Blogs' title="Blogs">
+                            <BsNewspaper />
+                        </NavLink>
+                    </li>
+
 
                     <hr className="bg-slate-600 w-full" />
                     <li>

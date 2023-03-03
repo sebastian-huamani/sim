@@ -156,7 +156,6 @@ class Register extends React.Component {
 
         return (
             <div className='h-screen'>
-                <NavIndex />
                 <div className={` relative  ${createUser ? 'hidden' : 'block'}`}>
                     <div className='static h-full sm:h-5/6 flex justify-evenly items-center pt-20'>
                         <form onSubmit={handleSubmit} id="formLogin" className='min-w-max sm:w-1/4 w-3/4 flex flex-col items-center p-4 min-h-max mb-4 box-session'>
