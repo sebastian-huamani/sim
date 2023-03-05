@@ -77,7 +77,7 @@ class Login extends React.Component {
                 <div className='h-4/5 flex justify-center items-center'>
                     <form onSubmit={this.handleSubmit} id="formLogin" className='min-w-max md:w-1/4 sm:w-2/5 w-3/4  bg-white flex flex-col items-center p-4 box'>
                         <p className='text-3xl pb-6'>Login</p>
-                        {/* <NavLink to="/Register" className="text-sm text-gray-600 underline mb-7">or create a count </NavLink> */}
+                        <NavLink to="/Register" className="text-sm text-gray-600 underline mb-7">or create a count </NavLink>
 
                         <InputSimple
                             type="text"
