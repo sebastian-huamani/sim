@@ -43,7 +43,7 @@ class Navbar extends React.Component {
         const { onClickLogout } = this;
         var { done } = this.state
 
-        const session = localStorage.get('done');
+        const session = localStorage.getItem('done');
 
         if (done || session) {
             return <Navigate to={"/Login"} />
