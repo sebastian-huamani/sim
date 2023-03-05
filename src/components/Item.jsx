@@ -39,7 +39,7 @@ class Items extends React.Component {
                             {item.title}
                         </div>
                         <div className='flex justify-between'>
-                            <p> {Moment(item.created_at).format('DD MMM. YYYY, HH:mm a')} </p>
+                            <p> {Moment.utc(item.created_at).format('DD MMM. YYYY, HH:mm a')} </p>
                             <p className={`${item.amount > 0 ? 'text-green-600' : 'text-red-500'}  font-medium`}> { item.amount } </p>
                         </div>
                     </div>
