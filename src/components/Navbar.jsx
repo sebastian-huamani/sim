@@ -45,7 +45,7 @@ class Navbar extends React.Component {
 
         const session = localStorage.getItem('done') ? true : false;
 
-        if (done || session) {
+        if (done || !session) {
             return <Navigate to={"/Login"} />
         }
 
