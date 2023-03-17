@@ -219,7 +219,7 @@ class Settings extends React.Component {
                         </div>
 
                         <div >
-                            <form onSubmit={handleSubmitUpdate} id="Actualizar-Tarjeta" className='box-session mb-8 pb-8'>
+                            <form onSubmit={handleSubmitUpdate} id="Actualizar-Tarjeta" className='box-session py-4 mb-8 pb-8'>
                                 <h1 className='text-center font-bold text-2xl'>Actualizar Datos</h1>
 
                                 <InputSpecial
