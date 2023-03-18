@@ -36,6 +36,7 @@ class Settings extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res['msg']);
             this.setState({
                 res: res['res'],
                 data: res['msg'],
@@ -155,7 +156,7 @@ class Settings extends React.Component {
 
     render() {
         const { idCard, data } = this.state;
-        const { handleClickUpdateState, handleSubmitUpdate, handleAction } = this;
+        const { handleClickUpdateState, handleSubmitUpdate } = this;
         var creditCode;
 
         if (data.type_card == "Credit") {
@@ -257,7 +258,7 @@ class Settings extends React.Component {
                                 {creditCode}
 
                                 <div className='flex justify-center'>
-                                    <Color setColor={data.color_panel_top} />
+                                    <Color currentColor={data.color_panel_top} />
                                 </div>
 
                                 <div className='w-full text-center mt-10 text-lg'>
