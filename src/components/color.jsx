@@ -49,7 +49,7 @@ class Color extends React.Component {
                 <div className='grid grid-cols-7 gap-4 mt-4'>
                     {
                         colors.map(item => (
-                            <p className='h-8 w-8 rounded-full cursor-pointer border border-black' onClick={ (e) => { handleColorSelected(item.code_top, item.id);} } style={{ background: item.code_top }} key={item.id} ></p>
+                            <p className='h-8 w-8 rounded-full cursor-pointer border border-black' onClick={ (e) => { handleColorSelected(item.color_panel_top, item.id);} } style={{ background: item.color_panel_top }} key={item.id} ></p>
                         ))
                     }
                 </div>
