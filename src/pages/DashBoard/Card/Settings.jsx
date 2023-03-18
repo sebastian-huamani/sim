@@ -257,7 +257,7 @@ class Settings extends React.Component {
                                 {creditCode}
 
                                 <div className='flex justify-center'>
-                                    <Color/>
+                                    <Color setColor={data.color_panel_top} />
                                 </div>
 
                                 <div className='w-full text-center mt-10 text-lg'>

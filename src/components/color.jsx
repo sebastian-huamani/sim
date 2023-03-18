@@ -23,7 +23,9 @@ class Color extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            this.setState({ colors: res.colors });
+            this.setState({ 
+                colors: res.colors 
+            });
         });
     }
 
@@ -35,6 +37,7 @@ class Color extends React.Component {
     }
 
     render() {
+        const { setColor } = this.props;
         const { colors, colorId, colorCode } = this.state;
         const { handleColorSelected } = this;
 
@@ -43,7 +46,10 @@ class Color extends React.Component {
             <div className='mt-4 '>
                 <label htmlFor="" className='flex items-center'>
                     Color:
-                    <p className='ml-4 h-8 w-8 rounded-full border border-spacing-1 border-black' style={{ background: colorCode }}></p>
+                    { colorCode != '' 
+                        ? <p className='ml-4 h-8 w-8 rounded-full border border-spacing-1 border-black' style={{ background: setColor }}></p>
+                        : <p className='ml-4 h-8 w-8 rounded-full border border-spacing-1 border-black' style={{ background: colorCode }}></p>
+                    }
                 </label>
 
                 <div className='grid grid-cols-7 gap-4 mt-4'>
