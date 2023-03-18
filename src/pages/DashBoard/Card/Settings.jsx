@@ -194,10 +194,6 @@ class Settings extends React.Component {
                         value={data.payment_due_date}
                     />
 
-                    <div className='flex justify-center'>
-                        <Color/>
-                    </div>
-
                 </div>
             )
         }
@@ -258,22 +254,11 @@ class Settings extends React.Component {
                                     value={data.card_expiration_date}
                                 />
 
-                                {/* <div className='flex justify-center items-center'>
-                                    <label htmlFor="color">
-                                        Color:
-                                    </label>
-                                    <div className='ml-4 rounded-full h-8 w-8 overflow-hidden relative'>
-                                        <input className='absolute h-16 w-16 -translate-x-2/4 -translate-y-2/4 top-2/4 left-2/4' type="color" name="color" id="" />
-                                    </div>
-                                </div> */}
+                                {creditCode}
 
                                 <div className='flex justify-center'>
                                     <Color/>
                                 </div>
-
-
-
-                                {creditCode}
 
                                 <div className='w-full text-center mt-10 text-lg'>
                                     <ButtonForm name="Actualizar" />

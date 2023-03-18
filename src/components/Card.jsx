@@ -30,6 +30,7 @@ class Card extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
+            console.log(res);
             this.context.updateCard(JSON.stringify(res['msg']));
             this.context.updateStateHistory(false);
         });
@@ -51,7 +52,7 @@ class Card extends React.Component {
                     <div className='absolute w-full h-24' id={dataItem.id} onClick={this.handleClick}></div>
 
                     <div className='grid grid-rows-4/1 h-32'>
-                        <div className='top-card'>
+                        <div className='rounded-t-lg px-3 py-2 h-24 text-white' style={{background: dataItem.code}} >
 
                             <div className='flex justify-between w-full'>
                                 <p>{dataItem.name}</p>
