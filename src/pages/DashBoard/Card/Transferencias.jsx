@@ -32,6 +32,7 @@ class Transferencias extends React.Component {
             cardList: JSON.parse(sessionStorage.getItem('listCard')),
             toCardSelectedId : '...',
             toCardSelectedAmount : 0,
+            toCardSelectedBank: ''
         }
         this.dataSelectedCard = this.dataSelectedCard.bind(this);
         this.dataOptionsCards = this.dataOptionsCards.bind(this);
@@ -40,9 +41,7 @@ class Transferencias extends React.Component {
     }
 
     dataSelectedCard(cardList, idCard) {
-
         var card;
-        
         cardList.map(item => {
             if (item.id == idCard ) {
                 card = item
@@ -52,7 +51,6 @@ class Transferencias extends React.Component {
     }
 
     dataOptionsCards(cardList, idCard) {
-        
         var optionsList = cardList.map(item => (
             item.id != idCard ? <option value={item.id} key={item.id}>{item.name} </option> : ''
         ));
@@ -65,7 +63,8 @@ class Transferencias extends React.Component {
             if( item.id == e.target.value){
                 this.setState({
                     toCardSelectedId: item.id,
-                    toCardSelectedAmount:  item.amount
+                    toCardSelectedAmount:  item.amount,
+                    toCardSelectedBank:  item.name_banck
                 })
             }
 
@@ -73,6 +72,7 @@ class Transferencias extends React.Component {
                 this.setState({
                     toCardSelectedId : '...',
                     toCardSelectedAmount : 0,
+                    toCardSelectedBank: ''
                 });
             }
         })
@@ -110,7 +110,7 @@ class Transferencias extends React.Component {
     }
 
     render() {
-        const { idCard, cardList, toCardSelectedId, toCardSelectedAmount } = this.state;
+        const { idCard, cardList, toCardSelectedId, toCardSelectedAmount, toCardSelectedBank } = this.state;
         const { changeSelectedOptions, submitTransaction } = this;
         
         if (idCard == null) {
@@ -171,9 +171,13 @@ class Transferencias extends React.Component {
                                         <option value="-1"  defaultValue >Elige una cuenta de destino</option>
                                         {options}
                                     </select>
-                                    <p className='text-sm'>{toCardSelectedId}</p>
+                                    <div className='flex  item-center justify-around mt-2'>
+                                        <p className='text-sm'>{toCardSelectedId}</p>
+                                        <p className='ml-16'>Bank: {toCardSelectedBank}</p>
+                                    </div>
                                 </div>
                                 <p className='ml-16'>S/. {toCardSelectedAmount}</p>
+
                             </div>
                         </div>
                     </div>
