@@ -37,7 +37,7 @@ class Color extends React.Component {
     }
 
     render() {
-        const { currentColor } = this.props;
+        const { currentIdColor, currentColor } = this.props;
         const { colors, colorId, colorCode } = this.state;
         const { handleColorSelected } = this;
 
@@ -60,7 +60,7 @@ class Color extends React.Component {
                     }
                 </div>
 
-                <input type="hidden" defaultValue={colorId} name="color" />
+                <input type="hidden" defaultValue={colorId == '' ? currentIdColor : colorId} name="color" />
             </div>
 
         );
