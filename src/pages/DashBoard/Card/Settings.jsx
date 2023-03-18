@@ -5,9 +5,10 @@ import ButtonForm from "../../../components/buttons/ButtonForm";
 import Navbar from "../../../components/Navbar";
 import NavTop from "../../../components/NavTop";
 import { BsDot } from "react-icons/bs";
-
+import Color from '../../../components/color';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+
 const MySwal = withReactContent(Swal)
 
 class Settings extends React.Component {
@@ -150,15 +151,17 @@ class Settings extends React.Component {
         });
     }
 
+   
+
     render() {
         const { idCard, data } = this.state;
-        const { handleClickUpdateState, handleSubmitUpdate } = this;
+        const { handleClickUpdateState, handleSubmitUpdate, handleAction } = this;
         var creditCode;
 
         if (data.type_card == "Credit") {
             creditCode = (
                 <div className='text-center'>
-                    
+
                     <InputSpecial
                         type="number"
                         name="bottom_line"
@@ -190,6 +193,11 @@ class Settings extends React.Component {
                         max="31"
                         value={data.payment_due_date}
                     />
+
+                    <div className='flex justify-center'>
+                        <Color/>
+                    </div>
+
                 </div>
             )
         }
@@ -249,6 +257,21 @@ class Settings extends React.Component {
                                     label="Fecha de Expiracion"
                                     value={data.card_expiration_date}
                                 />
+
+                                {/* <div className='flex justify-center items-center'>
+                                    <label htmlFor="color">
+                                        Color:
+                                    </label>
+                                    <div className='ml-4 rounded-full h-8 w-8 overflow-hidden relative'>
+                                        <input className='absolute h-16 w-16 -translate-x-2/4 -translate-y-2/4 top-2/4 left-2/4' type="color" name="color" id="" />
+                                    </div>
+                                </div> */}
+
+                                <div className='flex justify-center'>
+                                    <Color/>
+                                </div>
+
+
 
                                 {creditCode}
 

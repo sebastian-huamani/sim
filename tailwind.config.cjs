@@ -17,7 +17,7 @@ module.exports = {
         'wheat' : '#f5deb3',
         'purple' : '#6B7BFC',
         'state-Activo' : '#8AC3A4',
-        'state-Desactivado' : '#E1495B'
+        'state-Desactivado' : '#E1495B',
       },
       gridTemplateColumns:{
         'home' : '70% 28%',
