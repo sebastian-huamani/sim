@@ -43,13 +43,13 @@ class Color extends React.Component {
             <div className='mt-4 '>
                 <label htmlFor="" className='flex items-center'>
                     Color:
-                    <p className='ml-4 h-8 w-8 rounded-full cursor-pointer' style={{ background: colorCode }}></p>
+                    <p className='ml-4 h-8 w-8 rounded-full border border-spacing-1 border-black' style={{ background: colorCode }}></p>
                 </label>
 
                 <div className='grid grid-cols-7 gap-4 mt-4'>
                     {
                         colors.map(item => (
-                            <p className='h-8 w-8 rounded-full cursor-pointer' vid={item.id} onClick={ (e) => { handleColorSelected(item.code, item.id);} } style={{ background: item.code }} key={item.id} ></p>
+                            <p className='h-8 w-8 rounded-full cursor-pointer border border-black' onClick={ (e) => { handleColorSelected(item.code_top, item.id);} } style={{ background: item.code_top }} key={item.id} ></p>
                         ))
                     }
                 </div>
