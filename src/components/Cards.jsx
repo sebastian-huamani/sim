@@ -33,7 +33,6 @@ class Cards extends React.Component {
                 items: res['msg'],
                 done: res['res']
             });
-            console.log(res);
             this.context.updateCardsList(res['msg']);
         });
     }
