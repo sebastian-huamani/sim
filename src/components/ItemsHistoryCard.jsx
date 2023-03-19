@@ -23,10 +23,14 @@ const Toast = MySwal.mixin({
     }
 });
 
-
-const month = new Date().getMonth() + 1;
-const year = new Date().getFullYear();
-const yearMonth = year + '-' + month;
+function dateNow() {
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+    if(month < 10){
+        return year + '-0' + month;
+    }
+    return year + '-' + month;
+}
 
 class Items extends React.Component {
     constructor(props) {
@@ -113,13 +117,12 @@ class Items extends React.Component {
         var { items, done } = this.state;
         const { itemsList } = this.context;
 
-
         if (!this.context.time || this.context.idCard == 0) {
             return (
                 <div className='h-97vh grid grid-rows-1/9 gap-4'>
                     <form onSubmit={this.handleSubmit} id="formData" className='px-4 flex justify-around rounded-lg bg-white shadow-md shadow-slate-500/20 items-center'>
 
-                        <input type="month" name="month-year" id="month-year" min="2022-01" max={yearMonth} />
+                        <input type="month" name="month-year" id="month-year" min="2022-01" max={dateNow()} />
 
                         <ButtonForm name="Go" />
                     </form>
@@ -135,7 +138,7 @@ class Items extends React.Component {
             <div className='h-108 sm:h-97vh grid grid-rows-1/9 gap-4'>
                 <form onSubmit={this.handleSubmit} id="formData" className='px-4 flex justify-around rounded-lg bg-white shadow-md shadow-slate-500/20 items-center'>
 
-                    <input type="month" name="month-year" id="month-year" min="2022-01" max={yearMonth} />
+                    <input type="month" name="month-year" id="month-year" min="2022-01" max={dateNow()} value={dateNow()} />
 
                     <ButtonForm name="Go" />
                 </form>

@@ -6,7 +6,7 @@ import NavTop from "../../components/NavTop";
 import IndicatorsChart from "../../components/chart/IndicatorsChart";
 import MixedChart from "../../components/chart/MixedChart";
 import BarChart from "../../components/chart/BarChart";
-import { FiPlusCircle } from "react-icons/fi";
+import { ImArrowRight2 } from "react-icons/im";
 
 class Home extends React.Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class Home extends React.Component {
               <div className='flex justify-between items-center'>
                 <p className='font-semibold'>Prestamos</p>
                 <NavLink to="/Dashboard/Prestamos" >
-                  <FiPlusCircle className='text-lg mr-1' />
+                  <ImArrowRight2 className='text-lg mr-1 cursor-pointer ' />
                 </NavLink>
               </div>
               <ul className=''>
