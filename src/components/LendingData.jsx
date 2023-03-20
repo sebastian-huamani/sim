@@ -1,23 +1,69 @@
 import React from 'react';
 import LendingsContext from "../context/LendingsContext";
-import { InputLine, InputSpecial } from './input/Inputs';
+import {  InputSpecial } from './input/Inputs';
 import TimeLineChart from "./chart/TimeLineChart";
 import NotData from './NotData';
 import Moment from 'moment';
-import FormCreateLending from "./FormCreateLending";
 import ButtonForm from './buttons/ButtonForm';
-import Loading from "./Loading";
 import { ButtonActionAbsolute } from './buttons/ButtonFixed';
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+    customClass: 'text-sm bg-none',
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 6000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', MySwal.stopTimer)
+        toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+});
 
 class LendingData extends React.Component {
     constructor(props) {
         super(props);
-        
+        this.state = {
+            done: false,
+            cards: [],
+        }
+
         this.submitFormEdit = this.submitFormEdit.bind(this);
         this.updateListDesactive = this.updateListDesactive.bind(this);
         this.updateListActive = this.updateListActive.bind(this);
         this.closeLending = this.closeLending.bind(this);
         this.submitFormCreate = this.submitFormCreate.bind(this);
+        this.selectOptionsCards = this.selectOptionsCards.bind(this);
+    }
+
+    componentDidMount() {
+        let key = localStorage.getItem('key');
+
+        const fetchPromise = fetch("https://financemeapi.com/api/card/showAll", {
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(res => {
+            this.setState({
+                cards: res['msg'],
+                done: res['res']
+            });
+        });
+    }
+
+    selectOptionsCards(cardsList) {
+        var optionsList = cardsList.map(item => (
+            <option className='h-24' value={item.id} key={item.id}>{item.name}</option> 
+        ));
+        return optionsList;
     }
 
     dataSplit(year_month) {
@@ -78,12 +124,17 @@ class LendingData extends React.Component {
         fetchPromise.then(response => {
             return response.json()
         }).then(res => {
+            console.log(res);
+            Toast.fire({
+                icon: 'info',
+                title: res['msg']
+            });
             this.context.updateItemEditing(res['lending']);
             this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
         });
     }
 
-    submitFormCreate(e){
+    submitFormCreate(e) {
         e.preventDefault();
         let key = localStorage.getItem('key');
         const fetchPromise = fetch('https://financemeapi.com/api/lending/create', {
@@ -96,7 +147,11 @@ class LendingData extends React.Component {
 
         fetchPromise.then(response => {
             return response.json()
-        }).then( res => {
+        }).then(res => {
+            Toast.fire({
+                icon: 'info',
+                title: res['msg']
+            });
             this.context.updateItemEditing(res['lending']);
             this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
             document.getElementById('formCreateLending').reset();
@@ -126,8 +181,12 @@ class LendingData extends React.Component {
     }
 
     render() {
-        const { submitFormEdit, closeLending, submitFormCreate } = this;
+        const { cards } = this.state;
+        const { submitFormEdit, closeLending, submitFormCreate, selectOptionsCards } = this;
         const { edited, currentItemEdited, resetDataPanel, showCreateLending, create } = this.context;
+
+        var options = selectOptionsCards(cards)
+        console.log(currentItemEdited);
 
         if (!edited && !create) {
             return (
@@ -149,13 +208,21 @@ class LendingData extends React.Component {
 
                     <form onSubmit={submitFormCreate} id='formCreateLending' className='pt-24' >
 
+
                         <p className='text-center text-2xl font-semibold mb-20'>Nuevo Prestamo</p>
-                        
+
+                        <div className='flex justify-center'>
+                            <select name="cards_id" >
+                            <option value="-1" defaultValue>Elige una cuenta </option>
+                                {options}
+                            </select>
+                        </div>
+
                         <InputSpecial type="text" name="debtor" label="Deudor" placeholder="deudor" />
                         <InputSpecial type="number" name="amount" label="Monto" placeholder="S/ 0.00" />
-                        <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio"  />
+                        <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio" />
 
-                        <InputSpecial type="date" name="payment_date_lending" label="Fecha de Pago"  />
+                        <InputSpecial type="date" name="payment_date_lending" label="Fecha de Pago" />
 
                         <div className='text-center mt-20 mb-4'>
                             <ButtonForm name="Crear" />
@@ -169,7 +236,7 @@ class LendingData extends React.Component {
             <div className='p-3 relative'>
 
                 <p className='text-center text-2xl font-semibold'>Informacion de prestamo</p>
-                <p className='text-center text-sm'> 100.156.654.2{currentItemEdited.id} </p>
+                {/* <p className='text-center text-sm'> 100.156.654.2{currentItemEdited.id} </p> */}
                 {
                     [currentItemEdited].map(item => (
                         <form onSubmit={submitFormEdit} className='text-sm' key={item.id}>
@@ -180,10 +247,11 @@ class LendingData extends React.Component {
                                 <InputSpecial type="text" name="amount" label="Monto" value={item.amount} />
                                 <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio" value={Moment(item.created_date_lending).format('YYYY-MM-DD')} />
                                 <InputSpecial type="date" name="payment_date_lending" label="Fecha de Pago" value={Moment(item.payment_date_lending).format('YYYY-MM-DD')} />
+                                <InputSpecial type="text" name="amount" label="card" value={item.name_bank} disabled/>
                             </div>
 
                             <div className=''>
-                                <TimeLineChart inicio={item.created_date_lending} fin={item.payment_date_lending}/>
+                                <TimeLineChart inicio={item.created_date_lending} fin={item.payment_date_lending} />
                             </div>
 
                             {/* <div className='pl-3 mt-2'>
@@ -206,7 +274,7 @@ class LendingData extends React.Component {
                                         }
                                     </div>
                                 </ul>
-                            </div> */}  
+                            </div> */}
 
                             {
                                 currentItemEdited.state_id == 1 ?

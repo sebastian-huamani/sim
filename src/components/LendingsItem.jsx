@@ -3,6 +3,24 @@ import LendingsContext from "../context/LendingsContext";
 import Moment from 'moment';
 import { BiTrash, BiEdit } from "react-icons/bi";
 
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const Toast = MySwal.mixin({
+    customClass: 'text-sm bg-none',
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 6000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', MySwal.stopTimer)
+        toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+});
+
 class LendingsItem extends React.Component {
     constructor(props) {
         super(props);
@@ -27,7 +45,13 @@ class LendingsItem extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            this.context.deleteItemtoList(idItem);
+            if (res['res']) {
+                this.context.deleteItemtoList(idItem);
+            }
+            Toast.fire({
+                icon: 'info',
+                title: res['msg']
+            });
         })
     }
 

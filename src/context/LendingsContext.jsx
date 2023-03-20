@@ -66,7 +66,8 @@ export class LendingsProvider extends React.Component{
 
     updateItemEditing = ( item ) => {
         this.setState({
-            currentItemEdited : item
+            currentItemEdited : item,
+            // edited: false,
         })
     }
 
