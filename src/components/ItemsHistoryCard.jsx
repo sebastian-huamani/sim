@@ -138,7 +138,7 @@ class Items extends React.Component {
             <div className='h-108 sm:h-97vh grid grid-rows-1/9 gap-4'>
                 <form onSubmit={this.handleSubmit} id="formData" className='px-4 flex justify-around rounded-lg bg-white shadow-md shadow-slate-500/20 items-center'>
 
-                    <input type="month" name="month-year" id="month-year" min="2022-01" max={dateNow()} value={dateNow()} />
+                    <input type="month" name="month-year" id="month-year" min="2022-01" max={dateNow()} />
 
                     <ButtonForm name="Go" />
                 </form>
