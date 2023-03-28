@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, NavLink } from "react-router-dom";
-import NavIndex from "../components/NavIndex";
 import ButtonForm from "../components/buttons/ButtonForm";
+import { ButtonActionAbsolute } from '../components/buttons/ButtonFixed';
 import { InputSimple } from "../components/input/Inputs";
 
 import Swal from 'sweetalert2'
@@ -31,6 +31,7 @@ class Login extends React.Component {
         });
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoUser = this.handleDemoUser.bind(this);
     }
 
     handleSubmit(e) {
@@ -64,7 +65,15 @@ class Login extends React.Component {
         })
     }
 
+    handleDemoUser(){
+        var email = document.getElementById('email');
+        var password = document.getElementById('password');
+        email.value = 'test@demo.com';
+        password.value = 'password';
+    }
+
     render() {
+        const { handleDemoUser } = this;
 
         let done = localStorage.getItem('done');
 
@@ -72,8 +81,10 @@ class Login extends React.Component {
             return <Navigate to="/Dashboard/Home" />
         }
 
+        
         return (
             <div className='h-screen'>
+                <ButtonActionAbsolute name="Cuenta Demo"  customClass="top-2 right-2" actionButton={handleDemoUser}/>
                 <div className='h-4/5 flex justify-center items-center'>
                     <form onSubmit={this.handleSubmit} id="formLogin" className='min-w-max md:w-1/4 sm:w-2/5 w-3/4  bg-white flex flex-col items-center p-4 box'>
                         <p className='text-3xl'>Login</p>

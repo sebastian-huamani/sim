@@ -4,7 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 export const ButtonLinkFixed = ({ name, customClass, actionButton, toLink }) => {
     
     return (
-        <Link to={toLink} className={`btn fixed flex items-center ${customClass}`} onClick={actionButton}> 
+        <Link to={toLink} className={`btn fixed flex items-center  ${customClass}`} onClick={actionButton}> 
             <FaArrowLeft className="mr-3"/> {name}
         </Link>
     )
