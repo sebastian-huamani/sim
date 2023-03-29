@@ -34,7 +34,7 @@ class Cards extends React.Component {
                 done: res['res']
             });
             this.context.updateCardsList(res['msg']);
-        });
+        }, []);
     }
 
     render() {
