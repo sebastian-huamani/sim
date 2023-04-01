@@ -25,7 +25,6 @@ class MixedChart extends React.Component {
             dates.push(item.created_at.split('-', 2).join('-'))
         });
 
-        console.log(dates.reverse());
         return [fullCredit, aviableCredit, fullDebit, aviableDebit, dates];
 
     }
