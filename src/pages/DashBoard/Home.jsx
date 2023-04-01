@@ -77,7 +77,7 @@ class Home extends React.Component {
           </div>
 
           <div className="module">
-            <MixedChart data={dataxMonth} title="Historial por Mes" />
+            <MixedChart title="Historial por Mes" />
 
             <div className='box'>
               <div className='flex justify-between items-center'>
@@ -97,6 +97,7 @@ class Home extends React.Component {
                 </div>
               </ul>
             </div>
+            
           </div>
 
         </div>
