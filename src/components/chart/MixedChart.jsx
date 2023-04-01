@@ -11,6 +11,7 @@ class MixedChart extends React.Component {
         var aviableCredit = [];
         var fullDebit = [];
         var aviableDebit = [];
+        var dates = []
 
         if (data == null || data == 'undefined') {
            return [fullCredit, aviableCredit, fullDebit, aviableDebit];
@@ -21,16 +22,18 @@ class MixedChart extends React.Component {
             aviableCredit.push(item.aviable_credit)
             fullDebit.push(item.full_debit)
             aviableDebit.push(item.aviable_debit)
+            dates.push(item.created_at.split('-', 2).join('-'))
         });
 
-        return [fullCredit, aviableCredit, fullDebit, aviableDebit];
+        console.log(dates.reverse());
+        return [fullCredit, aviableCredit, fullDebit, aviableDebit, dates];
 
     }
 
     render() {
 
         var { data, title } = this.props;
-        var [fullCredit, aviableCredit, fullDebit, aviableDebit] = this.ProcesingData(data);
+        var [fullCredit, aviableCredit, fullDebit, aviableDebit, dates] = this.ProcesingData(data);
 
 
         var series = [{
@@ -80,13 +83,12 @@ class MixedChart extends React.Component {
             markers: {
                 size: 2,
                 hover: {
-                    sizeOffset: 4
+                    sizeOffset: 3
                 }
             },
             xaxis: {
                 type: 'datetime',
-                categories: ["2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12",
-                ],
+                categories: dates,
                 tickPlacement: 'between',
                 labels: {
                     style : {
