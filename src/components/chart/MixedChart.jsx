@@ -36,16 +36,16 @@ class MixedChart extends React.Component {
 
 
         var series = [{
-            name: 'fullCredit',
+            name: 'Credito Total',
             data: fullCredit
         }, {
-            name: 'aviableCredit',
+            name: 'Credito Disponible',
             data: aviableCredit
         }, {
-            name: 'fullDebit',
+            name: 'Debito Total',
             data: fullDebit
         }, {
-            name: 'aviableDebit',
+            name: 'Debito Disponible',
             data: aviableDebit
         }];
 
