@@ -9,6 +9,7 @@ import Navbar from "../../components/Navbar";
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import PerfilDatos from '../../components/PerfilDatos';
 const MySwal = withReactContent(Swal)
 
 const Toast = MySwal.mixin({
@@ -27,99 +28,38 @@ const Toast = MySwal.mixin({
 class Perfil extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({
-      data: [],
-      done : false
-    });
-
-    this.submitUpdateUser = this.submitUpdateUser.bind(this);
-    this.testsub = this.testsub.bind(this);
     this.onClickLogout = this.onClickLogout.bind(this);
-  }
-
-  componentDidMount() {
-    let key = localStorage.getItem('key');
-
-    const fetchPromise = fetch('https://financemeapi.com/api/user/infoUser', {
-      method: 'GET',
-      'headers': {
-        'Authorization': 'Bearer ' + key,
-      }
-    });
-
-    fetchPromise.then(reponse => {
-      return reponse.json()
-    }).then(res => {
-      this.setState({
-        data: res
-      });
-    });
-  }
-
-  submitUpdateUser(e) {
-    e.preventDefault();
-    let key = localStorage.getItem('key');
-
-    const fetchPromise = fetch(`https://financemeapi.com/api/user/updateInfoUser`, {
-      method: 'POST',
-      body: new FormData(e.target),
-      'headers': {
-        'Authorization': 'Bearer ' + key,
-      },
-    });
-
-    fetchPromise.then(response => {
-      return response.json();
-    }).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    });
-  }
-
-  testsub() {
-    Toast.fire({
-      icon: 'info',
-      title: 'Plantilla no Encontrada'
-    });
   }
 
   onClickLogout() {
     let key = localStorage.getItem('key');
     const fetchPromise = fetch("https://financemeapi.com/api/logout", {
-        method: 'POST',
-        'headers': {
-            'Content-Type': 'text/plain',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + key,
-        }
+      method: 'POST',
+      'headers': {
+        'Content-Type': 'text/plain',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + key,
+      }
     });
 
     fetchPromise.then(response => {
-        return response.json();
+      return response.json();
     }).then(res => {
-        this.setState({
-            done: true,
-        });
+      this.setState({
+        done: true,
+      });
     });
     localStorage.clear();
     sessionStorage.clear();
-}
+  }
 
   render() {
-
-    const { data, done } = this.state;
-    const { submitUpdateUser, testsub, onClickLogout } = this;
-
-    if (done) {
-        return <Navigate to={"/Login"} />
-    }
+    const { onClickLogout } = this;
 
     return (
-      <div className='md:pl-20 pl-0 '>
+      <div className='md:pl-20 pl-0 bg-black-scene'>
         <Navbar />
         <NavTop />
-
         <div className=' md:h-screen sm:grid block grid-cols-settings  gap-4 py-8 w-4/5 m-auto'>
 
           <div >
@@ -143,74 +83,13 @@ class Perfil extends React.Component {
           </div>
 
           <div>
-
-            <div className='box-session py-5' id='Mis-Datos'>
-              <h1 className='text-center mb-7 text-2xl font-bold'>Mis Datos</h1>
-
-              <form id="dataUserForm" onSubmit={submitUpdateUser}>
-
-                {[data].map((item) => (
-                  <div key={1}>
-                    <InputSpecial
-                      type="text"
-                      name="name"
-                      label="Nombre"
-                      value={item.name}
-                    />
-
-                    <InputSpecial
-                      type="text"
-                      name="lastname"
-                      label="Apellido"
-                      value={item.lastname}
-                    />
-
-                    <InputSpecial
-                      type="text"
-                      name="email"
-                      label="Email"
-                      value={item.email}
-                      disabled={true}
-                    />
-
-                    <div className='w-full text-center  text-lg'>
-                      <ButtonForm name="Actualizar" />
-                    </div>
-                  </div>
-                ))}
-
-              </form>
-
-            </div>
-
-            <div className='box-session my-5 p-5' id='Estado-De-Cuenta'>
-
-              <p className='text-ellipsis text-center'>Estado de tu cuenta</p>
-              <div className='mt-4 text-center w-full mx-auto'>
-                {data.email_verified_at == null
-                  ?
-                  <div className='text-center'>
-                    <BiUserX className='text-8xl flex justify-center w-full' />
-                    <button type='submit' className='btn' disabled={false} onClick={testsub}>Cuenta Sin Verificar</button>
-                  </div>
-                  :
-                  <div className='text-center'>
-                    <BiUserCheck className='text-8xl flex justify-center w-full' />
-                    <button type='submit' className='btn' disabled={true}>Cuenta Verificada</button>
-                  </div>
-
-                }
-              </div>
-
-            </div>
-
+            <PerfilDatos />
             <div className='block md:hidden box-session my-5 p-5' id='Cerrar-Session'>
               <p className='text-ellipsis text-center'>Cerrar Session En Este Dispositivo</p>
               <div className='mt-4 text-center w-full mx-auto'>
                 <button type='submit' className='btn' onClick={onClickLogout}>Cerrar Session</button>
               </div>
             </div>
-
           </div>
 
         </div>
