@@ -62,7 +62,6 @@ class MixedChart extends React.Component {
         var { title } = this.props;
         var [fullCredit, aviableCredit, fullDebit, aviableDebit, dates] = this.ProcesingData(data);
 
-
         var series = [{
             name: 'Credito Total',
             data: fullCredit
