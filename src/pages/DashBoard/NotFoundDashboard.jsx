@@ -10,8 +10,6 @@ class NotFoundDashboard extends React.Component {
 
     handleClick(e){
         const idCard= e.target.getAttribute("id");
-        console.log(idCard);
-        console.log(e.target);
     }
 
     render() {
