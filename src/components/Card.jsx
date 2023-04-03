@@ -30,7 +30,6 @@ class Card extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             this.context.updateCard(JSON.stringify(res['msg']));
             this.context.updateStateHistory(false);
         });
