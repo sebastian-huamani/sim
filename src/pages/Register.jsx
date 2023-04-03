@@ -95,7 +95,6 @@ class Register extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             if (res['res']) {
                 Toast.fire({
                     icon: 'success',
@@ -109,7 +108,6 @@ class Register extends React.Component {
                     icon: 'info',
                     title: 'El correo ya esta en uso'
                 });
-                console.log(res);
             }
         }).catch(err => {
             Toast.fire({
