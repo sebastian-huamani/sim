@@ -42,7 +42,7 @@ class PerfilDatos extends React.Component {
         e.preventDefault();
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch(`https://financemeapi.com/api/user/updateInfoUser`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/user/update`, {
             method: 'POST',
             body: new FormData(e.target),
             'headers': {

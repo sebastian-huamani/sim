@@ -16,7 +16,7 @@ class LendingsActive extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
     
-        const fetchPromise = fetch("https://financemeapi.com/api/lending/showAllActives", {
+        const fetchPromise = fetch("https://financemeapi.com/api/lending/actives", {
           'headers': {
             'Authorization': 'Bearer ' + key,
           }

@@ -29,7 +29,7 @@ class LendingsDesactive extends React.Component {
         formData.append('year', data[0]);
         formData.append('month', data[1]);
 
-        const fetchPromise = fetch("https://financemeapi.com/api/lending/showAllDesactives", {
+        const fetchPromise = fetch("https://financemeapi.com/api/lending/desactives", {
             method: 'POST',
             'headers': {
                 'Authorization': 'Bearer ' + key,

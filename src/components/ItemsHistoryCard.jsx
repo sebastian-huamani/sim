@@ -88,7 +88,7 @@ class Items extends React.Component {
         formData.append('month', data[1]);
 
 
-        const fetchPromise = fetch("https://financemeapi.com/api/transaction/count/showAllItemsCount", {
+        const fetchPromise = fetch("https://financemeapi.com/api/card/transactions", {
             method: 'POST',
             'headers': {
                 'Authorization': 'Bearer ' + key,

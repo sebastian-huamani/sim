@@ -42,7 +42,7 @@ class ItemData extends React.Component {
     updateCards() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("https://financemeapi.com/api/card/showAll", {
+        const fetchPromise = fetch("https://financemeapi.com/api/cards", {
             'headers': {
                 'Authorization': 'Bearer ' + key,
             }
@@ -69,7 +69,7 @@ class ItemData extends React.Component {
         formData.append('month', data[1]);
 
 
-        const fetchPromise = fetch("https://financemeapi.com/api/transaction/count/showAllItemsCount", {
+        const fetchPromise = fetch("https://financemeapi.com/api/card/transactions", {
             method: 'POST',
             'headers': {
                 'Authorization': 'Bearer ' + key,
@@ -121,7 +121,7 @@ class ItemData extends React.Component {
         e.preventDefault();
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch("https://financemeapi.com/api/transaction/count/update", {
+        const fetchPromise = fetch("https://financemeapi.com/api/card/transaction/update", {
             method: 'POST',
             body: new FormData(e.target),
             'headers': {

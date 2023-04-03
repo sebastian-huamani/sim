@@ -84,7 +84,7 @@ class Transferencias extends React.Component {
 
         
 
-        const fetchPromise = fetch(`https://financemeapi.com/api/transaction/count/transactionBetweenCards`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/card/transaction/card`, {
             method: 'POST',
             'headers': {
                 'Authorization': 'Bearer ' + key,

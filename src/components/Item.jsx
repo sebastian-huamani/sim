@@ -16,11 +16,6 @@ class Items extends React.Component {
         this.context.updateChangeReset();
     }
 
-    handleSubmitForm(e){
-        e.preventDefault();
-
-    }
-
     render() {
         const { itemsList } = this.context;
         const { data } = this.props;
