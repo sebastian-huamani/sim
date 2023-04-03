@@ -29,9 +29,9 @@ class LendingsActive extends React.Component {
           this.setState({
             done : res['res']
           });
-           
         });
       }
+      
 
 
     render() {
