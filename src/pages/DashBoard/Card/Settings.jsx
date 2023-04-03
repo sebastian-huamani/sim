@@ -26,7 +26,7 @@ class Settings extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
 
-        const fetchPromise = fetch(`https://financemeapi.com/api/card/transaction/show/${this.state.idCard}`, {
+        const fetchPromise = fetch(`https://financemeapi.com/api/card/show/${this.state.idCard}`, {
             method: 'GET',
             'headers': {
                 'Authorization': 'Bearer ' + key,

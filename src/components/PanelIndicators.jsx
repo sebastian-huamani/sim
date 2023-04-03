@@ -24,7 +24,6 @@ class PanelIndicators extends React.Component {
         }, [])
             .then(response => response.json())
             .then(res => {
-                console.log(res);
                 this.setState({
                     res: res['res'],
                     loading: res['res'] ? false : true,
@@ -36,7 +35,6 @@ class PanelIndicators extends React.Component {
 
     render() {
         const { data, error, loading, res } = this.state;
-        console.log(data, error, loading, res);
 
         return (
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-5 md:mx-0 bg-black-scene '>
