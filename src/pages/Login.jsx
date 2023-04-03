@@ -45,7 +45,6 @@ class Login extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             if( res['res']){
                 this.setState({
                     done: res['res'],
@@ -55,7 +54,6 @@ class Login extends React.Component {
                 localStorage.setItem('key', res['access_token']);
                 localStorage.setItem('done', res['res']);
             } else{
-                console.log(res);
                 Toast.fire({
                     icon: 'info',
                     title: res['msg']
