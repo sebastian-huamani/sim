@@ -124,7 +124,6 @@ class LendingData extends React.Component {
         fetchPromise.then(response => {
             return response.json()
         }).then(res => {
-            console.log(res);
             Toast.fire({
                 icon: 'info',
                 title: res['msg']
@@ -186,7 +185,6 @@ class LendingData extends React.Component {
         const { edited, currentItemEdited, resetDataPanel, showCreateLending, create } = this.context;
 
         var options = selectOptionsCards(cards)
-        console.log(currentItemEdited);
 
         if (!edited && !create) {
             return (
