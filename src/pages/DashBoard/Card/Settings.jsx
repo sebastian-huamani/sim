@@ -36,7 +36,6 @@ class Settings extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res['msg']);
             this.setState({
                 res: res['res'],
                 data: res['msg'],
