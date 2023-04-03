@@ -17,8 +17,8 @@ class PanelLending extends React.Component {
     componentDidMount() {
         let key = localStorage.getItem('key');
         fetch('https://financemeapi.com/api/lendings', {
+            method: 'GET',
             'headers': {
-                method: 'GET',
                 'Authorization': 'Bearer ' + key,
                 'Content-Type': 'text/plain',
                 'Accept': 'application/json',
