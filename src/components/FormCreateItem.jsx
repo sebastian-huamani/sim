@@ -124,7 +124,6 @@ class FormCreateItem extends React.Component {
 			document.getElementById('formCreateItem').reset();
 			this.updateCardsList();
 		}).catch(error => {
-			console.log(error);
 			Toast.fire({
 				icon: 'info',
 				title: 'Transaccion No Realizada'
