@@ -41,22 +41,9 @@ class PanelLending extends React.Component {
         if (error) {
             return (
                 <div className='box'>
-                    <div className='flex justify-between items-center'>
-                        <p className='font-semibold'>Prestamos</p>
-                        <NavLink to="/Dashboard/Prestamos" >
-                            <ImArrowRight2 className='text-lg mr-1 cursor-pointer ' />
-                        </NavLink>
+                    <div className='flex justify-center items-center h-full text-7xl opacity-30'>
+                        <Error />
                     </div>
-                    <ul className=''>
-                        <li className='text-xs mt-1 p-1 flex justify-between items-center border-b'>
-                            <div> User </div>
-                            <div> Monto </div>
-                            <div> Estado </div>
-                        </li>
-                        <div className='flex justify-center items-center h-52 text-8xl opacity-30'>
-                            <Error />
-                        </div>
-                    </ul>
                 </div>
             )
         }
