@@ -1,5 +1,6 @@
 import React from 'react';
 import IndicatorsChart from './chart/IndicatorsChart';
+import Error from './Error';
 
 class PanelIndicators extends React.Component {
     constructor(props) {
@@ -35,6 +36,18 @@ class PanelIndicators extends React.Component {
 
     render() {
         const { data, error, loading, res } = this.state;
+
+        if (error) {
+            return (
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-5 md:mx-0 bg-black-scene '>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
+                </div>
+            );
+        }
 
         return (
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-5 md:mx-0 bg-black-scene '>

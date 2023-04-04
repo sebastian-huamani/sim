@@ -9,7 +9,7 @@ class IndicatorsChart extends React.Component {
     }
 
     render() {
-        var { data, name, title } = this.props;
+        var { data, name, title, loading, error } = this.props;
 
         if (data == 'undefined' || data == null) {
             data = [0, 0];
@@ -30,6 +30,8 @@ class IndicatorsChart extends React.Component {
                 </div>
             );
         }
+
+ 
 
 
         return (
