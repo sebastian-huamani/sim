@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from "react-apexcharts";
+import Error from '../Error';
 
 class MixedChart extends React.Component {
     constructor(props) {
@@ -142,8 +143,8 @@ class MixedChart extends React.Component {
         if (error) {
             return (
                 <div className='graphic-box col-span-2 '>
-                    <div className='flex items-center justify-center'>
-                        not Data
+                    <div className='flex items-center justify-center h-full text-7xl opacity-25'>
+                        <Error />
                     </div>
                 </div>
             );
@@ -155,7 +156,6 @@ class MixedChart extends React.Component {
                     <div className='animate-pulse h-full py-2 px-2 flex flex-col'>
                         <p className=' bg-slate-200 rounded h-6 mb-2 w-1/5'> </p>
                         <div className='h-full w-full bg-slate-200 rounded'></div>
-
                     </div>
                 </div>
             );
