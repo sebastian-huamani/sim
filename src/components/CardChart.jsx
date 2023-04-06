@@ -28,7 +28,7 @@ class CardChart extends React.Component {
         },
         toolbar: {
           show: true,
-          offsetX: '100%',
+          // offsetX: '100%',
         }
       },
       plotOptions: {
