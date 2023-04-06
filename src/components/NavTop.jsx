@@ -10,9 +10,12 @@ export default function NavBar() {
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                        <a href="javascript:void(0)">
+                        <NavLink
+                            className={({ isActive }) => (isActive ? "text-slate-600" : "")}
+                            to="/Dashboard/Home" title="Home">
                             <h2 className="text-2xl font-bold">Finance<span className='text-lime-600 font-bold'>Me</span> </h2>
-                        </a>
+                        </NavLink>
+
                         <div className="md:hidden">
                             <button
                                 className="p-2  rounded-md outline-none focus:border-gray-400 focus:border"
@@ -51,21 +54,21 @@ export default function NavBar() {
                                 <NavLink
                                     className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                     to='/Dashboard/Tarjetas' title="Tarjetas">
-                                    Tarjetas    
+                                    Tarjetas
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
                                     className={({ isActive }) => (isActive ? "text-slate-600" : "")}
                                     to='/Dashboard/Blogs' title="Blogs">
-                                    Blogs    
+                                    Blogs
                                 </NavLink>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
                                 <NavLink
-                                     className={({ isActive }) => (isActive ? "text-slate-600" : "")}
-                                     to='/Dashboard/Configuracion' title="Configuracion">
-                                    Configuracion    
+                                    className={({ isActive }) => (isActive ? "text-slate-600" : "")}
+                                    to='/Dashboard/Configuracion' title="Configuracion">
+                                    Configuracion
                                 </NavLink>
                             </li>
                         </ul>
