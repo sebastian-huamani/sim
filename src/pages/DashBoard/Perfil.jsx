@@ -84,6 +84,7 @@ class Perfil extends React.Component {
 
           <div>
             <PerfilDatos />
+
             <div className='block md:hidden box-session my-5 p-5' id='Cerrar-Session'>
               <p className='text-ellipsis text-center'>Cerrar Session En Este Dispositivo</p>
               <div className='mt-4 text-center w-full mx-auto'>
