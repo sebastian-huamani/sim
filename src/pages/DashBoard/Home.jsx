@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from "../../components/Navbar";
 import NavTop from "../../components/NavTop";
+import Bar from '../../components/chart/Bar';
 import MixedChart from "../../components/chart/MixedChart";
 import PanelLending from '../../components/PanelLending';
 import PanelIndicators from '../../components/PanelIndicators';
@@ -22,6 +23,10 @@ class Home extends React.Component {
           <div className="module">
             <MixedChart title="Historial por Mes" />
             <PanelLending />
+          </div>
+
+          <div>
+              <Bar />
           </div>
 
         </div>
