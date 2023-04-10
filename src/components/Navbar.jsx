@@ -51,7 +51,7 @@ class Navbar extends React.Component {
 
         return (
             <div className='nav-lateral show'>
-                <ul className="grid grid-flow-row gap-8 text-center text-2xl" >
+                <ul className="grid grid-flow-row gap-6 md:gap-3 text-center text-2xl" >
                     <li className="mb-6">
                         <NavLink to="/Dashboard/Home" title="Home">
                             <FaClone />
