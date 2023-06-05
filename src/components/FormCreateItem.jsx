@@ -199,8 +199,16 @@ class FormCreateItem extends React.Component {
 							</label>
 						</div>
 
+						<div className='flex w-9/12 mx-auto mb-4 text-start items-center'>
+							<label htmlFor="">Es Prestamo? : </label>
+							<label className='ml-3' htmlFor="">Si 
+								<input type="radio" className='ml-1' name='is_lending' value="1" />
+							</label>
+							<label className='ml-3' htmlFor=""> No 
+								<input type="radio" className='ml-1' name='is_lending' value="0" defaultChecked />
+							</label>
+						</div>
 					</div>
-
 					<div className='mt-6'>
 						<ButtonForm name="Crear" />
 					</div>

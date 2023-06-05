@@ -149,7 +149,7 @@ class ItemData extends React.Component {
         var idItem = this.context.idItemSelected;
         let itemselected;
 
-        
+
         if (items != null) {
             items.map((item) => {
                 if (item.id == idItem) {
@@ -196,6 +196,24 @@ class ItemData extends React.Component {
                             <label className='mr-4' > Monto : </label>
                             <input type="number" name="amount" placeholder={item.amount} className='text-center font-normal border-b-2' defaultValue={item.amount} step="0.01" autoComplete="off" disabled={disableInputItemEdited} />
                         </div>
+
+                        <div className='flex w-9/12 mx-auto mb-4 text-start items-center'>
+							<label htmlFor="">Es Prestamo? : </label>
+							<label className='ml-3' htmlFor="">Si 
+                                {
+                                    item.is_lending == 1 
+                                    ? <input type="radio" className='ml-1' name='is_lending' value="1" defaultChecked disabled={disableInputItemEdited}/>
+                                    : <input type="radio" className='ml-1' name='is_lending' value="1"  disabled={disableInputItemEdited}/>
+                                }
+							</label>
+							<label className='ml-3' htmlFor=""> No 
+                                {
+                                    item.is_lending == 0
+                                    ? <input type="radio" className='ml-1' name='is_lending' value="0" defaultChecked disabled={disableInputItemEdited}/>
+                                    : <input type="radio" className='ml-1' name='is_lending' value="0"  disabled={disableInputItemEdited}/>
+                                }
+							</label>
+						</div>
 
 
                         <div className={`mt-6 text-center ${disableInputItemEdited ? "hidden" : "block"}`}>
