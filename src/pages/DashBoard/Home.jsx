@@ -22,7 +22,7 @@ class Home extends React.Component {
 
           <div className="module">
             <MixedChart title="Historial por Mes" />
-            <PanelLending />
+            {/* <PanelLending /> */}
           </div>
 
           <div>
