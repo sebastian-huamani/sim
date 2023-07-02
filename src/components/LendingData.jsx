@@ -125,10 +125,10 @@ class LendingData extends React.Component {
             return response.json()
         }).then(res => {
             console.log(res);
-            // Toast.fire({
-            //     icon: 'info',
-            //     title: res['msg']
-            // });
+            Toast.fire({
+                icon: 'info',
+                title: res['msg']
+            });
             // this.context.updateItemEditing(res['lending']);
             // this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
         });
@@ -190,7 +190,7 @@ class LendingData extends React.Component {
                 <div className='h-70vh sm:h-screen '>
                     {/* <FormCreateLending vision={showFormPanel} closePanel={hiddenPanel} /> */}
                     <NotData>
-                        <button type='submit' className='btn mt-2' onClick={showCreateLending}>
+                        <button type='submit' className='btn mt-2'>
                             Nuevo Prestamo
                         </button>
                     </NotData>
@@ -256,7 +256,9 @@ class LendingData extends React.Component {
 
                             <CuotasLending />
 
-                            <ButtonForm name="Crear"  />
+                            <div className='w-full flex justify-center'>
+                                <ButtonForm name="Guardar"/>
+                            </div>
 
                         </form>
                     ))

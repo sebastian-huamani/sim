@@ -6,6 +6,11 @@ import { HiCheckCircle } from "react-icons/hi2";
 import LendingsContext from "../context/LendingsContext";
 import { MdDeleteForever } from "react-icons/md";
 import moment from 'moment';
+const list = [
+    { value : 4, name : 'Pagado'},
+    { value : 3, name : 'Pendiente'},
+    { value : 5, name : 'No Pagado'},
+]
 
 class CuotasLending extends React.Component {
     constructor(props) {
@@ -22,10 +27,10 @@ class CuotasLending extends React.Component {
     }
 
     validateEmpty(currentItem) {
-        var options = [1, 2, 3].map((item) => (
-            item == currentItem 
-            ? <option value={item} key={item} selected>{item}</option>
-            : <option value={item} key={item}>{item}</option>
+        var options = list.map((item) => (
+            item.value == currentItem 
+            ? <option value={item.value} key={item.value} selected> {item.name}  </option>
+            : <option value={item.value} key={item.value}> {item.name}  </option>
 		));
         return options;
     }
@@ -42,7 +47,7 @@ class CuotasLending extends React.Component {
     }
 
     addCuotatest(){
-        this.context.listQuota.push([this.context.listQuota.length, "", "", "1"]);
+        this.context.listQuota.push([this.context.listQuota.length, "", "", "3"]);
         console.log(this.context.listQuota.length);
         console.log(this.context.listQuota);
         this.forceUpdate();
@@ -70,20 +75,20 @@ class CuotasLending extends React.Component {
 
                 <div className='overflow-x-scroll h-50vh mt-5'>
                     {listQuota.map((elem, i) => (
-                        <div className='flex justify-between items-center gap-4 w-11/12 mx-auto mb-5' key={elem[0]}>
-                            <p htmlFor="title w-6/11">Cuota {i + 1} :</p>
+                        <div className='grid grid-cols-template-data items-center gap-2 w-full mx-auto mb-5' key={elem[0]}>
+                            <p className=''>Cuota {i + 1} :</p>
 
                             <div className="flex justify-center">
                                 <input type="text" name='amountxMonth[]' className='w-5/12 bg-gray-200 p-1 text-center' defaultValue={elem[1]} key={elem.key} autoComplete="off" />
                                 <input type="date" name='date_pay[]' className='p-1 w-5/12' defaultValue={moment(elem[2]).format('YYYY-MM-DD')} />
                             </div>
 
-                            <div className='flex justify-center items-center text-lg'>
-                                <select name='type_state_payment[]' id="type_state_payment">
+                            <div className='flex justify-center items-center text-sm'>
+                                <select name='type_state_payment[]' id="type_state_payment" >
                                     {validateEmpty(elem[3]) }
                                 </select>
                             </div>
-                            <p onClick={() => deleteCuotatest(elem[0])} className='cursor-pointer text-xl' > <MdDeleteForever /> </p>
+                            <p onClick={() => deleteCuotatest(elem[0])} className='cursor-pointer text-xl ml-2' > <MdDeleteForever /> </p>
                         </div>
                     ))}
                 </div>

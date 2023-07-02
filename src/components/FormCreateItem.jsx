@@ -266,7 +266,7 @@ class FormCreateItem extends React.Component {
 									<Budges colorSelected="bg-green-200"   colorSelectedText="text-green-900" title="Financiacion"  type="button"/>
 								</button>
 								<button type='button' onClick={showPanerPrestamo}>
-									<Budges colorSelected="bg-indigo-200" colorSelectedText="bg-indigo-800" title="Prestamo" type="button" />
+									<Budges colorSelected="bg-blue-300" colorSelectedText="bg-blue-900" title="Prestamo" type="button" />
 								</button>
 							</div>
 						</div>
