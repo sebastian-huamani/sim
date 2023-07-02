@@ -92,7 +92,7 @@ class Navbar extends React.Component {
                     <li>
                         <NavLink
                             className={({ isActive }) => (isActive ? "text-slate-600" : "bg-black")}
-                            to='/Dashboard/Blogs' title="Blogs">
+                            to='/Dashboard/Prestamos' title="Prestamos">
                             <BsNewspaper />
                         </NavLink>
                     </li>

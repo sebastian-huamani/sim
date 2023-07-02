@@ -11,7 +11,8 @@ export class LendingsProvider extends React.Component{
             edited: false,
             create :false,
             currentItemEdited : null,
-            idItem : null
+            idItem : null,
+            listQuota : []
         }
     }
 
@@ -58,6 +59,9 @@ export class LendingsProvider extends React.Component{
 
     ItemEditedToList = ( idItem, item ) => {
         this.setState({
+            currentItemEdited :null
+        });        
+        this.setState({
             edited: true,
             idItem : idItem,
             currentItemEdited : item,
@@ -87,12 +91,34 @@ export class LendingsProvider extends React.Component{
         });
     }
 
+    setListCuota = (list) => {
+        this.setState({
+            listQuota : list
+        });  
+    }
+
+    addListQuota = (value) => {
+        this.state.listQuota.push(value)
+    }
+    deleteListQuota = (id) => {
+        // this.state.listQuota.splice(id, id);
+
+        var newArr = [];
+        this.state.listQuota.map((elem) => {
+            elem[0] != id ? newArr.push(elem) : [];
+        });
+        
+        this.setState({
+            listQuota : newArr
+        });
+    }
+
     render(){
-        const { create, stateOptions, listActive, listDesactive, edited, currentItemEdited, idItem } = this.state;
-        const { updateListActive, updateListDesactive, changeOption, deleteItemtoList, ItemEditedToList,updateItemEditing, resetDataPanel, showCreateLending  } = this;
+        const { create, stateOptions, listActive, listDesactive, edited, currentItemEdited, idItem, listQuota } = this.state;
+        const { updateListActive, updateListDesactive, changeOption, deleteItemtoList, ItemEditedToList,updateItemEditing, resetDataPanel, showCreateLending, setListCuota, addListQuota, deleteListQuota  } = this;
 
         return(
-            <LendingsContext.Provider value={{ create, idItem, currentItemEdited, edited, stateOptions, listActive, listDesactive, updateListActive, updateListDesactive, changeOption, deleteItemtoList, ItemEditedToList, updateItemEditing, resetDataPanel, showCreateLending }}>
+            <LendingsContext.Provider value={{ create, idItem, currentItemEdited, edited, stateOptions, listActive, listDesactive, updateListActive, updateListDesactive, changeOption, deleteItemtoList, ItemEditedToList, setListCuota,updateItemEditing, resetDataPanel, showCreateLending, listQuota, addListQuota, deleteListQuota }}>
                 {this.props.children}
             </LendingsContext.Provider>
         );

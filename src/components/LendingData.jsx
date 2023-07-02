@@ -1,7 +1,6 @@
 import React from 'react';
 import LendingsContext from "../context/LendingsContext";
-import {  InputSpecial } from './input/Inputs';
-import TimeLineChart from "./chart/TimeLineChart";
+import { InputSpecial } from './input/Inputs';
 import NotData from './NotData';
 import Moment from 'moment';
 import ButtonForm from './buttons/ButtonForm';
@@ -9,6 +8,7 @@ import { ButtonActionAbsolute } from './buttons/ButtonFixed';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import CuotasLending from './CuotasLending';
 const MySwal = withReactContent(Swal)
 
 const Toast = MySwal.mixin({
@@ -61,7 +61,7 @@ class LendingData extends React.Component {
 
     selectOptionsCards(cardsList) {
         var optionsList = cardsList.map(item => (
-            <option className='h-24' value={item.id} key={item.id}>{item.name}</option> 
+            <option className='h-24' value={item.id} key={item.id}>{item.name}</option>
         ));
         return optionsList;
     }
@@ -124,12 +124,13 @@ class LendingData extends React.Component {
         fetchPromise.then(response => {
             return response.json()
         }).then(res => {
-            Toast.fire({
-                icon: 'info',
-                title: res['msg']
-            });
-            this.context.updateItemEditing(res['lending']);
-            this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
+            console.log(res);
+            // Toast.fire({
+            //     icon: 'info',
+            //     title: res['msg']
+            // });
+            // this.context.updateItemEditing(res['lending']);
+            // this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
         });
     }
 
@@ -180,12 +181,10 @@ class LendingData extends React.Component {
     }
 
     render() {
-        const { cards } = this.state;
+        const { cards, show} = this.state;
         const { submitFormEdit, closeLending, submitFormCreate, selectOptionsCards } = this;
         const { edited, currentItemEdited, resetDataPanel, showCreateLending, create } = this.context;
-
         var options = selectOptionsCards(cards)
-
         if (!edited && !create) {
             return (
                 <div className='h-70vh sm:h-screen '>
@@ -211,7 +210,7 @@ class LendingData extends React.Component {
 
                         <div className='flex justify-center'>
                             <select name="cards_id" >
-                            <option value="-1" defaultValue>Elige una cuenta </option>
+                                <option value="-1" defaultValue>Elige una cuenta </option>
                                 {options}
                             </select>
                         </div>
@@ -231,56 +230,34 @@ class LendingData extends React.Component {
         }
 
         return (
-            <div className='p-3 relative'>
+            <div className='p-3 relative h-90vh'>
 
                 <p className='text-center text-2xl font-semibold'>Informacion de prestamo</p>
-                {/* <p className='text-center text-sm'> 100.156.654.2{currentItemEdited.id} </p> */}
                 {
                     [currentItemEdited].map(item => (
-                        <form onSubmit={submitFormEdit} className='text-sm' key={item.id}>
-
-                            <div className='grid grid-cols-3 mt-7 justify-between' >
-                                <input type="hidden" name="id" defaultValue={item.id} />
-                                <InputSpecial type="text" name="debtor" label="Deudor" value={item.debtor} />
-                                <InputSpecial type="text" name="amount" label="Monto" value={item.amount} />
-                                <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio" value={Moment(item.created_date_lending).format('YYYY-MM-DD')} />
+                        <form onSubmit={submitFormEdit} className='text-sm flex flex-col justify-between h-full' key={item.id_item}>
+                            <div className='grid grid-cols-3 mt-4 justify-between gap-y-2' >
+                                <input type="hidden" name="id" defaultValue={item.id_item} />
+                                <label htmlFor='amount' className='grid my-6 w-full justify-center'>
+                                    Monto :<br />
+                                    <input type="number" name='amount' step='0.01' id='amount' className='text-center font-normal border-b-2' defaultValue={item.amount_item} autoComplete="off"/>
+                                </label>
+                                <InputSpecial type="date" name="created_date_lending" label="Fecha de Inicio" value={Moment(item.created_at).format('YYYY-MM-DD')} />
                                 <InputSpecial type="date" name="payment_date_lending" label="Fecha de Pago" value={Moment(item.payment_date_lending).format('YYYY-MM-DD')} />
-                                <InputSpecial type="text" name="amount" label="card" value={item.name_bank} disabled/>
+                                {
+                                    item.debtor != null
+                                        ? <label htmlFor='amount' className='grid mb-3 w-full justify-center'>
+                                            Deudor :<br />
+                                            <input type="text" name='debtor' id='debtor' className='text-center font-normal border-b-2' defaultValue={item.debtor != null ? item.debtor : ''} autoComplete="off"/>
+                                        </label>
+                                        : ''
+                                }
                             </div>
 
-                            <div className=''>
-                                <TimeLineChart inicio={item.created_date_lending} fin={item.payment_date_lending} />
-                            </div>
+                            <CuotasLending />
 
-                            {/* <div className='pl-3 mt-2'>
-                                <button  className='btn text-base font-semibold' onClick={showPanel}> Aplazar :</button>
-                                <ul className='mt-4'>
-                                    <li className='w-full grid grid-cols-3 justify-between text-center bg-white p-3 mb-2 shadow-slate-500/20 shadow-md'>
-                                        <p>Fecha de Actualizacion</p>
-                                        <p>Monto</p>
-                                        <p>Fecha de Pago</p>
-                                    </li>
-                                    <div className='overflow-y-auto h-60'>
-                                        {
-                                            item.postpone.map(item => (
-                                                <li className=' w-full grid grid-cols-3 justify-between text-center odd:bg-gray-200 even:bg-none p-1.5'>
-                                                    <p>{Moment(item[0]).format('DD MMM. YYYY, HH:mm a')}</p>
-                                                    <p>S/. {item[1]}</p>
-                                                    <p>{Moment(item[2]).format('YYYY-MM-DD')}</p>
-                                                </li>
-                                            ))
-                                        }
-                                    </div>
-                                </ul>
-                            </div> */}
+                            <ButtonForm name="Crear"  />
 
-                            {
-                                currentItemEdited.state_id == 1 ?
-                                    <div className='flex justify-evenly items-center my-2'>
-                                        <ButtonForm name="Guardar" />
-                                        <ButtonForm name="Finalizar" actionButton={closeLending} />
-                                    </div> : ""
-                            }
                         </form>
                     ))
                 }

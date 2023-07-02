@@ -103,7 +103,7 @@ class TemplateItem extends React.Component {
 
         return (
             <div className='odd:bg-gray-200 even:bg-none ' id={this.props.id + 'TemplateBox'}>
-                <div className='grid grid-cols-5/2/2 gap-2 w-full items-center p-2 my-1' key={this.props.id}>
+                <div className='grid grid-cols-templates gap-2 w-full items-center p-2 my-1' key={this.props.id}>
 
                     <div className='w-11/12'>
                         <p>{this.props.title}</p>

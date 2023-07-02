@@ -41,7 +41,7 @@ function App() {
                 <Route path="/Dashboard/Crear-Nueva-Tarjeta" element={<CreateCard />} />
                 <Route path="/Dashboard/Configuracion" element={<SettingsDash />} />
 
-                <Route path="/Dashboard/Blogs" element={<Blog />} />
+                {/* <Route path="/Dashboard/Prestamos" element={<Blog />} /> */}
 
                 <Route path="/Dashboard/*" element={<Home />} />
               </Route>
@@ -50,7 +50,7 @@ function App() {
               <Route path="*" element={<Home />} />
               {/* <Route path="/Register" element={<Register />} /> */}
               {/* <Route path="/Home" element={<HomePage />} />
-              <Route path="/Blog" element={<Blog />} />
+              <Route path="/Blog" element={<Blog />} /  >
               <Route path="/Blog/Categorias" element={<BlogA />} />
               <Route path="*" element={<Home />} /> */}
             </Routes>
