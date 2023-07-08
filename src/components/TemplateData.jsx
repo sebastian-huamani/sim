@@ -54,7 +54,6 @@ class TemplateData extends React.Component {
     fetchPromise.then(response => {
       return response.json();
     }).then(res => {
-      console.log(res);
       this.setState({
         done: res['res'],
         items: res['msg']

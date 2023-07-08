@@ -9,11 +9,6 @@ class TimeLineChart extends React.Component {
 
   render() {
     const { inicio ,fin } = this.props;
-    console.log(new Date());
-
-    // console.log("inicio" ,Moment(inicio).format('YYYY-MM-DD'));
-    // console.log("fin" ,Moment(fin).format('YYYY-MM-DD'));
-    // console.log("now", Moment(inicio).format('YYYY-MM-DD'));
 
     var series = [
       {

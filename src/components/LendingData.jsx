@@ -124,7 +124,6 @@ class LendingData extends React.Component {
         fetchPromise.then(response => {
             return response.json()
         }).then(res => {
-            console.log(res);
             Toast.fire({
                 icon: 'info',
                 title: res['msg']

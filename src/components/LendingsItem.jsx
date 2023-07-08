@@ -69,7 +69,6 @@ class LendingsItem extends React.Component {
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
-            console.log(res);
             this.context.ItemEditedToList(idItem, res['msg']);
             this.context.setListCuota(res['msg'].history_quota);
         })

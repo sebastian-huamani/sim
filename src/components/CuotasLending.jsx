@@ -48,8 +48,6 @@ class CuotasLending extends React.Component {
 
     addCuotatest(){
         this.context.listQuota.push([this.context.listQuota.length, "", "", "3"]);
-        console.log(this.context.listQuota.length);
-        console.log(this.context.listQuota);
         this.forceUpdate();
     }
     
