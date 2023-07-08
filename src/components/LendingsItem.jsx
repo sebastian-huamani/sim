@@ -97,7 +97,7 @@ class LendingsItem extends React.Component {
                     </div>
 
                     <div className='flex justify-center'>
-                        <Budges title={item.state} />
+                        <Budges title={`S/. ${item.amount}`} />
                     </div>
 
                     <div className='flex justify-center items-center gap-2'>
