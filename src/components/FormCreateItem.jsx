@@ -33,7 +33,6 @@ function dateToDay() {
     return year + month + '-' + '01';
 }
 
-console.log(dateToDay());
 
 class FormCreateItem extends React.Component {
 	constructor(props) {
@@ -170,7 +169,6 @@ class FormCreateItem extends React.Component {
 	}
 
 	onChangeSelected(e){
-		console.log('test', e.target.value);
 		if(e.target.value == 3){
 			this.setState({
 				selectDayEspecial : true
