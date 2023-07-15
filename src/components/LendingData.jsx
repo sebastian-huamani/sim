@@ -125,7 +125,7 @@ class LendingData extends React.Component {
             return response.json()
         }).then(res => {
             Toast.fire({
-                icon: 'info',
+                icon: 'success',
                 title: res['msg']
             });
             // this.context.updateItemEditing(res['lending']);
@@ -152,7 +152,7 @@ class LendingData extends React.Component {
                 title: res['msg']
             });
             this.context.updateItemEditing(res['lending']);
-            this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
+            this.context.stateOptions ? this.context.updateListActive() : this.updateListDesactive();
             document.getElementById('formCreateLending').reset();
             this.context.resetDataPanel();
         });
@@ -174,7 +174,7 @@ class LendingData extends React.Component {
             return response.json()
         }).then(res => {
             this.context.resetDataPanel();
-            this.context.stateOptions ? this.updateListActive() : this.updateListDesactive();
+            this.context.stateOptions ? this.context.updateListActive() : this.updateListDesactive();
             // this.context.updateItemEditing(res['lending']);
         });
     }

@@ -26,7 +26,7 @@ class LendingsActive extends React.Component {
     }, [])
       .then(response => response.json())
       .then(res => {
-        res['res'] ? this.context.updateListActive(res['msg']) : this.context.deleteItemtoList(this.context.idItem);
+        res['res'] ? this.context.setListActives(res['msg']) : this.context.deleteItemtoList(this.context.idItem);
         this.setState({
           res: res['res'],
           loading: res['res'] ? false : true,

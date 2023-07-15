@@ -2,6 +2,7 @@ import React from 'react';
 import LendingsContext from "../context/LendingsContext";
 import Moment from 'moment';
 import { BiTrash, BiEdit } from "react-icons/bi";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
 
 import Swal from 'sweetalert2'
@@ -27,11 +28,12 @@ class LendingsItem extends React.Component {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdited = this.handleEdited.bind(this);
+        this.handleFinish = this.handleFinish.bind(this);
         // this.updateItems = this.updateItems.bond(this);
     }
 
 
-    handleDelete(e){
+    handleDelete(e) {
         e.preventDefault();
         var idItem = e.target.id;
         let key = localStorage.getItem('key');
@@ -56,7 +58,7 @@ class LendingsItem extends React.Component {
         })
     }
 
-    handleEdited(e){
+    handleEdited(e) {
         var idItem = e.target.id;
         let key = localStorage.getItem('key');
         const fetchPromise = fetch(`https://financemeapi.com/api/lending/show/${idItem}`, {
@@ -65,20 +67,43 @@ class LendingsItem extends React.Component {
                 'Authorization': 'Bearer ' + key,
             }
         });
-        
+
         fetchPromise.then(response => {
             return response.json();
         }).then(res => {
             this.context.ItemEditedToList(idItem, res['msg']);
             this.context.setListCuota(res['msg'].history_quota);
         })
+    }
 
+    handleFinish(e) {
+        e.preventDefault();
+        let key = localStorage.getItem('key');
+        var idItem = e.target.id;
+        console.log('finish', idItem);
+        const fetchPromise = fetch(`https://financemeapi.com/api/lending/updateState/${idItem}`, {
+            method: 'POST',
+            'headers': {
+                'Authorization': 'Bearer ' + key,
+            }
+        });
+
+        fetchPromise.then(response => {
+            return response.json()
+        }).then(res => {
+            this.context.resetDataPanel();
+            this.context.stateOptions ? this.context.updateListActive() : this.updateListDesactive();
+            Toast.fire({
+                icon: 'success ',
+                title: res['msg']
+            });
+        });
     }
 
     render() {
         const { item } = this.props;
-        const { handleDelete, handleEdited } = this;
-        
+        const { handleDelete, handleEdited, handleFinish } = this;
+
         return (
             <div className='odd:bg-gray-200 even:bg-none' id={item.id + 'TemplateBox'} key={item.id}>
                 <div className='grid grid-cols-5/2/2 gap-2 w-full items-center p-2 my-1' >
@@ -114,9 +139,16 @@ class LendingsItem extends React.Component {
                         </div>
 
                         <div>
-                            <button type="submit" className='absolute h-8 w-4 mr-4' id={item.id} onClick={handleDelete} title="Borrar Item"></button>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' id={item.lending_id} onClick={handleDelete} title="Borrar Item"></button>
                             <div className='mr-2'>
                                 <BiTrash />
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" className='absolute h-8 w-4 mr-4' id={item.lending_id} onClick={handleFinish} title="Finalizar Item"></button>
+                            <div className='mr-2'>
+                                <IoCheckmarkDoneSharp />
                             </div>
                         </div>
 
