@@ -6,6 +6,15 @@ import NotData from './NotData';
 import LendingsItem from "./LendingsItem";
 import Error from './Error';
 
+function dateNow() {
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+    if(month < 10){
+        return year + '-0' + month;
+    }
+    return year + '-' + month;
+}
+
 class LendingsDesactive extends React.Component {
     constructor(props) {
         super(props);
@@ -69,7 +78,7 @@ class LendingsDesactive extends React.Component {
                     <div className='overflow-y-auto h-full text-xs p-1' >
 
                         <form onSubmit={submitListDesactive} className='flex p-3 justify-center items-center rounded-lg bg-white shadow-md shadow-slate-500/20 text-sm' id='formTemplate'>
-                            <input type="month" name="month-year" id="month-year" min="2022-01" className='mr-3' />
+                            <input type="month" name="month-year" id="month-year" min="2022-01" className='mr-3' defaultValue={dateNow()} />
                             <ButtonForm name="Go" />
                         </form>
 
@@ -84,7 +93,7 @@ class LendingsDesactive extends React.Component {
                 <div className='overflow-y-auto h-full text-xs p-1' >
 
                     <form onSubmit={submitListDesactive} className='flex p-3 justify-center items-center rounded-lg bg-white shadow-md shadow-slate-500/20 text-sm' id='formTemplate'>
-                        <input type="month" name="month-year" id="month-year" min="2022-01" className='mr-3' />
+                        <input type="month" name="month-year" id="month-year" min="2022-01" className='mr-3' defaultValue={dateNow()} />
                         <ButtonForm name="Go" />
                     </form>
 
@@ -92,7 +101,7 @@ class LendingsDesactive extends React.Component {
                         <NotData />
                         :
                         listDesactive.map(item => (
-                            <LendingsItem item={item} key={item.id} />
+                            <LendingsItem item={item} key={item.id} isActive={false}/>
                         ))
                     
                     }

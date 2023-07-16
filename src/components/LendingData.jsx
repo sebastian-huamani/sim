@@ -188,11 +188,7 @@ class LendingData extends React.Component {
             return (
                 <div className='h-70vh sm:h-screen '>
                     {/* <FormCreateLending vision={showFormPanel} closePanel={hiddenPanel} /> */}
-                    <NotData>
-                        <button type='submit' className='btn mt-2'>
-                            Nuevo Prestamo
-                        </button>
-                    </NotData>
+                    <NotData />
                 </div>
             )
         }
@@ -254,10 +250,13 @@ class LendingData extends React.Component {
                             </div>
 
                             <CuotasLending />
-
-                            <div className='w-full flex justify-center'>
-                                <ButtonForm name="Guardar"/>
-                            </div>
+                            { item.state_id != 2 
+                                ?
+                                    <div className='w-full flex justify-center'>
+                                        <ButtonForm name="Guardar"/>
+                                    </div>
+                                : ''
+                            }
 
                         </form>
                     ))

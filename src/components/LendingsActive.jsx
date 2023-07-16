@@ -86,7 +86,7 @@ class LendingsActive extends React.Component {
           <NotData />
           :
           listActive.map(item => (
-            <LendingsItem item={item} key={item.id} />
+            <LendingsItem item={item} key={item.id} isActive={true} />
           ))
         )
         }
