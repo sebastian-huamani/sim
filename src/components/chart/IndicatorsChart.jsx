@@ -3,7 +3,8 @@ import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { BsInfoCircleFill } from "react-icons/bs";
 
 
-class IndicatorsChart extends React.Component {
+class 
+IndicatorsChart extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -14,7 +15,7 @@ class IndicatorsChart extends React.Component {
         if (data == 'undefined' || data == null) {
             data = [0, 0];
             return (
-                <div className='IndicatorsChart animate-pulse relative'>
+                <div className='IndicatorsChart relative'>
                     <p className='text-xs font-medium'> {name} </p>
                     <div className='text-center my-2'>
                         <div>

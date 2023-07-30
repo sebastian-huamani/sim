@@ -125,6 +125,28 @@ class DataGeneral extends React.Component {
             }
         };
 
+
+
+        if (error) {
+            return (
+                <div className='graphic-box col-span-2 '>
+                    <div className='flex items-center justify-center h-full text-7xl'>
+                        <Error />
+                    </div>
+                </div>
+            );
+        }
+
+        if (loading) {
+            return (
+                <div className='graphic-box col-span-2 '>
+                    <div className='animate-pulse h-full py-2 px-2 flex flex-col'>
+                        <p className=' bg-slate-200 rounded h-6 mb-2 w-1/5'> </p>
+                        <div className='h-full w-full bg-slate-200 rounded'></div>
+                    </div>
+                </div>
+            );
+        }
         return (
             <div className=' rounded-lg'>
                 <Chart

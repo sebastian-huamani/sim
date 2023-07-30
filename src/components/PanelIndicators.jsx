@@ -39,12 +39,12 @@ class PanelIndicators extends React.Component {
 
         if (error) {
             return (
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-5 md:mx-0 bg-black-scene '>
-                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
-                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
-                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
-                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
-                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl opacity-25 h-full'> <Error/> </div> </div>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mx-5 md:mx-0 bg-black-scene my-3'>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl h-full'> <Error /> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl h-full'> <Error /> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl h-full'> <Error /> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl h-full'> <Error /> </div> </div>
+                    <div className="IndicatorsChart"> <div className='flex items-center justify-center text-4xl h-full'> <Error /> </div> </div>
                 </div>
             );
         }

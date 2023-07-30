@@ -75,14 +75,6 @@ class Home extends React.Component {
 
           <div className='flex justify-between items-start my-5'>
             <p className='text-4xl'>Dashboard</p>
-            {/* <div className=''>
-              <select name="money" id="money" className='p-1' onChange={changeMoney}>
-                <option value="pen" selected>PEN</option>
-                <option value="usd">USD</option>
-                <option value="eur">EUR</option>
-              </select>
-              <input type="month" onChange={changeDate} defaultValue={dateNow()} />
-            </div> */}
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-8 gap-6 justify-between  my-3'>
@@ -94,8 +86,7 @@ class Home extends React.Component {
               </div>
               <div className='w-full  bg-white rounded-lg'>
                 <div className='p-2 pb-0'>
-                  <p className='text-xs'>This Month</p>
-                  <p className='text-md font-normal'>$/ 6666</p>
+                  <p className='text-sm'>Cuentas Debito</p>
                 </div>
                 <DataGeneral money={money} date={date} />
               </div>

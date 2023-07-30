@@ -64,8 +64,24 @@ class PieChart extends React.Component {
         var { title, currentValue, totalValue, porcent } = this.props;
         var { res, loading, error, data } = this.state;
 
+        if (error) {
+            return (
+                <div className='bg-white w-full rounded-lg p-4 cursor-default'>
+                    <Error />
+                </div>
+            );
+        }
+
+
+        if (loading) {
+            return (
+                <div className='bg-white w-full rounded-lg p-4 cursor-default '>
+                    loading
+                </div>
+            );
+        }
+        
         var series = data[1];
-        // var series = [1, 2, 3, 4];
 
         var options = {
             chart: {
@@ -127,22 +143,6 @@ class PieChart extends React.Component {
             },
         };
 
-        if (error) {
-            return (
-                <div className='graphic-box col-span-2 '>
-                    error
-                </div>
-            );
-        }
-
-
-        if (loading) {
-            return (
-                <div className='graphic-box col-span-2 '>
-                    loading
-                </div>
-            );
-        }
 
         if (this.props.type_card == 4 || this.props.type_card == 3) {
             return (
