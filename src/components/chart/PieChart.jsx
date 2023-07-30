@@ -28,7 +28,6 @@ class PieChart extends React.Component {
         }, [])
             .then(response => response.json())
             .then(res => {
-                console.log(res);
                 this.setState({
                     res: res['res'],
                     loading: res['res'] ? false : true,
@@ -51,7 +50,6 @@ class PieChart extends React.Component {
             }, [])
                 .then(response => response.json())
                 .then(res => {
-                    console.log(res , 'updates');
                     this.setState({
                         res: res['res'],
                         loading: res['res'] ? false : true,
@@ -97,7 +95,7 @@ class PieChart extends React.Component {
                             },
                             value: {
                                 show: true,
-                                fontSize: '13px',   
+                                fontSize: '13px',
                                 fontFamily: 'Helvetica, Arial, sans-serif',
                                 fontWeight: 400,
                                 color: undefined,
@@ -115,7 +113,7 @@ class PieChart extends React.Component {
                                 fontWeight: 400,
                                 color: '#373d3f',
                                 formatter: function (w) {
-                                    return 'S/. ' +  w.globals.seriesTotals.reduce((a, b) => {
+                                    return 'S/. ' + w.globals.seriesTotals.reduce((a, b) => {
                                         return a + b
                                     }, 0).toFixed(2)
                                 }
@@ -143,6 +141,34 @@ class PieChart extends React.Component {
                 <div className='graphic-box col-span-2 '>
                     loading
                 </div>
+            );
+        }
+
+        if (this.props.type_card == 4 || this.props.type_card == 3) {
+            return (
+                <div className='bg-white w-full rounded-lg p-4 cursor-default'>
+
+                    <div className='grid grid-cols-2'>
+                        <div className='flex flex-col justify-between'>
+                            <p className='text-sm'>{title}</p>
+                            <div>
+                                <p className='text-lg font-semibold'>$/ {data[2]}</p>
+                            </div>
+                            <div className='flex justify-between '>
+                                <BudgetInvest value="33" />
+                            </div>
+                        </div>
+                        <Chart
+                            options={options}
+                            series={series}
+                            type="donut"
+                            width={130}
+                            height={160}
+                        />
+
+                    </div>
+                </div>
+
             );
         }
 

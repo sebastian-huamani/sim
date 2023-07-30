@@ -12,8 +12,8 @@ import PieGeneral from '../../components/chart/PieGeneral';
 function dateNow() {
   const month = new Date().getMonth() + 1;
   const year = new Date().getFullYear();
-  if(month < 10){
-      return year + '-0' + month;
+  if (month < 10) {
+    return year + '-0' + month;
   }
   return year + '-' + month;
 }
@@ -22,20 +22,20 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      money : 'pen',
+      money: 'pen',
       date: dateNow()
     };
     this.changeDate = this.changeDate.bind(this);
     this.changeMoney = this.changeMoney.bind(this);
   }
 
-  changeDate(e){
+  changeDate(e) {
     this.setState({
       date: e.target.value
     });
   }
 
-  changeMoney(e){
+  changeMoney(e) {
     this.setState({
       money: e.target.value
     });
@@ -44,7 +44,7 @@ class Home extends React.Component {
 
 
   render() {
-    const {changeMoney, changeDate} = this;
+    const { changeMoney, changeDate } = this;
     var { money, date } = this.state;
     // return (
     //   <div>
@@ -71,50 +71,58 @@ class Home extends React.Component {
       <div>
         <Navbar />
         <NavTop />
-        <div className='p-2 h-screen md:pl-20 pl-0'> 
+        <div className='p-2 h-screen md:pl-20 pl-0'>
 
           <div className='flex justify-between items-start my-5'>
-            <p className='text-3xl'>Dashboard</p>
-            <div className=''>
+            <p className='text-4xl'>Dashboard</p>
+            {/* <div className=''>
               <select name="money" id="money" className='p-1' onChange={changeMoney}>
                 <option value="pen" selected>PEN</option>
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
               </select>
-              <input type="month" onChange={changeDate} defaultValue={dateNow()}/>
-            </div>
+              <input type="month" onChange={changeDate} defaultValue={dateNow()} />
+            </div> */}
           </div>
-          
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-3 justify-between  my-3'>
-            <div className='w-full h-full bg-white rounded-lg'>
-              <div className='p-2 pb-0'>
-                <p className='text-xs'>This Month</p>
-                <p className='text-md font-normal'>$/ 6666</p>
+
+          <div className='grid grid-cols-1 md:grid-cols-8 gap-6 justify-between  my-3'>
+
+            <div className='col-span-5'>
+              <div className='flex justify-start my-3'>
+                <p className='mr-2'>Mes:</p> 
+                <input className='bg-black-scene' type="month" onChange={changeDate} defaultValue={dateNow()} />
               </div>
-              <DataGeneral money={money} date={date} />
+              <div className='w-full  bg-white rounded-lg'>
+                <div className='p-2 pb-0'>
+                  <p className='text-xs'>This Month</p>
+                  <p className='text-md font-normal'>$/ 6666</p>
+                </div>
+                <DataGeneral money={money} date={date} />
+              </div>
+              <div className='grid grid-cols-2 gap-3 my-3'>
+                <PieChart title="Debito" date={date} type_card="1" />
+                <PieChart title="Credito" date={date} type_card="2" />
+                <PieChart title="Salida Prestamos" date={date} type_card="3" />
+                <PieChart title="Ingreso Prestamos" date={date} type_card="4" />
+              </div>
+
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
-              <PieChart title="Debito" currentValue="2096.50" totalValue="5463.24" porcent="68%" date={date} type_card="1" />
-              <PieChart title="Credito" currentValue="3692.36" totalValue="16953.23" porcent="79%" date={date} type_card="2"/>
-              <PieChart title="Prestamos" currentValue="-653.12" totalValue="" porcent="79%" date={date} type_card="3"/>
+
+            <div className='col-span-3'>
+              <p className='my-3'>Mes actual :</p>
+              <PanelIndicators />
+              {/* <PieChart title="Debito" currentValue="2096.50" totalValue="5463.24" porcent="68%" date={date} type_card="1" /> */}
+              {/* <PieChart title="Credito" currentValue="3692.36" totalValue="16953.23" porcent="79%" date={date} type_card="2"/>
+              <PieChart title="Prestamos" currentValue="-653.12" totalValue="" porcent="79%" date={date} type_card="3"/> */}
               {/* <PieChart title="Debito" currentValue="3692.36" totalValue="16953.23" porcent="79%" /> */}
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-3 justify-between my-3'>
-            <div className='w-full h-full bg-white rounded-lg'>
-              <PieGeneral />
-            </div>
-            <div className='grid grid-cols-2 gap-3'>
-              {/* <PieChart title="Credito" currentValue="2096.50" totalValue="5463.24" porcent="68%" />
-              <PieChart title="Debito" currentValue="3692.36" totalValue="16953.23" porcent="79%" /> */}
-            </div>
-          </div>
 
         </div>
       </div>
     );
   }
-    
+
 }
 export default Home;

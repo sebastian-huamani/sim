@@ -50,7 +50,7 @@ class PanelIndicators extends React.Component {
         }
 
         return (
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4  mx-5 md:mx-0 bg-black-scene '>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mx-5 md:mx-0 bg-black-scene my-3'>
                 <IndicatorsChart data={data.full_credit} name="Credito Total" title="Suma del Credito total" />
                 <IndicatorsChart data={data.aviable_credit} name="Credito Disponible" title="Credito disponible para uso" />
                 <IndicatorsChart data={data.full_debit} name="Debito Total" title="Debito total " />

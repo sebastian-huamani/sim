@@ -81,7 +81,6 @@ class LendingsItem extends React.Component {
         e.preventDefault();
         let key = localStorage.getItem('key');
         var idItem = e.target.id;
-        console.log('finish', idItem);
         const fetchPromise = fetch(`https://financemeapi.com/api/lending/updateState/${idItem}`, {
             method: 'POST',
             'headers': {
